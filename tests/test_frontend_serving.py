@@ -21,3 +21,11 @@ def test_missing_build_explains_setup_and_build_created_after_start_is_served(tm
         assert client.get('/assets/missing.js').status_code == 404
         assert client.get('/api/missing').status_code == 404
         assert client.get('/missing.png').status_code == 404
+
+
+def test_windows_path_separators_keep_api_routes_out_of_frontend(tmp_path):
+    import asyncio
+    frontend = FrontendFiles(tmp_path / 'dist')
+    scope = {'type': 'http', 'method': 'GET', 'headers': []}
+    response = asyncio.run(frontend.get_response(r'api\missing', scope))
+    assert response.status_code == 404

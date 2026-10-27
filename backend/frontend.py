@@ -15,7 +15,7 @@ class FrontendFiles(StaticFiles):
         pass
 
     async def get_response(self, path, scope):
-        clean = path.lstrip('/')
+        clean = path.replace('\\', '/').lstrip('/')
         if clean == 'api' or clean.startswith('api/'):
             return JSONResponse({'detail': 'Not Found'}, status_code=404)
         index = self.build_directory / 'index.html'
