@@ -53,15 +53,16 @@ and vice versa; scripts reject an environment without the native interpreter.
 
 ## Get the source
 
-Once the development branch has been published:
+Clone the shared development branch into a folder you own:
 
 ```sh
 git clone --branch feature/mac-cross-platform-setup https://github.com/kushagrachess21-prog/Zinnovatio-4.0.git
 cd Zinnovatio-4.0
 ```
 
-Until publication, use the supplied local CivicFlux folder. The branch is being
-prepared against an initially empty remote; do not assume a `main` commit exists.
+Cloning saves the project source on your own computer. You can open that folder
+in VS Code or another editor. The repository started empty; this development
+branch is the collaboration base until the team establishes `main`.
 
 ## macOS installation and run
 
@@ -254,6 +255,34 @@ smoke checks complement the Python tests.
   Historical benchmarks and simulations are labeled separately from observations.
 - **Missing dataset or model:** restore the original source files and artifacts.
   Do not train replacements or insert dummy outputs to silence the error.
+
+## Save the project locally and start contributing
+
+1. Install the prerequisites above on your own Mac or Windows computer.
+2. Run the clone command above in Terminal (Mac) or PowerShell (Windows). Do not
+   copy someone else's virtual environment or node_modules.
+3. Run your platform's setup script. Obtain the original datasets using the
+   documented download instructions if you need historical examples or full tests.
+4. Open the cloned folder in your editor. Frontend changes belong in
+   `frontend/src`; API changes in `backend`; shared inference changes in
+   `src/civicflux`. Leave trained artifacts and completed notebooks unchanged
+   unless your task explicitly requires research changes.
+5. Create your own feature branch using the commands below. Save edited files
+   normally in your editor. Saving changes files only on your computer; a Git
+   commit records them locally, and a Git push shares your branch on GitHub.
+6. Run the tests/build, review the diff, commit only intended files, push your
+   branch, and open a pull request targeting `feature/mac-cross-platform-setup`.
+7. After review and merge, switch back to the shared development branch and run
+   `git pull --ff-only`. Rerun setup when dependency files change.
+
+The `.github/workflows/cross-platform.yml` workflow checks Windows and macOS
+on every feature-branch push and pull request. It installs the minimal backend,
+loads all saved model components, exercises API/SQLite/flood/cascade/planning,
+checks supported simulation predictions and abstention, then builds the frontend.
+It does not download restricted raw datasets or retrain anything. The full
+87-test suite and historical-data checks must also be run locally with the
+original datasets. A green workflow proves these smoke checks on its runner;
+it is not full Windows browser QA. Check the Actions tab for the actual result.
 
 ## Collaboration workflow
 

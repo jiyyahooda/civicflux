@@ -1,0 +1,43 @@
+name: Cross-platform application
+on:
+  push:
+    branches: ['feature/**', 'codex/**']
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  application:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    env:
+      PYTHONUTF8: '1'
+      CIVICFLUX_PUBLIC_FEEDS: '0'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install macOS OpenMP
+        if: runner.os == 'macOS'
+        run: brew install libomp
+      - name: Install backend
+        run: python -m pip install -r requirements-test.txt
+      - name: Check dependencies
+        run: python -m pip check
+      - name: Verify models and application without restricted datasets
+        run: python scripts/ci_smoke.py
+      - name: Install Corepack
+        run: npm install --global corepack
+      - name: Install frozen frontend dependencies
+        working-directory: frontend
+        run: corepack pnpm install --frozen-lockfile
+      - name: Compile TypeScript and build frontend
+        working-directory: frontend
+        run: corepack pnpm build
