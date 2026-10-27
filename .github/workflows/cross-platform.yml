@@ -36,7 +36,7 @@ jobs:
       - name: Verify models and application without restricted datasets
         run: python scripts/ci_smoke.py
       - name: Install Corepack
-        run: npm install --global corepack
+        run: npm install --global corepack --force
       - name: Install frozen frontend dependencies
         working-directory: frontend
         run: corepack pnpm install --frozen-lockfile

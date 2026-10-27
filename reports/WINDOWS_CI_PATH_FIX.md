@@ -15,3 +15,9 @@ in both CI jobs. Local verification: 105 tests passed (one existing warning),
 all nine fresh-process reports passed, and scripts/ci_smoke.py passed. SHA-256
 checks confirm all 273 original artifact/notebook files remain unchanged.
 Native GitHub Windows rerun is required to confirm the fix on the hosted runner.
+
+The next native Windows run passed the model/path checks and exposed a separate
+Corepack installation failure: the hosted runner already contains a Yarn shim at
+`C:\npm\prefix\yarn` (EEXIST). The CI-only Corepack install now uses --force
+to replace those preinstalled package-manager shims on the disposable runner.
+No local package installation or application behavior is changed.
