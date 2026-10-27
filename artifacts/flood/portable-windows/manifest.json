@@ -1,0 +1,35 @@
+{
+  "format_version": 1,
+  "component": "flood",
+  "created_at": "2026-10-26T22:36:19.366962+05:30",
+  "method": "Exact native Model section extracted from original XGBoost UBJSON snapshot, loaded via load_model, exported via save_model",
+  "original_artifact": "artifacts\\flood\\pipeline.joblib",
+  "original_sha256": "69934c5a43013093da4b50bd488d5e914ca166e4db2c4fdc9c55f6da726ab500",
+  "portable_sha256": "21920b1b048786dc9e0b5655e413bc579c7697a96524f3f997cc5a4128ff1f69",
+  "json_sha256": "bd0f8f211686ac6bb13f29185df5c73d007238b539806efa9f6f9b03627c4344",
+  "snapshot_sha256": "902d40e15f35761047d574b65bce1b9b9f719edaee021eaf3f7248de390d6716",
+  "native_model_sha256": "21920b1b048786dc9e0b5655e413bc579c7697a96524f3f997cc5a4128ff1f69",
+  "native_roundtrip_byte_identical": true,
+  "python": "3.12.14",
+  "xgboost": "3.4.1",
+  "test_predictions_sha256": "78bcdfeaef758ede06e512abe8b8b49e0f551fb9dd3e563949ee2cd4da7e0e37",
+  "verification": {
+    "passed": true,
+    "rows": 4420,
+    "calibrated_probability": {
+      "rows": 4420,
+      "max_absolute_error": 3.437499995762039e-08,
+      "absolute_tolerance": 1e-07,
+      "relative_tolerance": 1e-06,
+      "passed": true
+    },
+    "alerts_identical": true,
+    "calibrator": "IsotonicRegression",
+    "threshold": 0.03
+  },
+  "limitations": [
+    "Research-only; original units, scope, provenance and validation limitations remain.",
+    "Original macOS process unavailable; parity checked against all saved test outputs.",
+    "No retraining; original preprocessing, calibration and thresholds retained."
+  ]
+}

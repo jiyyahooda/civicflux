@@ -1,0 +1,53 @@
+{
+  "format_version": 1,
+  "component": "traffic",
+  "created_at": "2026-10-26T22:36:19.270811+05:30",
+  "method": "Exact native Model section extracted from original XGBoost UBJSON snapshot, loaded via load_model, exported via save_model",
+  "original_artifact": "artifacts\\traffic\\pipeline.joblib",
+  "original_sha256": "afdc256b9143b8f79959feaa6807e56ee8051abc349412d223f932eaafddc3a9",
+  "portable_sha256": "fd65d067edaf4a6fc610791b347626c83d71bd9597b24b68b0f6e67342db210f",
+  "json_sha256": "8cba5368c20090cf81165ef62630d5baf9a36f051662d101e7339673b1d26fe5",
+  "snapshot_sha256": "aeadb5e42f7f6674bc2b32c06d9f8472ad48b30457063dcf45ba619c99c1b429",
+  "native_model_sha256": "fd65d067edaf4a6fc610791b347626c83d71bd9597b24b68b0f6e67342db210f",
+  "native_roundtrip_byte_identical": true,
+  "python": "3.12.14",
+  "xgboost": "3.4.1",
+  "test_predictions_sha256": "0afd19f6f05b8d9c8e11e8650fb837b42d8ee0649b853cb0962745ff88601f2b",
+  "verification": {
+    "passed": true,
+    "rows": 11540,
+    "prediction": {
+      "rows": 11540,
+      "max_absolute_error": 3.808593746157385e-06,
+      "absolute_tolerance": 1e-05,
+      "relative_tolerance": 1e-06,
+      "passed": true
+    },
+    "lower_interval": {
+      "rows": 11540,
+      "max_absolute_error": 3.808593746157385e-06,
+      "absolute_tolerance": 1e-05,
+      "relative_tolerance": 1e-06,
+      "passed": true
+    },
+    "upper_interval": {
+      "rows": 11540,
+      "max_absolute_error": 3.813476567415819e-06,
+      "absolute_tolerance": 1e-05,
+      "relative_tolerance": 1e-06,
+      "passed": true
+    },
+    "entities": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "feature_recipe": "existing canonicalize + make_features"
+  },
+  "limitations": [
+    "Research-only; original units, scope, provenance and validation limitations remain.",
+    "Original macOS process unavailable; parity checked against all saved test outputs.",
+    "No retraining; original preprocessing, calibration and thresholds retained."
+  ]
+}

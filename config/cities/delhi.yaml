@@ -1,0 +1,17 @@
+id: delhi
+name: Delhi
+timezone: Asia/Kolkata
+verified_asset_mapping: false
+station_mapping:
+  IMD: ['42182', '42181', '42184', '42180']
+preferred_imd_station: '42182'
+source_state: Delhi
+station_mapping_source: https://mausam.imd.gov.in/index_en.php?lang=en
+map_reference:
+  latitude: 28.65195
+  longitude: 77.23149
+  geonames_id: 1273294
+  source: https://geocoding-api.open-meteo.com/v1/get?id=1273294
+  scope: City reference point; not an infrastructure asset or station
+research_components: [rainfall, aqi]
+limitations: Research forecasts are Delhi aggregates. Live weather uses separately identified IMD stations; municipal asset mapping remains unverified.

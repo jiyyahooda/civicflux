@@ -1,0 +1,107 @@
+[
+  {
+    "route": "/docs",
+    "status": 200
+  },
+  {
+    "route": "/openapi.json",
+    "status": 200
+  },
+  {
+    "route": "/api/health",
+    "status": 200
+  },
+  {
+    "route": "/api/models",
+    "status": 200
+  },
+  {
+    "route": "/api/cities",
+    "status": 200
+  },
+  {
+    "route": "/api/scenarios",
+    "status": 200
+  },
+  {
+    "route": "/api/scenarios/defaults",
+    "status": 200
+  },
+  {
+    "route": "/api/scenarios/graph",
+    "status": 200
+  },
+  {
+    "route": "/api/complaints",
+    "status": 200
+  },
+  {
+    "route": "/api/feedback",
+    "status": 200
+  },
+  {
+    "route": "/api/authorities?city_id=delhi",
+    "status": 200
+  },
+  {
+    "route": "/api/observations?city_id=delhi",
+    "status": 200
+  },
+  {
+    "component": "rainfall",
+    "positive": "supported_research",
+    "negative": "abstained"
+  },
+  {
+    "component": "aqi",
+    "positive": "supported_research",
+    "negative": "abstained"
+  },
+  {
+    "component": "traffic",
+    "positive": "supported_research",
+    "negative": "abstained"
+  },
+  {
+    "component": "flood",
+    "positive": "supported_simulation",
+    "negative": "abstained"
+  },
+  {
+    "component": "infrastructure_anomaly",
+    "positive": "supported_research",
+    "negative": "abstained"
+  },
+  {
+    "component": "water_network",
+    "positive": "supported_simulation",
+    "negative": "abstained"
+  },
+  {
+    "component": "cascade_risk",
+    "positive": "supported_simulation",
+    "negative": "abstained"
+  },
+  {
+    "component": "resource_optimization",
+    "positive": "supported_simulation",
+    "negative": "abstained"
+  },
+  {
+    "component": "intervention_outcomes",
+    "positive": "supported_simulation",
+    "negative": "abstained"
+  },
+  {
+    "frontend_proxy": "/",
+    "status": 200
+  },
+  {
+    "frontend_proxy": "/api/health",
+    "status": 200
+  },
+  {
+    "frontend_proxy": "/api/models",
+    "status": 200
+  }
+]

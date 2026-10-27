@@ -1,0 +1,16 @@
+SQL = '''
+CREATE TABLE IF NOT EXISTS records (
+ id TEXT PRIMARY KEY, kind TEXT NOT NULL, created TEXT NOT NULL, body TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS records_kind ON records(kind, created);
+CREATE TABLE IF NOT EXISTS audit (
+ id INTEGER PRIMARY KEY AUTOINCREMENT, created TEXT NOT NULL, actor TEXT NOT NULL,
+ event TEXT NOT NULL, entity TEXT NOT NULL, detail TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS sessions (token_hash TEXT PRIMARY KEY, actor TEXT NOT NULL, expires REAL NOT NULL);
+CREATE TABLE IF NOT EXISTS source_cache (key TEXT PRIMARY KEY, fetched_at TEXT NOT NULL, payload TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS authorities (
+ id TEXT PRIMARY KEY, city_id TEXT NOT NULL, locality TEXT NOT NULL, name TEXT NOT NULL,
+ delivery_mode TEXT NOT NULL DEFAULT 'local_queue', UNIQUE(city_id,locality)
+);
+'''

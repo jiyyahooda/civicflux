@@ -1,0 +1,10 @@
+import {useState} from 'react';
+import OutlookChart from '../components/OutlookChart';
+import {api} from '../api/client';
+import type {City,Model} from '../types/api';
+export default function Predictions({city,models,admin}:{city:City|undefined;models:Model[];admin:boolean}){
+ const [component,setComponent]=useState('rainfall'),[payload,setPayload]=useState(''),[message,setMessage]=useState(''),[busy,setBusy]=useState(false);
+ async function run(){setBusy(true);setMessage('');try{const result=await api<{status:string}>('predictions/'+component,JSON.parse(payload));setMessage('Model result: '+result.status.replaceAll('_',' '))}catch(e){setMessage((e as Error).message)}finally{setBusy(false)}}
+ return <><OutlookChart cityId={city?.id??'delhi'} cityName={city?.name}/><section className="panel"><span className="eyebrow">CivicFlux model suite</span><h3>More signals. Better decisions.</h3><div className="model-tiles">{models.map(m=><article key={m.component}><strong>{m.component.replaceAll('_',' ')}</strong><span>{m.readiness}</span><small>{m.horizon}</small></article>)}</div><p>Weather outlooks use current provider forecasts. Traffic, flood and infrastructure models are available through the scenario and model tools.</p></section>{admin&&<section className="panel"><h3>Model controls</h3><label>Component<select value={component} onChange={e=>{setComponent(e.target.value);setPayload('');setMessage('')}}>{models.map(m=><option key={m.component} value={m.component}>{m.component.replaceAll('_',' ')}</option>)}</select></label><button onClick={async()=>{try{setPayload(JSON.stringify(await api('predictions/'+component+'/fixture'),null,2))}catch(e){setMessage((e as Error).message)}}}>Load model input</button><label>Model input<textarea className="json-editor" value={payload} onChange={e=>setPayload(e.target.value)}/></label><button className="primary" disabled={busy||!payload} onClick={run}>{busy?'Running…':'Run model'}</button>{message&&<p role="status">{message}</p>}</section>}</>
+}
+

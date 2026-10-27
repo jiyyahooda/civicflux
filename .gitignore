@@ -1,0 +1,38 @@
+# Environments must be created on each OS
+.venv*/
+node_modules/
+frontend/dist/
+*.tsbuildinfo
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+.cache/
+.jupyter/
+.DS_Store
+.AppleDouble
+Thumbs.db
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+var/
+*.sqlite*
+*.db
+*.db-*
+*.log
+uploads/
+**/uploads/
+*.zip
+*.tar
+*.tar.gz
+# Original restricted datasets: acquire per DATASET_GUIDE.md; never retrain for setup.
+data/raw/
+# Transferred machine inventories and private reference inputs
+PACKAGE-MANIFEST.json
+PACKAGED-LINKS.json
+reference_inputs/
+reports/targeted_review/original_notebooks/
+reports/windows/
+reports/portable-recovery/

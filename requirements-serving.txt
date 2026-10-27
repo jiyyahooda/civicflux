@@ -1,0 +1,2 @@
+# Application and inference only; notebooks use requirements.txt separately.
+-r requirements-backend.txt

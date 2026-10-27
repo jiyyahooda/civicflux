@@ -1,0 +1,17 @@
+id: chandigarh
+name: Chandigarh
+timezone: Asia/Kolkata
+verified_asset_mapping: false
+station_mapping:
+  IMD: ['42105']
+preferred_imd_station: '42105'
+source_state: Chandigarh
+station_mapping_source: https://mausam.imd.gov.in/index_en.php?lang=en
+map_reference:
+  latitude: 30.73629
+  longitude: 76.7884
+  geonames_id: 1274746
+  source: https://geocoding-api.open-meteo.com/v1/get?id=1274746
+  scope: City reference point; not an infrastructure asset or station
+research_components: []
+limitations: IMD station weather is available independently. No supplied CivicFlux forecast model or verified municipal asset mapping.
