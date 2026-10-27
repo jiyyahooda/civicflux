@@ -1,7 +1,7 @@
 name: Cross-platform application
 on:
   push:
-    branches: ['feature/**', 'codex/**']
+    branches: ['main', 'feature/**', 'codex/**']
   pull_request:
   workflow_dispatch:
 permissions:
@@ -35,6 +35,8 @@ jobs:
         run: python -m pytest tests/test_cross_platform_fingerprints.py -q
       - name: Verify models and application without restricted datasets
         run: python scripts/ci_smoke.py
+      - name: Verify geographic maps without provider credentials
+        run: python -m pytest tests/test_geographic_maps.py -q
       - name: Install Corepack
         run: npm install --global corepack --force
       - name: Install frozen frontend dependencies

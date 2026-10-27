@@ -43,9 +43,9 @@ run it with `corepack pnpm`. If Corepack is absent, install it with
 
 macOS requires Homebrew and `libomp`. Windows requires native 64-bit Python with
 the `py` launcher; install Microsoft's Visual C++ 2015–2022 Redistributable x64
-if XGBoost reports missing native runtime DLLs. Windows setup has been reviewed
-but has not been executed in a Windows host during this macOS verification.
-Do not claim Windows execution based on the Mac test results.
+if XGBoost reports missing native runtime DLLs. Native Windows and macOS CI smoke checks passed for the prior integration.
+The workflow also checks every update to `main`; see GitHub Actions for the
+current commit result. This covers model/API/build checks, not full browser QA.
 
 **Each machine must create its own `.venv` and `node_modules`.** Never transfer or
 commit these directories. Rename an old Windows `.venv` before setting up on Mac,
@@ -53,16 +53,15 @@ and vice versa; scripts reject an environment without the native interpreter.
 
 ## Get the source
 
-Clone the shared development branch into a folder you own:
+Clone the main branch into a folder you own:
 
 ```sh
-git clone --branch feature/mac-cross-platform-setup https://github.com/kushagrachess21-prog/Zinnovatio-4.0.git
+git clone --branch main https://github.com/kushagrachess21-prog/Zinnovatio-4.0.git
 cd Zinnovatio-4.0
 ```
 
 Cloning saves the project source on your own computer. You can open that folder
-in VS Code or another editor. The repository started empty; this development
-branch is the collaboration base until the team establishes `main`.
+in VS Code or another editor. The `main` branch contains the current shared application.
 
 ## macOS installation and run
 
@@ -154,7 +153,9 @@ Stop each server with Ctrl+C.
 | `CIVICFLUX_ROOT` | Optional absolute project root override, set in the shell before launch |
 
 Copy `.env.example` to `.env` when configuring manually and set a private password.
-Never put keys in `VITE_*` variables. Missing feeds produce unavailable/abstained
+Keep server credentials out of `VITE_*` variables. The optional restricted
+Google Maps browser key uses `VITE_GOOGLE_MAPS_API_KEY` and is public in the browser
+by design; WAQI and OpenWeather keys must remain server-only. Missing feeds produce unavailable/abstained
 states, not fabricated observations. Public feeds and map tiles require network
 access and can fail independently of the application.
 
@@ -271,16 +272,16 @@ smoke checks complement the Python tests.
    normally in your editor. Saving changes files only on your computer; a Git
    commit records them locally, and a Git push shares your branch on GitHub.
 6. Run the tests/build, review the diff, commit only intended files, push your
-   branch, and open a pull request targeting `feature/mac-cross-platform-setup`.
-7. After review and merge, switch back to the shared development branch and run
+   branch, and open a pull request targeting `main`.
+7. After review and merge, switch back to the main branch and run
    `git pull --ff-only`. Rerun setup when dependency files change.
 
 The `.github/workflows/cross-platform.yml` workflow checks Windows and macOS
-on every feature-branch push and pull request. It installs the minimal backend,
+on every main/feature-branch push and pull request. It installs the minimal backend,
 loads all saved model components, exercises API/SQLite/flood/cascade/planning,
 checks supported simulation predictions and abstention, then builds the frontend.
 It does not download restricted raw datasets or retrain anything. The full
-94-test suite and historical-data checks must also be run locally with the
+112-test suite and historical-data checks must also be run locally with the
 original datasets. A green workflow proves these smoke checks on its runner;
 it is not full Windows browser QA. Check the Actions tab for the actual result.
 
@@ -291,21 +292,19 @@ work, commit or stash local changes and update your development branch:
 
 ```sh
 git fetch origin
-git switch feature/mac-cross-platform-setup
-git pull --ff-only origin feature/mac-cross-platform-setup
-git switch -c feature/my-change
+git switch main
+git pull --ff-only origin main
+git switch -c codex/my-change
 # Edit, run Python verification and frontend build, then inspect the diff.
 git diff
 git add <specific-files>
 git diff --cached
 git commit -m "Describe the change"
-git push -u origin feature/my-change
+git push -u origin codex/my-change
 ```
 
-Open a pull request on GitHub targeting the agreed development branch (or `main`
-after the team establishes it). Review before merging. Your Mac can remain on
-`feature/mac-cross-platform-setup`; your Windows teammate should use a separate
-feature branch and recreate dependencies locally. If `pull --ff-only` fails,
+Open a pull request on GitHub targeting `main`. Review before merging. Each
+teammate should use a separate feature branch and recreate dependencies locally. If `pull --ff-only` fails,
 inspect divergence and reconcile explicitly; never overwrite remote work.
 
 ## Research limitations
@@ -484,3 +483,53 @@ root-cause findings and isolated browser verification. The current integration b
 Current situation and What-if assessment appear below the operational inventory
 and supervisor-review panels, immediately above the selected planning content.
 This restores their earlier position after the targeted cleanup.
+
+
+## Named geographic demonstrations and WAQI
+
+City map now separates available observations from a simulated Delhi scenario.
+Water supply opens an illustrative network; use its Road network and Drainage and
+rain controls to explore named geographic anchors, assumed volume/capacity and
+labelled simulated blockages. Planning > What-if assessment includes the same
+geographic display with saved model review flags and proposed inspection rings.
+Predictions > Traffic volume adds a transparent capacity interpretation after the
+actual saved forecast. These display associations do not validate real asset maps.
+
+Air quality uses live WAQI station data and optional, clearly labelled illustrative
+colour interpolation. Configure server-only `WAQI_API_TOKEN` in private `.env`;
+restart the backend after changing keys. The local token is not committed.
+`OPENWEATHERMAP_API_KEY` enables optional rain imagery; the existing restricted
+`VITE_GOOGLE_MAPS_API_KEY` enables Google TrafficLayer and requires a Vite restart.
+Static scenario layers work without either of those two optional keys.
+
+Regenerate the geographical demonstration offline with
+`python scripts/build_demo_geography.py`. Data/source IDs and ODbL attribution are
+under `data/geography/`. See `reports/MAP_DEMONSTRATION_INTEGRATION.md` for tested
+behavior, provider terms and remaining limits. The current map integration and interface cleanup are included in `main`.
+
+
+## What a fresh clone includes
+
+The current interface, all nine saved model components, eleven notebooks, Delhi
+reference documents, and static scenario geography are versioned. A fresh clone
+starts with an empty local database: your local reports, uploads, sessions, API
+keys and administrator password are deliberately excluded. Setup creates a new
+private `.env` and administrator password. Read that file locally to log in.
+
+For the same optional provider layers, edit your private `.env` after setup:
+
+- `VITE_GOOGLE_MAPS_API_KEY`: your restricted Google Maps browser key. Enable
+  Maps JavaScript API with billing and allow your localhost/deployed referrers.
+- `WAQI_API_TOKEN`: your WAQI token for station AQI.
+- `OPENWEATHERMAP_API_KEY`: optional precipitation imagery.
+
+Restart both servers after configuring keys. No shared credentials are committed.
+The app can run without these keys; affected live layers explain missing setup.
+Public weather feeds still require internet access and their availability can vary.
+To reproduce historical rainfall, AQI, traffic and water examples, also acquire
+the original datasets as explained above and in DATASET_GUIDE.md. A missing
+restricted dataset is reported explicitly; the application does not invent data.
+
+Open http://127.0.0.1:5173 after running both servers. GitHub displays source code;
+it does not run this Python backend just by opening an HTML file. Use the setup
+and run commands above on Windows or macOS. No paid hosting is needed locally.
