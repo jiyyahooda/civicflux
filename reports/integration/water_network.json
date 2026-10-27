@@ -1,11 +1,11 @@
 {
-  "interface_sha256": "3681583729b2dbb3ecac384fe529cb2144bbb896132cd3c1c597452e94e05991",
+  "interface_sha256": "e5663d4be9b15060ac672078d48df0d18d6b30bbcad40ebae9a697e12b0a8132",
   "artifact_sha256": "498292c7c245bab84bf8f9c64924c9e0d07bd5701dd8e8d9661fd950abd02a4e",
   "runtime_artifact_hashes": {},
   "component": "water_network",
   "fresh_process": true,
   "jupyter_imported": false,
-  "python": "python3.13",
+  "python": "python3.13.5",
   "positive": {
     "contract_version": "civicflux.research.v1",
     "component": "water_network",
@@ -269,5 +269,5 @@
   },
   "sensor_results": {},
   "passed": true,
-  "platform": "macOS arm64"
+  "platform": "Darwin arm64"
 }

@@ -1,11 +1,11 @@
 {
-  "interface_sha256": "3681583729b2dbb3ecac384fe529cb2144bbb896132cd3c1c597452e94e05991",
+  "interface_sha256": "e5663d4be9b15060ac672078d48df0d18d6b30bbcad40ebae9a697e12b0a8132",
   "artifact_sha256": "56aac74b6c7a2a3e5495f849efaba291d95e174c9cfa623772c476b6bc032534",
   "runtime_artifact_hashes": {},
   "component": "resource_optimization",
   "fresh_process": true,
   "jupyter_imported": false,
-  "python": "python3.13",
+  "python": "python3.13.5",
   "positive": {
     "contract_version": "civicflux.research.v1",
     "component": "resource_optimization",
@@ -435,7 +435,7 @@
           "road": 12.0
         }
       },
-      "solver_seconds": 0.017122000000000002,
+      "solver_seconds": 0.006786,
       "approval_required": true,
       "dispatch_allowed": false,
       "provenance": "synthetic scenario; user-provided constraints and assumptions"
@@ -694,5 +694,5 @@
   },
   "sensor_results": {},
   "passed": true,
-  "platform": "macOS arm64"
+  "platform": "Darwin arm64"
 }

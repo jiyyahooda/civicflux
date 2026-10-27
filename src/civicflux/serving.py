@@ -191,5 +191,5 @@ def interface_fingerprint(root):
     digest=hashlib.sha256()
     paths=[Path(root)/'civicflux_core.py',*sorted((Path(root)/'src/civicflux').glob('*.py'))]
     for path in paths:
-        digest.update(str(path.relative_to(root)).encode());digest.update(path.read_bytes())
+        digest.update(path.relative_to(root).as_posix().encode());digest.update(path.read_bytes())
     return digest.hexdigest()

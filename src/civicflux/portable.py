@@ -96,7 +96,7 @@ def runtime_artifact_hashes(root, entry):
     files = portable_files(root, entry)
     if files is None:
         return {}
-    return {str(path.relative_to(root)):sha256(path) if path.is_file() else None for path in files}
+    return {path.relative_to(root).as_posix():sha256(path) if path.is_file() else None for path in files}
 
 
 def load_bundle(root, entry):

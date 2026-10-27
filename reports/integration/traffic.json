@@ -1,5 +1,5 @@
 {
-  "interface_sha256": "3681583729b2dbb3ecac384fe529cb2144bbb896132cd3c1c597452e94e05991",
+  "interface_sha256": "e5663d4be9b15060ac672078d48df0d18d6b30bbcad40ebae9a697e12b0a8132",
   "artifact_sha256": "afdc256b9143b8f79959feaa6807e56ee8051abc349412d223f932eaafddc3a9",
   "runtime_artifact_hashes": {
     "artifacts/traffic/pipeline.joblib": "afdc256b9143b8f79959feaa6807e56ee8051abc349412d223f932eaafddc3a9",
@@ -9,7 +9,7 @@
   "component": "traffic",
   "fresh_process": true,
   "jupyter_imported": false,
-  "python": "python3.13",
+  "python": "python3.13.5",
   "positive": {
     "contract_version": "civicflux.research.v1",
     "component": "traffic",
@@ -216,5 +216,5 @@
   },
   "sensor_results": {},
   "passed": true,
-  "platform": "macOS arm64"
+  "platform": "Darwin arm64"
 }
