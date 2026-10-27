@@ -6,6 +6,23 @@ saved research predictions, city observations, synthetic flood/cascade scenarios
 OR-Tools resource plans, citizen incidents, and human review. It does not dispatch
 resources automatically or claim operational public-safety validity.
 
+## Open a new clone or downloaded ZIP
+
+The repository includes source, models and map references. Python environments
+and the compiled website are **created by setup on each device**; they are not
+missing deliverables. Install Python 3.13, Node 24 and Corepack first (and Homebrew
+on macOS). Extract a ZIP fully before starting; do not run files inside the ZIP.
+
+- **Windows:** double-click `START-CIVICFLUX.cmd`. It runs setup when the native
+  `.venv` or frontend build is missing, then starts the built website.
+- **macOS:** open Terminal in this folder and run `bash scripts/start_mac.sh`.
+- Open **http://127.0.0.1:8001/** and sign in with **admin / 001**.
+- Keep the server terminal open. The initial setup requires internet access.
+
+For editing with automatic frontend updates, use the separate development servers
+and port 5173 described below. After `git pull`, rerun your platform setup script
+to update dependencies and rebuild the website before the single-server launch.
+
 ## Architecture and files
 
 The browser sends same-origin `/api` requests through Vite on port 5173 to
@@ -126,8 +143,8 @@ Equivalent backend command:
 ```
 
 For the frontend, `cd frontend` then `corepack pnpm dev`.
-Use the new scripts for both operating systems; older `.cmd` launchers are
-historical delivery tools and may use port 8000.
+The root Windows `.cmd` launcher now uses the same native `.venv` and backend
+port 8001 as the platform scripts.
 
 ## Local URLs and configuration
 

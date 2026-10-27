@@ -1,11 +1,8 @@
 @echo off
 cd /d "%~dp0"
-if not exist ".venv-windows\Scripts\python.exe" (
-  echo Run setup-windows.ps1 first to create the Windows environment.
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0scripts\start_windows.ps1"
+if errorlevel 1 (
+  echo CivicFlux could not start. Read the error above. Install Python 3.13, Node 24 and Corepack first.
   pause
   exit /b 1
 )
-echo CivicFlux: http://127.0.0.1:8000
-echo Admin ID: admin
-echo Use the password configured in .env or the requested local demo password.
-".venv-windows\Scripts\python.exe" -m uvicorn backend.main:app --host 127.0.0.1 --port 8000

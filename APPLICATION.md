@@ -19,28 +19,27 @@ restrictions. See `reports/APPLICATION_UPGRADE.md` for current pages and validat
 
 # CivicFlux local application
 
-Start `START-CIVICFLUX.cmd` from this folder, then open http://127.0.0.1:8000.
-The Windows environment and compiled frontend are already prepared on this computer.
-Admin login: **admin**, password **001**, unless overridden in `.env`.
-The server listens on loopback only. These are the requested local hackathon credentials;
-set the environment values before using a shared deployment.
+A GitHub clone or ZIP contains source and saved models, not a preinstalled Python
+environment or compiled UI. These are created on each device by setup. Do not copy
+a virtual environment from a different OS. See [README](README.md) for prerequisites.
+
+- Windows: install Python 3.13 (with `py` launcher), Node 24 and Corepack, then
+  double-click `START-CIVICFLUX.cmd`. First run performs setup and builds the UI.
+- macOS: install Homebrew, Python 3.13, Node 24 and Corepack, then run
+  `bash scripts/start_mac.sh` from Terminal in the project folder.
+- Open **http://127.0.0.1:8001** for this single-server launch. Keep its terminal open.
+- Admin ID: **admin**. Password: **001**. Initial dependency downloads require internet.
 
 ## Development
 
-From the project root:
+For separate frontend/backend processes, use `scripts/run_windows.ps1 backend`
+and `scripts/run_windows.ps1 frontend`, or their `scripts/run_mac.sh` equivalents.
+Then open **http://127.0.0.1:5173**. Vite proxies `/api` to port **8001**.
+After frontend edits, rebuild before using the single-server launcher:
+`cd frontend` then `corepack pnpm build`.
 
-```powershell
-.\.venv-windows\Scripts\python.exe -m uvicorn backend.main:app --host 127.0.0.1 --port 8000
-# In another terminal:
-cd frontend
-pnpm dev
-```
-
-Vite proxies `/api` to the backend. For a single-server production build, run
-`pnpm build` inside `frontend` and restart FastAPI. Its static mount serves that build.
-OpenAPI and interactive API documentation: `/openapi.json` and `/docs`.
-`setup-windows.ps1 -Python <python-executable>` supports recreating a Windows environment.
-The transferred macOS `.venv` must not be activated.
+Both Windows setup entry points use `.venv/Scripts/python.exe`. Older instructions
+referring to `.venv-windows`, a prebuilt ZIP, or port 8000 are obsolete.
 
 ## Pages and access
 
