@@ -73,6 +73,7 @@ export default function FluxScene({motion}:{motion:RefObject<HeroMotion>}){
    if(!visible||document.hidden)return;
    const {progress:p,x,y}=motion.current;elapsed+=reduced.matches?0:dt;
    rotX+=(y*.12-rotX)*.05;rotY+=(x*.22-rotY)*.05;
+   world.position.y=reduced.matches?0:Math.sin(elapsed*.55)*.06;
    world.rotation.set(.12+(reduced.matches?0:rotX)+p*.5,elapsed*.035+(reduced.matches?0:rotY)+p*2.8,p*-.45);
    const scale=1+Math.sin(Math.min(p,1)*Math.PI)*.45;world.scale.setScalar(scale);
    rings.forEach((ring,i)=>{ring.rotation.z=elapsed*(i%2?-.06:.08)+i+p*(i+1)*.7;ring.position.z=Math.sin(p*Math.PI)*(i-1)*1.4;});

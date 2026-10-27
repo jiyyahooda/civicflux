@@ -18,7 +18,7 @@ export default function CityHero({ready,total,onExplore}:{ready:number;total:num
    <div className="orbital-label label-weather"><Radio size={18}/><div><strong>Sense the city</strong><small>Weather & air quality</small></div><span className="signal-bars"><i/><i/><i/><i/></span></div>
    <div className="orbital-label label-network"><Network size={18}/><div><strong>Connect the systems</strong><small>Infrastructure & dependencies</small></div></div>
    <div className="orbital-label label-human"><ShieldCheck size={18}/><div><strong>Keep people in control</strong><small>Review. Decide. Respond.</small></div></div>
-   <div className="journey-footer"><span>{total?<><b>{String(ready).padStart(2,'0')}</b> connected model components</>:'Connecting the model suite…'}</span><div className="journey-chapters">{chapters.map((c,i)=><span key={i} className={chapter===i?'current':''}>{c.tag}<i/></span>)}</div><button onClick={enter}>Scroll to discover <ArrowDown size={14}/></button></div>
+   <div className="journey-footer"><progress className="initialization-progress" aria-label="Verified model components ready" value={ready} max={Math.max(total,1)}/><span>{total?<><b>{String(ready).padStart(2,'0')}</b> connected model components</>:'Connecting the model suite…'}</span><div className="journey-chapters">{chapters.map((c,i)=><span key={i} className={chapter===i?'current':''}>{c.tag}<i/></span>)}</div><button onClick={enter}>Scroll to discover <ArrowDown size={14}/></button></div>
   </div>
  </section>
 }

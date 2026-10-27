@@ -1,0 +1,4 @@
+basin_id,basin_name,historical_natural_drains,inventory_year,publication_year,source_pdf_page,source_table,source_url,geometry,verification_status
+najafgarh,Najafgarh,123,1976,2018,2,1.2-3,https://dda.gov.in/sites/default/files/qac/Main_report%20DMP_Version506092018.pdf,,Transcribed from supplied briefing; DDA original unavailable during verification
+barapullah,Barapullah,44,1976,2018,2,1.2-3,https://dda.gov.in/sites/default/files/qac/Main_report%20DMP_Version506092018.pdf,,Transcribed from supplied briefing; DDA original unavailable during verification
+trans_yamuna,Trans-Yamuna,34,1976,2018,2,1.2-3,https://dda.gov.in/sites/default/files/qac/Main_report%20DMP_Version506092018.pdf,,Transcribed from supplied briefing; DDA original unavailable during verification

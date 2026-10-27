@@ -36,7 +36,7 @@ class Routing(BaseModel):
     locality:Literal['north','north_west','south','south_west','south_east','north_east','east','west','central']
     note:str=Field(min_length=3,max_length=2000)
 @router.get('/feedback')
-def feedback(): return {'reviews':repo.all_records('review'),'verifications':repo.all_records('verification')}
+def feedback(actor:str=Depends(admin)): return {'reviews':repo.all_records('review'),'verifications':repo.all_records('verification')}
 @router.post('/feedback/{identifier}/review')
 def review_scenario(identifier:str,body:Review,actor:str=Depends(admin)): return review(identifier,body.decision,body.note,actor)
 @router.post('/feedback/{identifier}/verification')
@@ -44,18 +44,20 @@ def verify(identifier:str,body:Verification,actor:str=Depends(admin)): return ve
 @router.get('/complaints')
 def complaints(authority_id:str|None=None):
     records=repo.all_records('complaint')
-    return [r for r in records if r.get('authority_id')==authority_id] if authority_id else records
+    records=[r for r in records if r.get('authority_id')==authority_id] if authority_id else records
+    from backend.api.civic import public_report
+    return [public_report(r) if 'email_private' in r else r for r in records]
 @router.get('/authorities')
 def authority_queues(city_id:str='delhi'):
     from backend.services.authority_service import authorities
     return authorities(city_id)
 @router.post('/complaints',status_code=201)
-def complain(body:Complaint):
+def complain(body:Complaint,actor:str=Depends(admin)):
     from backend.services.city_service import city
     from backend.services.authority_service import assign
     city(body.city_id)
     return repo.append('complaint',{**body.model_dump(),**assign(body.city_id,body.locality),'status':'submitted','history':[],
-        'provenance':'Civilian report assigned to a CivicFlux locality queue; external government delivery not connected'})
+        'provenance':'Authorized legacy record import; supporting evidence requires officer verification'})
 @router.post('/complaints/{identifier}')
 def update(identifier:str,body:ComplaintReview,actor:str=Depends(admin)): return repo.update_complaint(identifier,body.status,body.note,actor)
 @router.post('/complaints/{identifier}/route')

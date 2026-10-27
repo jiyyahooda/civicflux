@@ -280,7 +280,7 @@ on every feature-branch push and pull request. It installs the minimal backend,
 loads all saved model components, exercises API/SQLite/flood/cascade/planning,
 checks supported simulation predictions and abstention, then builds the frontend.
 It does not download restricted raw datasets or retrain anything. The full
-87-test suite and historical-data checks must also be run locally with the
+94-test suite and historical-data checks must also be run locally with the
 original datasets. A green workflow proves these smoke checks on its runner;
 it is not full Windows browser QA. Check the Actions tab for the actual result.
 
@@ -319,3 +319,168 @@ carry scope, provenance, limitations, and abstention reasons. For measured resul
 and known failures see `reports/CROSS_PLATFORM_VERIFICATION.md` and the original
 research reports. Older reports describe earlier environments and are not proof
 of current Windows execution.
+
+## Citizen information and officer workflows
+
+The application keeps one header navigation with six public pages: Overview,
+City map, Infrastructure, Predictions, Report a problem, and Open reports.
+Review reports and Planning appear after administrator sign-in. Their APIs,
+saved scenarios, feedback and audit history require backend session authorization.
+The original opening animation, theme, plots, dependency graph, model validation,
+scenario algorithms and notebooks remain available.
+
+Overview uses Open-Meteo current weather and seven-day forecasts, existing IMD
+station observations, CAMS air estimates, source-linked notices and city reports.
+The City map has conditions/rainfall/air/traffic/water/infrastructure modes.
+The actual supplied map implementation is Leaflet with OpenStreetMap tiles;
+there was no MapLibre implementation in this project to migrate. No benchmark
+network asset is assigned a fictional city coordinate. Only officer-verified
+report pins appear on the city map.
+
+Predictions offers nine actual saved-model/algorithm assessments grouped by
+weather and air, roads and water, infrastructure, and planning/outcomes. Notebook
+10 compares models and Notebook 11 validates integration; they are not extra
+predictors. Benchmark clocks and geography are shown explicitly. The original
+serving implementation validates inputs and abstains; the UI formats supported
+results and genuine saved intervals without inventing confidence. Compatible
+CSV history is optional for rainfall, PM2.5 and anonymous junction traffic.
+
+Public report submission requires a title, category, description, address/locality,
+a listed city PIN, a syntactically valid email and one to three actual JPEG/PNG
+uploads. Each image is limited to 5 MB and 20 million pixels, decoded, oriented,
+resized and re-encoded without EXIF metadata under a generated filename in
+`var/uploads` (or alongside a custom SQLite DB). Photos and descriptions are
+public; email and internal notes are excluded from public response allowlists.
+Do not upload personal information or identifiable people. File storage and the
+SQLite database must both be backed up to retain reports/photos.
+
+Postal membership uses exact records from government references in
+`config/postal_reference.json`, never PIN prefixes. Coverage is incomplete:
+Delhi has 410 listed locality records, Chandigarh 50, and Chennai two postal
+areas. An unlisted PIN must be added from an authoritative source before it can
+be accepted. A PIN is not a ward, boundary or exact location. Optional user map
+pins require separate officer verification. No verified city-boundary polygons
+are included; the form only performs a broad city-vicinity sanity check.
+
+Officers can review issue validity, status, urgency, department, public reply,
+private notes, location evidence and completion evidence. Closing a report
+requires an evidence reference. A current, dated authorized roster is required
+for resource proposals, and individual proposals cannot exceed its capacities.
+Proposals do not reserve resources or dispatch crews. Review reports also exposes
+forms for city-specific platform notices, source-linked police-notice imports,
+operational rosters, and published financial/staffing references. Audit history
+is retained. Annual published budgets are kept separate from operational funds.
+No invented budget, workforce or live crew figures are prefilled.
+
+Planning separates current confirmed issues/rosters from what-if inputs. The
+existing flood tools, graph, cascade model and OR-Tools planner remain the core
+implementation. The duration model is available as an explicitly independent
+benchmark; the supplied evidence does not support success probability or a
+causal prediction of intervention benefit. Resource plans show feasible proposed
+spending, equipment, crew-hours and remaining capacity. Worker headcounts and
+vehicle constraints cannot be inferred from this optimizer.
+
+### External data and traffic configuration
+
+- Google traffic uses the official Google Maps JavaScript API `TrafficLayer` on
+  a separate Google Map. Set `VITE_GOOGLE_MAPS_API_KEY` in the root private `.env`
+  and restart Vite. Browser keys are visible by design: restrict HTTP referrers
+  to your approved origins and restrict the key to Maps JavaScript API. Activation,
+  billing and local traffic coverage must be checked in the Google project.
+  No key was supplied during this work, so live Google traffic is unverified.
+- Police sources are city-specific: Delhi Traffic Police, Greater Chennai
+  Traffic Police, and Chandigarh Police. `config/official_notices.json` holds a
+  reviewed Delhi source snapshot with an explicit validity end. Expired notices
+  disappear from active panels. Other notices require approved imports; there is
+  no claimed real-time police API or prohibited scraping loop.
+- Chennai/Chandigarh currently have no imported active official notices. Their
+  official source links remain available. Missing publications/rosters are shown
+  as unavailable rather than populated with another city's values.
+- Open-Meteo free access is subject to its current terms, quotas and attribution.
+  CAMS is displayed at its actual regional resolution and US AQI is labeled as
+  US AQI. Indian AQI is not calculated from incompatible instantaneous values.
+  Optional CPCB is preserved; no OpenWeatherMap adapter was present to enable.
+
+New routes live under `/api/civic` and `/api/assessments`. The legacy JSON
+`POST /api/complaints` is now an admin-only record-import interface. New public
+submissions must use multipart `POST /api/civic/reports`. Two existing tests
+were migrated to this intentional authentication/upload contract; their routing
+and status-transition assertions remain. The full suite now contains 100 tests.
+
+See `reports/CIVIC_PLATFORM_ENHANCEMENT.md` for the component inventory, test
+results, sources and remaining limitations. Earlier GitHub publication was paused; the current integration is published on
+`codex/civicflux-ui-model-integration`.
+
+
+## Delhi references and internal resource reservations
+
+Infrastructure displays the supplied Delhi briefing as dated reference information;
+compact summaries also appear in Overview, City map and Planning. Normalized
+files live under `data/reference/`: budget rows for both fiscal years, three
+historical drainage basins, 29 corridor entries, transport/workforce references,
+and the unchanged supplied PDF. Each record carries its source, page, scope and
+verification status. `GET /api/reference/delhi` serves the reference; the `/source`
+route serves its PDF. Other cities do not inherit Delhi figures.
+
+The eight reported expenditure groups do not reconcile with the reported overall
+totals: FY 2024–25 differs by ₹233.18 crore and FY 2025–26 by ₹880.90 crore.
+The site flags both differences. The original MCD budget document was not supplied;
+primary verification remains pending. Transport figures were checked against the
+Delhi Economic Survey 2025–26. No verified drain/corridor GIS geometry was provided.
+No fictional map coordinates, current municipal workforce, or spendable balance
+are inferred from this document.
+
+In admin Planning, expand **Record an authorized operational inventory**. Record
+city, department, service area, specialization, available workers and crews,
+equipment, authorized funds, crew-hours and the roster's timezone-aware validity
+window. Supply its authorization reference. Enter disjoint pools; do not copy the
+same equipment into multiple departments. The API prevents overlapping duplicate
+rosters with the same city/department/area/specialization, but does not maintain
+physical asset IDs or independently verify inventory ownership.
+
+Use a pool's unreserved constraints in a what-if assessment. Compare the three
+existing planning algorithms, assign real crew/worker/vehicle packages to the
+selected scenario actions, enter a note, then approve the internal plan. Resource
+checks and reservation writes share a SQLite `BEGIN IMMEDIATE` transaction.
+Reapproval replaces that plan's prior reservation; request changes, rejection,
+deferral or release frees it and preserves review/audit history. Capacity edits
+cannot shrink below reservations. Expired rosters are excluded from availability;
+reservations are conservative capacity holds, not shift scheduling or evidence
+that work finished. There is no external dispatch integration. Internal approval
+does not grant scientific/operational approval to benchmark models.
+
+The impact panel compares recorded scenario risks with proposed resource usage;
+inspection overlays do not change model risk values or imply completion. Resident
+exposure, causal risk reduction and environmental savings remain unavailable where
+unsupported. Priority explanations show the optimizer's actual weighted scenario
+contributions. Headcounts and vehicles require explicit officer assignments.
+
+Predictions additionally accepts timestamped anomaly history and three compatible
+L-TOWN CSV measurement families (pressures, flows, levels) with explicit units and
+clocks. Follow the field-level column guidance. These remain benchmark inputs;
+Delhi provider measurements are never substituted for incompatible network data.
+
+Verification and remaining limitations are recorded in
+`reports/DELHI_REFERENCE_INTEGRATION.md`. Native Windows execution still needs a
+Windows run; the existing Windows instructions and CI configuration are preserved.
+The integrated project is published on `codex/civicflux-ui-model-integration`;
+private `.env`, runtime databases and uploaded reports stay local.
+
+
+## Targeted interface cleanup and report tracking
+
+Navigation now has text-only tabs and no Open reports entry. Public users can
+submit mandatory JPEG/PNG issue photos with previews, then keep the confirmed
+report ID and use **Track your report** on Report a problem. Review reports remains
+admin-only and shows saved images, status, review decisions and public replies.
+The complete current suite has 103 passing tests. Internal approval now explains
+missing inventory, staff packages, notes and capacity; identical approval retries
+reuse one reservation. See `reports/TARGETED_UI_CLEANUP.md` for the exact changes,
+root-cause findings and isolated browser verification. The current integration branch is `codex/civicflux-ui-model-integration`.
+
+
+### Planning control placement
+
+Current situation and What-if assessment appear below the operational inventory
+and supervisor-review panels, immediately above the selected planning content.
+This restores their earlier position after the targeted cleanup.

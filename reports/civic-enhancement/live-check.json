@@ -1,0 +1,77 @@
+[
+  {
+    "city": "delhi",
+    "weather_status": "available",
+    "forecast_days": 7,
+    "hourly_points": 48,
+    "weather_time": "2026-10-27T17:15:00+05:30",
+    "feeds": [
+      {
+        "source": "IMD",
+        "status": "fresh"
+      },
+      {
+        "source": "CPCB",
+        "status": "unavailable"
+      },
+      {
+        "source": "CAMS",
+        "status": "fresh"
+      }
+    ],
+    "police_source": "https://traffic.delhipolice.gov.in/en/news-alertadvisory/advisory",
+    "active_notice_count": 1,
+    "roster_count": 0,
+    "published_reference_count": 0
+  },
+  {
+    "city": "chennai",
+    "weather_status": "available",
+    "forecast_days": 7,
+    "hourly_points": 48,
+    "weather_time": "2026-10-27T17:15:00+05:30",
+    "feeds": [
+      {
+        "source": "IMD",
+        "status": "fresh"
+      },
+      {
+        "source": "CPCB",
+        "status": "unavailable"
+      },
+      {
+        "source": "CAMS",
+        "status": "fresh"
+      }
+    ],
+    "police_source": "https://gctp.in/",
+    "active_notice_count": 0,
+    "roster_count": 0,
+    "published_reference_count": 0
+  },
+  {
+    "city": "chandigarh",
+    "weather_status": "available",
+    "forecast_days": 7,
+    "hourly_points": 48,
+    "weather_time": "2026-10-27T17:30:00+05:30",
+    "feeds": [
+      {
+        "source": "IMD",
+        "status": "fresh"
+      },
+      {
+        "source": "CPCB",
+        "status": "unavailable"
+      },
+      {
+        "source": "CAMS",
+        "status": "fresh"
+      }
+    ],
+    "police_source": "https://portal.chandigarhpolice.gov.in/",
+    "active_notice_count": 0,
+    "roster_count": 0,
+    "published_reference_count": 0
+  }
+]

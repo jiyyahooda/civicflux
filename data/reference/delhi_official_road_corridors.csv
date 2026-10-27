@@ -1,0 +1,30 @@
+corridor_id,corridor_name,category,approximate_length_km,source_pdf_page,source_url,from_location,to_location,geometry,verification_status
+delhi-a-01,Aurobindo Marg,A,10.9,3,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-02,Mathura Road,A,11,3,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-03,Savitri Flyover,A,1,3,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-04,Mehrauli–Badarpur Road,A,11.2,3,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-05,IGNOU Road,A,2.5,3,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-06,Kalindi Kunj Road / Road No. 13A,A,4.6,3,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-07,Mehrauli–Gurgaon Road,A,7.1,4,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-08,Shantipath–RTR Marg,A,3.5,4,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-09,Dhaula Kuan corridor,A,3.8,4,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-10,Sardar Patel Marg,A,4,4,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-11,Kamal Ataturk Marg,A,1,4,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-12,D. B. Gupta Road,A,3,4,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-13,New Rohtak Road,A,2.5,4,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-14,Patel Road,A,5.6,4,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-15,Najafgarh Road,A,19,4,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-16,Rohtak Road,A,19,4,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-17,Pankha Road,A,5.6,4,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-18,Outer Ring Road (Hanuman Setu–Chandgi Ram Akhara),A,3,4,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-19,Road No. 43,A,5,4,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-20,Ring Road (Vijay Nagar–Burari),A,4,4,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-21,Outer Ring Road (Bhalswa–Transport Nagar),A,2.5,4,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-22,GT Karnal Road,A,6.4,4,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-23,Shaheed Jagat Narain Marg,A,3.2,4,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-24,Dr. M. C. Davar Marg,A,8.5,4,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-25,Maharaja Agrasen Marg (Shalimar Bagh),A,2,4,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-26,Vikas Marg,A,7,4,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-27,GT Road (Yamuna Flyover–Apsara Border),A,16,4,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-28,66 Feet Road Extension,A,3.7,4,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied
+delhi-a-29,Pusta Road (Khajuri Pusta),A,20,4,https://traffic.delhipolice.gov.in/major-corridors,,,,Supplied briefing: 28 numbered entries plus 9A sub-entry; geometry not supplied

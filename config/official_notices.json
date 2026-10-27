@@ -1,0 +1,17 @@
+[
+  {
+    "id": "delhi-guru-hanuman-marg-202610",
+    "city_id": "delhi",
+    "headline": "Heavy-vehicle restriction near Roshanara Club",
+    "area": "Guru Hanuman Marg near Roshanara Club",
+    "description": "Delhi Traffic Police lists heavy-vehicle restrictions for water-pipeline work. Check the official notice before travel.",
+    "kind": "official_import",
+    "source_url": "https://traffic.delhipolice.gov.in/en",
+    "alternative_route": "Rani Jhansi Flyover, as stated by Delhi Traffic Police.",
+    "valid_from": "2026-10-05T00:00:00+05:30",
+    "valid_until": "2026-10-30T23:59:59+05:30",
+    "published_at": "2026-10-06",
+    "retrieved_at": "2026-10-27",
+    "publisher": "Delhi Traffic Police \u00b7 reviewed source snapshot"
+  }
+]

@@ -12,6 +12,8 @@ def initialize():
     from backend.services.authority_service import authorities
     from backend.services.city_service import cities
     for configuration in cities():authorities(configuration['id'])
+    from backend.api.resources import initialize as initialize_resources
+    initialize_resources()
 
 def append(kind, body, actor='civilian', event='created'):
     item = {**body, 'id':str(uuid4()), 'created':now()}
@@ -75,4 +77,15 @@ def route_complaint(identifier,locality,note,actor):
         item['history'].append({'status':item['status'],'note':'Routed to '+routing['authority_name']+': '+note,'actor':actor,'time':now()})
         db.execute('UPDATE records SET body=? WHERE id=?',(json.dumps(item),identifier))
         db.execute('INSERT INTO audit(created,actor,event,entity,detail) VALUES (?,?,?,?,?)',(now(),actor,'complaint_routed',identifier,json.dumps(routing)))
+    return item
+
+
+def revise(kind, identifier, changes, actor, event):
+    with connection() as db:
+        db.execute('BEGIN IMMEDIATE')
+        row=db.execute('SELECT body FROM records WHERE kind=? AND id=?',(kind,identifier)).fetchone()
+        if row is None:raise HTTPException(404,'Record not found')
+        item=json.loads(row['body']);item.update(changes);item['updated_at']=now()
+        db.execute('UPDATE records SET body=? WHERE id=?',(json.dumps(item,allow_nan=False),identifier))
+        db.execute('INSERT INTO audit(created,actor,event,entity,detail) VALUES (?,?,?,?,?)',(now(),actor,event,identifier,json.dumps({'kind':kind})))
     return item
