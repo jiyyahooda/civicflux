@@ -497,7 +497,9 @@ actual saved forecast. These display associations do not validate real asset map
 
 Air quality uses live WAQI station data and optional, clearly labelled illustrative
 colour interpolation. Configure server-only `WAQI_API_TOKEN` in private `.env`;
-restart the backend after changing keys. The local token is not committed.
+restart the backend after changing keys. The owner has explicitly shared the Google Maps and WAQI keys in `.env.example`.
+Setup copies these into a new local `.env`; the WAQI token is used by the backend,
+not embedded in frontend code.
 `OPENWEATHERMAP_API_KEY` enables optional rain imagery; the existing restricted
 `VITE_GOOGLE_MAPS_API_KEY` enables Google TrafficLayer and requires a Vite restart.
 Static scenario layers work without either of those two optional keys.
@@ -513,7 +515,8 @@ behavior, provider terms and remaining limits. The current map integration and i
 The current interface, all nine saved model components, eleven notebooks, Delhi
 reference documents, and static scenario geography are versioned. A fresh clone
 starts with an empty local database: your local reports, uploads, sessions, API
-keys and administrator password are deliberately excluded. Setup creates a new
+administrator password are deliberately excluded. Google Maps and WAQI provider
+keys are intentionally included in `.env.example` with the owner’s permission. Setup creates a new
 private `.env` and administrator password. Read that file locally to log in.
 
 For the same optional provider layers, edit your private `.env` after setup:
@@ -523,7 +526,9 @@ For the same optional provider layers, edit your private `.env` after setup:
 - `WAQI_API_TOKEN`: your WAQI token for station AQI.
 - `OPENWEATHERMAP_API_KEY`: optional precipitation imagery.
 
-Restart both servers after configuring keys. No shared credentials are committed.
+Restart both servers after configuring keys. The shared Google Maps and WAQI
+keys can be copied and used by anyone with repository access; their quotas and
+provider restrictions still apply.
 The app can run without these keys; affected live layers explain missing setup.
 Public weather feeds still require internet access and their availability can vary.
 To reproduce historical rainfall, AQI, traffic and water examples, also acquire
@@ -533,3 +538,18 @@ restricted dataset is reported explicitly; the application does not invent data.
 Open http://127.0.0.1:5173 after running both servers. GitHub displays source code;
 it does not run this Python backend just by opening an HTML file. Use the setup
 and run commands above on Windows or macOS. No paid hosting is needed locally.
+
+
+### Shared map keys: existing clones
+
+New installations receive the owner-provided Google Maps and WAQI keys from
+`.env.example` when setup creates `.env`. Existing `.env` files are preserved.
+After `git pull origin main`, copy just `VITE_GOOGLE_MAPS_API_KEY` and
+`WAQI_API_TOKEN` from the updated `.env.example` into your local `.env`. Keep
+your existing administrator password. Restart both development servers. If
+serving a production build, run `corepack pnpm build` inside `frontend` again
+before restarting the backend, because the Google browser key is set at build time.
+
+The OpenStreetMap base maps and static networks do not require either key. If
+all maps are blank, first check that the backend is running on port 8001, the
+frontend is opened at http://127.0.0.1:5173, and the network permits map tiles.
