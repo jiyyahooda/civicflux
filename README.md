@@ -75,8 +75,8 @@ bash scripts/setup_mac.sh
 This installs `libomp` if missing, creates a local environment if absent, installs
 backend/test requirements, checks dependencies and ML imports, creates `.env`
 only when absent, installs the frozen frontend lockfile, and builds the frontend.
-Existing `.env` settings are preserved. A new `.env` gets a randomly generated
-local administrator password; read it locally rather than sharing it.
+Setup applies the shared administrator login **admin / 001**, including on
+existing clones. API keys, database paths and other `.env` settings are preserved.
 
 Run in two terminals:
 
@@ -146,13 +146,14 @@ Stop each server with Ctrl+C.
 |---|---|
 | `CIVICFLUX_DB` | SQLite path; default `var/civicflux.sqlite3`, relative to root |
 | `CIVICFLUX_ADMIN_ID` | Local administrator username |
-| `CIVICFLUX_ADMIN_PASSWORD` | Required private password; no built-in login password |
+| `CIVICFLUX_ADMIN_PASSWORD` | Shared local password: `001` |
 | `CIVICFLUX_PUBLIC_FEEDS` | `1` enables public observations; `0` disables network feeds |
 | `CIVICFLUX_IMD_URL`, `CIVICFLUX_CPCB_URL` | Optional verified JSON feeds |
 | `DATA_GOV_IN_API_KEY` | Optional server-side official CPCB source key |
 | `CIVICFLUX_ROOT` | Optional absolute project root override, set in the shell before launch |
 
-Copy `.env.example` to `.env` when configuring manually and set a private password.
+Copy `.env.example` to `.env` when configuring manually. The shared login is
+**Admin ID: `admin` · Password: `001`**.
 Keep server credentials out of `VITE_*` variables. The optional restricted
 Google Maps browser key uses `VITE_GOOGLE_MAPS_API_KEY` and is public in the browser
 by design; WAQI and OpenWeather keys must remain server-only. Missing feeds produce unavailable/abstained
@@ -217,7 +218,7 @@ Windows equivalents:
 .\.venv\Scripts\python.exe -m pip check
 .\.venv\Scripts\python.exe scripts/verify_runtime.py
 $env:PYTHONUTF8='1'
-$env:CIVICFLUX_ADMIN_PASSWORD='001' # Legacy test fixture only, never a deployed password
+$env:CIVICFLUX_ADMIN_PASSWORD='001' # Shared local development login
 .\.venv\Scripts\python.exe -m pytest -q
 Remove-Item Env:CIVICFLUX_ADMIN_PASSWORD
 Set-Location frontend
@@ -514,10 +515,8 @@ behavior, provider terms and remaining limits. The current map integration and i
 
 The current interface, all nine saved model components, eleven notebooks, Delhi
 reference documents, and static scenario geography are versioned. A fresh clone
-starts with an empty local database: your local reports, uploads, sessions, API
-administrator password are deliberately excluded. Google Maps and WAQI provider
-keys are intentionally included in `.env.example` with the owner’s permission. Setup creates a new
-private `.env` and administrator password. Read that file locally to log in.
+starts with an empty local database: your local reports, uploads and sessions are deliberately excluded. Google Maps and WAQI provider
+keys are intentionally included in `.env.example` with the owner’s permission. Setup creates a local `.env` and applies the shared login **admin / 001**.
 
 For the same optional provider layers, edit your private `.env` after setup:
 
@@ -545,11 +544,36 @@ and run commands above on Windows or macOS. No paid hosting is needed locally.
 New installations receive the owner-provided Google Maps and WAQI keys from
 `.env.example` when setup creates `.env`. Existing `.env` files are preserved.
 After `git pull origin main`, copy just `VITE_GOOGLE_MAPS_API_KEY` and
-`WAQI_API_TOKEN` from the updated `.env.example` into your local `.env`. Keep
-your existing administrator password. Restart both development servers. If
+`WAQI_API_TOKEN` from the updated `.env.example` into your local `.env`. Run `scripts/local_config.py` with your virtual-environment Python to apply
+the shared **admin / 001** login. Restart both development servers. If
 serving a production build, run `corepack pnpm build` inside `frontend` again
 before restarting the backend, because the Google browser key is set at build time.
 
 The OpenStreetMap base maps and static networks do not require either key. If
 all maps are blank, first check that the backend is running on port 8001, the
 frontend is opened at http://127.0.0.1:5173, and the network permits map tiles.
+
+
+### Same administrator login on every contributor's machine
+
+For the current local project setup, everyone uses **Admin ID `admin`** and
+**Password `001`**. Both platform setup scripts apply this shared login while
+preserving provider configuration and the local database.
+
+Existing clones: pull `main`, then run one command from the repository root:
+
+```sh
+# macOS
+.venv/bin/python scripts/local_config.py
+```
+
+```powershell
+# Windows
+.\.venv\Scripts\python.exe scripts/local_config.py
+```
+
+Restart the backend and sign in. This is an intentionally shared, weak local
+development login; use individual strong credentials before public hosting.
+Each machine still has its own reports and database; a shared login does not
+synchronize those records. Historical prediction examples still require the
+documented original datasets.
