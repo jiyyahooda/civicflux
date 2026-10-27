@@ -56,8 +56,8 @@ and vice versa; scripts reject an environment without the native interpreter.
 Clone the main branch into a folder you own:
 
 ```sh
-git clone --branch main https://github.com/kushagrachess21-prog/Zinnovatio-4.0.git
-cd Zinnovatio-4.0
+git clone --branch main https://github.com/jiyyahooda/civicflux.git
+cd civicflux
 ```
 
 Cloning saves the project source on your own computer. You can open that folder
