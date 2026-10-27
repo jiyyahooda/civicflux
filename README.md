@@ -594,3 +594,14 @@ development login; use individual strong credentials before public hosting.
 Each machine still has its own reports and database; a shared login does not
 synchronize those records. Historical prediction examples still require the
 documented original datasets.
+
+
+### If the browser shows `{"detail":"Not Found"}`
+
+Do not keep using an older server terminal after updating the files. Stop it with
+Ctrl+C, pull the latest main (or fully extract the new ZIP), and run the root
+launcher again. Open the exact website address printed by the new launcher,
+normally http://127.0.0.1:8001/. Paths under `/api` are API endpoints, not pages.
+The launcher now rebuilds the frontend on every start and checks for a conflicting
+server before printing its URL. It does not kill unrelated processes. If the
+frontend is absent on a directly started backend, `/` displays setup instructions.

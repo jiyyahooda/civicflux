@@ -1,6 +1,6 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
+from backend.frontend import FrontendFiles
 from project_paths import PROJECT_ROOT
 from backend.db.repository import initialize
 from backend.auth import router as auth
@@ -16,4 +16,4 @@ for router in [auth,models.router,predictions.router,observations.router,cities.
 @app.get('/api/health')
 def health():return {'status':'ok','research_only':True,'automatic_dispatch':False}
 dist=PROJECT_ROOT/'frontend/dist'
-if dist.exists():app.mount('/',StaticFiles(directory=dist,html=True),name='frontend')
+app.mount('/', FrontendFiles(dist), name='frontend')

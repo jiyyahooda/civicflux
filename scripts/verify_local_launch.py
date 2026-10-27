@@ -4,6 +4,7 @@ import os
 import re
 import subprocess
 import sys
+import socket
 import tempfile
 import time
 import httpx
@@ -11,9 +12,12 @@ import httpx
 ROOT = Path(__file__).resolve().parents[1]
 if not (ROOT / 'frontend/dist/index.html').exists():
     raise SystemExit('Run the platform setup script first; the frontend build is required.')
+with socket.socket() as probe:
+    probe.bind(('127.0.0.1', 0))
+    port = probe.getsockname()[1]
 command = (['powershell.exe', '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
-            str(ROOT / 'scripts/start_windows.ps1')] if os.name == 'nt'
-           else ['bash', str(ROOT / 'scripts/start_mac.sh')])
+            str(ROOT / 'scripts/start_windows.ps1'), '-Port', str(port)] if os.name == 'nt'
+           else ['bash', str(ROOT / 'scripts/start_mac.sh'), '--port', str(port)])
 with tempfile.TemporaryDirectory(prefix='civicflux-launch-') as temp:
     env = os.environ.copy()
     env.update(CIVICFLUX_DB=str(Path(temp) / 'test.sqlite3'),
@@ -22,8 +26,8 @@ with tempfile.TemporaryDirectory(prefix='civicflux-launch-') as temp:
     with (Path(temp) / 'server.log').open('w+', encoding='utf-8') as log:
         process = subprocess.Popen(command, cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT)
         try:
-            with httpx.Client(base_url='http://127.0.0.1:8001', timeout=5) as client:
-                for attempt in range(60):
+            with httpx.Client(base_url=f'http://127.0.0.1:{port}', timeout=5) as client:
+                for attempt in range(240):
                     if process.poll() is not None:
                         log.seek(0)
                         raise AssertionError('Launcher stopped early: ' + log.read()[-2000:])
@@ -34,7 +38,7 @@ with tempfile.TemporaryDirectory(prefix='civicflux-launch-') as temp:
                         pass
                     time.sleep(.5)
                 else:
-                    raise AssertionError('Launcher did not become healthy within 30 seconds.')
+                    raise AssertionError('Launcher did not become healthy within 120 seconds.')
                 page = client.get('/')
                 assert page.status_code == 200 and 'id="root"' in page.text
                 assets = re.findall(r'(?:src|href)="(/assets/[^\"]+)"', page.text)

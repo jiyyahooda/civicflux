@@ -41,6 +41,6 @@ jobs:
       - name: Verify models and application without restricted datasets
         run: ${{ matrix.python }} scripts/ci_smoke.py
       - name: Verify geographic maps without provider credentials
-        run: ${{ matrix.python }} -m pytest tests/test_geographic_maps.py -q
+        run: ${{ matrix.python }} -m pytest tests/test_geographic_maps.py tests/test_frontend_serving.py -q
       - name: Verify real launcher and built website over HTTP
         run: ${{ matrix.python }} scripts/verify_local_launch.py
