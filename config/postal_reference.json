@@ -1,0 +1,1871 @@
+{
+  "delhi": {
+    "source_url": "https://dmnewdelhi.delhi.gov.in/std-pin-codes/",
+    "retrieved_at": "2026-10-27",
+    "scope": "Listed government postal reference areas only; not a complete city boundary or ward directory. Unlisted PINs require a verified reference update.",
+    "records": [
+      {
+        "pin": "110002",
+        "area": "Ajmeri Gate Extension"
+      },
+      {
+        "pin": "110002",
+        "area": "A G C R"
+      },
+      {
+        "pin": "110002",
+        "area": "Ansari Road"
+      },
+      {
+        "pin": "110003",
+        "area": "Aliganj"
+      },
+      {
+        "pin": "110005",
+        "area": "Anand Parbat"
+      },
+      {
+        "pin": "110005",
+        "area": "Anand Nagar"
+      },
+      {
+        "pin": "110010",
+        "area": "Army Base"
+      },
+      {
+        "pin": "110010",
+        "area": "A P S Colony"
+      },
+      {
+        "pin": "110010",
+        "area": "A F Palam"
+      },
+      {
+        "pin": "110016",
+        "area": "Ashram"
+      },
+      {
+        "pin": "110018",
+        "area": "Ashok Nagar"
+      },
+      {
+        "pin": "110021",
+        "area": "Ashoka Hotel"
+      },
+      {
+        "pin": "110021",
+        "area": "Anand Niketan"
+      },
+      {
+        "pin": "110024",
+        "area": "Amar Colony"
+      },
+      {
+        "pin": "110033",
+        "area": "Adarsh Nagar"
+      },
+      {
+        "pin": "110033",
+        "area": "A T Mills"
+      },
+      {
+        "pin": "110034",
+        "area": "Anandvas Shakurpur"
+      },
+      {
+        "pin": "110036",
+        "area": "Alipur"
+      },
+      {
+        "pin": "110038",
+        "area": "A F Rajokari"
+      },
+      {
+        "pin": "110045",
+        "area": "Ambrohi"
+      },
+      {
+        "pin": "110047",
+        "area": "Arjan Garh"
+      },
+      {
+        "pin": "110049",
+        "area": "Asian Games Village"
+      },
+      {
+        "pin": "110049",
+        "area": "Andrews Ganj"
+      },
+      {
+        "pin": "110051",
+        "area": "Azad Nagar"
+      },
+      {
+        "pin": "110051",
+        "area": "Anarkali"
+      },
+      {
+        "pin": "110052",
+        "area": "Ashok Vihar H O"
+      },
+      {
+        "pin": "110055",
+        "area": "Amrit Kaur Market"
+      },
+      {
+        "pin": "110062",
+        "area": "Ambedkar Nagar"
+      },
+      {
+        "pin": "110005",
+        "area": "Bank Street"
+      },
+      {
+        "pin": "110006",
+        "area": "Bara Tooti"
+      },
+      {
+        "pin": "110007",
+        "area": "Birla Lines"
+      },
+      {
+        "pin": "110010",
+        "area": "Bazar Road"
+      },
+      {
+        "pin": "110032",
+        "area": "Bhola Nath Nagar"
+      },
+      {
+        "pin": "110032",
+        "area": "Balbir Nagar"
+      },
+      {
+        "pin": "110033",
+        "area": "Bhaiparma Nand Nagar"
+      },
+      {
+        "pin": "110039",
+        "area": "Bawana"
+      },
+      {
+        "pin": "110041",
+        "area": "Budh Nagar"
+      },
+      {
+        "pin": "110042",
+        "area": "Badli"
+      },
+      {
+        "pin": "110044",
+        "area": "Badarpur T P Station"
+      },
+      {
+        "pin": "110044",
+        "area": "Badarpur"
+      },
+      {
+        "pin": "110045",
+        "area": "Bakrola"
+      },
+      {
+        "pin": "110052",
+        "area": "Bharat Nagar"
+      },
+      {
+        "pin": "110053",
+        "area": "Bhajanpuri"
+      },
+      {
+        "pin": "110053",
+        "area": "Brahampuri"
+      },
+      {
+        "pin": "110061",
+        "area": "Bijwasan"
+      },
+      {
+        "pin": "110062",
+        "area": "B S F Camp Tigri"
+      },
+      {
+        "pin": "110096",
+        "area": "Bhajan Pura"
+      },
+      {
+        "pin": "110001",
+        "area": "Connaught Place"
+      },
+      {
+        "pin": "110001",
+        "area": "Constitution House"
+      },
+      {
+        "pin": "110006",
+        "area": "Chawri Bazar"
+      },
+      {
+        "pin": "110006",
+        "area": "Chandni Chowk"
+      },
+      {
+        "pin": "110007",
+        "area": "C C Institute"
+      },
+      {
+        "pin": "110010",
+        "area": "Central Ordinance"
+      },
+      {
+        "pin": "110010",
+        "area": "Central Vehicle"
+      },
+      {
+        "pin": "110012",
+        "area": "Central Tractor"
+      },
+      {
+        "pin": "110015",
+        "area": "Central Kirti Nagar"
+      },
+      {
+        "pin": "110018",
+        "area": "Chand Nagar"
+      },
+      {
+        "pin": "110020",
+        "area": "C R R I"
+      },
+      {
+        "pin": "110021",
+        "area": "Chankyapuri"
+      },
+      {
+        "pin": "110054",
+        "area": "Civil Lines"
+      },
+      {
+        "pin": "110054",
+        "area": "C R P F Camp"
+      },
+      {
+        "pin": "110071",
+        "area": "Chhawla"
+      },
+      {
+        "pin": "110094",
+        "area": "Chilla Villege"
+      },
+      {
+        "pin": "110002",
+        "area": "Darya Ganj"
+      },
+      {
+        "pin": "110003",
+        "area": "Delhi High Court"
+      },
+      {
+        "pin": "110005",
+        "area": "Desh Bandhu Gupta Road"
+      },
+      {
+        "pin": "110006",
+        "area": "Delhi Sadar Bazar"
+      },
+      {
+        "pin": "110006",
+        "area": "Delhi G P O"
+      },
+      {
+        "pin": "110006",
+        "area": "Delhi Cloth Mills"
+      },
+      {
+        "pin": "110006",
+        "area": "Dareeba"
+      },
+      {
+        "pin": "110007",
+        "area": "Delhi University"
+      },
+      {
+        "pin": "110008",
+        "area": "Dada Ghosh Bhawan"
+      },
+      {
+        "pin": "110010",
+        "area": "Depot"
+      },
+      {
+        "pin": "110010",
+        "area": "Dhaula Khuan"
+      },
+      {
+        "pin": "110010",
+        "area": "Delhi Cantt"
+      },
+      {
+        "pin": "110011",
+        "area": "Defence Head Qrs"
+      },
+      {
+        "pin": "110013",
+        "area": "Dargah Shareef"
+      },
+      {
+        "pin": "110015",
+        "area": "D I Area"
+      },
+      {
+        "pin": "110024",
+        "area": "Defence Colony"
+      },
+      {
+        "pin": "110032",
+        "area": "Dilshad Garden"
+      },
+      {
+        "pin": "110054",
+        "area": "Distt Courts"
+      },
+      {
+        "pin": "110062",
+        "area": "Dakshinpuri Phase III"
+      },
+      {
+        "pin": "110062",
+        "area": "Dakshimpuri Phase I"
+      },
+      {
+        "pin": "110067",
+        "area": "D D A Munirka"
+      },
+      {
+        "pin": "110072",
+        "area": "D D A Salam"
+      },
+      {
+        "pin": "110001",
+        "area": "Eastern Court"
+      },
+      {
+        "pin": "110001",
+        "area": "Election Commission"
+      },
+      {
+        "pin": "110015",
+        "area": "E S I Hospital"
+      },
+      {
+        "pin": "110065",
+        "area": "East Of Kailash"
+      },
+      {
+        "pin": "110006",
+        "area": "Farashkhana"
+      },
+      {
+        "pin": "110006",
+        "area": "Fatehpuri"
+      },
+      {
+        "pin": "110018",
+        "area": "Fateh Nagar"
+      },
+      {
+        "pin": "110020",
+        "area": "Flatted Factories Complex"
+      },
+      {
+        "pin": "110002",
+        "area": "Gandhi Samarak"
+      },
+      {
+        "pin": "110003",
+        "area": "Golf Links"
+      },
+      {
+        "pin": "110005",
+        "area": "Guru Gobind Singh Marg"
+      },
+      {
+        "pin": "110011",
+        "area": "Gymkhana Club"
+      },
+      {
+        "pin": "110016",
+        "area": "Green Park Market"
+      },
+      {
+        "pin": "110016",
+        "area": "Green Park"
+      },
+      {
+        "pin": "110019",
+        "area": "Govindpuri"
+      },
+      {
+        "pin": "110031",
+        "area": "Gandhi Nagar Bazar"
+      },
+      {
+        "pin": "110031",
+        "area": "Gandhi Nagar"
+      },
+      {
+        "pin": "110031",
+        "area": "Geeta Colony"
+      },
+      {
+        "pin": "110033",
+        "area": "Gujranwala Nagar Part Ii"
+      },
+      {
+        "pin": "110033",
+        "area": "G T S Nagar"
+      },
+      {
+        "pin": "110035",
+        "area": "Ganeshpuri"
+      },
+      {
+        "pin": "110037",
+        "area": "Gurgaon Road"
+      },
+      {
+        "pin": "110048",
+        "area": "Greater Kailash Ii"
+      },
+      {
+        "pin": "110048",
+        "area": "Greater Kailash"
+      },
+      {
+        "pin": "110049",
+        "area": "Guatam Nagar"
+      },
+      {
+        "pin": "110049",
+        "area": "Gulmohar Park"
+      },
+      {
+        "pin": "110051",
+        "area": "Gobindpura"
+      },
+      {
+        "pin": "110094",
+        "area": "Gokulpuri"
+      },
+      {
+        "pin": "110006",
+        "area": "Hamdard Dawakhana"
+      },
+      {
+        "pin": "110006",
+        "area": "Hauz Qazi"
+      },
+      {
+        "pin": "110013",
+        "area": "Hazrat Nizamuddin"
+      },
+      {
+        "pin": "110014",
+        "area": "Hari Nagar Ashram"
+      },
+      {
+        "pin": "110016",
+        "area": "Hauz Khas Market"
+      },
+      {
+        "pin": "110016",
+        "area": "Hauz Khas"
+      },
+      {
+        "pin": "110029",
+        "area": "Himayunpur Extn"
+      },
+      {
+        "pin": "110033",
+        "area": "Harijan Sewak Sangh"
+      },
+      {
+        "pin": "110042",
+        "area": "Haiderpur"
+      },
+      {
+        "pin": "110062",
+        "area": "Hamdard Nagar"
+      },
+      {
+        "pin": "110064",
+        "area": "Hari Nagar Da & Db Block"
+      },
+      {
+        "pin": "110064",
+        "area": "Hari Nagar Be Block"
+      },
+      {
+        "pin": "110091",
+        "area": "Himmatpuri"
+      },
+      {
+        "pin": "110002",
+        "area": "Indian Agriculture"
+      },
+      {
+        "pin": "110002",
+        "area": "Indraprastha Estate"
+      },
+      {
+        "pin": "110002",
+        "area": "Indraprastha H O"
+      },
+      {
+        "pin": "110005",
+        "area": "Industrial Area"
+      },
+      {
+        "pin": "110006",
+        "area": "Idgah Road I S B T"
+      },
+      {
+        "pin": "110012",
+        "area": "Inderpuri"
+      },
+      {
+        "pin": "110015",
+        "area": "Industrial Area"
+      },
+      {
+        "pin": "110016",
+        "area": "I I T Hauz Khas"
+      },
+      {
+        "pin": "110035",
+        "area": "Inderlok"
+      },
+      {
+        "pin": "110001",
+        "area": "Janpath"
+      },
+      {
+        "pin": "110003",
+        "area": "Jawahar Lal Nehru Stadium"
+      },
+      {
+        "pin": "110005",
+        "area": "Joshi Nagar"
+      },
+      {
+        "pin": "110006",
+        "area": "Jama Masjid"
+      },
+      {
+        "pin": "110007",
+        "area": "Jawahar Nagar"
+      },
+      {
+        "pin": "110014",
+        "area": "Jangpura"
+      },
+      {
+        "pin": "110025",
+        "area": "Jamia Nagar"
+      },
+      {
+        "pin": "110027",
+        "area": "Janta Market"
+      },
+      {
+        "pin": "110027",
+        "area": "J 6 Block Rajouri Garden"
+      },
+      {
+        "pin": "110027",
+        "area": "J J Colony"
+      },
+      {
+        "pin": "110033",
+        "area": "Jahangirpuri Block H"
+      },
+      {
+        "pin": "110033",
+        "area": "Jahangirpuri Block D"
+      },
+      {
+        "pin": "110033",
+        "area": "Jahangirpuri Block A"
+      },
+      {
+        "pin": "110033",
+        "area": "Jaroda Majra"
+      },
+      {
+        "pin": "110041",
+        "area": "Jawalpuri"
+      },
+      {
+        "pin": "110053",
+        "area": "Jagjit Nagar"
+      },
+      {
+        "pin": "110058",
+        "area": "Janakpuri Block C 4"
+      },
+      {
+        "pin": "110058",
+        "area": "Janakpuri"
+      },
+      {
+        "pin": "110058",
+        "area": "Janakpuri Block D 1"
+      },
+      {
+        "pin": "110058",
+        "area": "Janakpuri Blockc 2"
+      },
+      {
+        "pin": "110059",
+        "area": "Jeewan Park"
+      },
+      {
+        "pin": "110067",
+        "area": "Jawahar Lal Nehru Univers"
+      },
+      {
+        "pin": "110072",
+        "area": "Jharoda Kalan"
+      },
+      {
+        "pin": "110001",
+        "area": "Krishi Bhawan"
+      },
+      {
+        "pin": "110005",
+        "area": "Karol Bagh"
+      },
+      {
+        "pin": "110007",
+        "area": "Kamla Nagar"
+      },
+      {
+        "pin": "110010",
+        "area": "Kirby Place"
+      },
+      {
+        "pin": "110015",
+        "area": "Karampura"
+      },
+      {
+        "pin": "110015",
+        "area": "Kirti Nagar"
+      },
+      {
+        "pin": "110018",
+        "area": "Khyalla Phase II"
+      },
+      {
+        "pin": "110018",
+        "area": "Khyalla Phase I"
+      },
+      {
+        "pin": "110019",
+        "area": "Kalkaji"
+      },
+      {
+        "pin": "110023",
+        "area": "Kidwai Nagar"
+      },
+      {
+        "pin": "110023",
+        "area": "Kidwai Nagar West"
+      },
+      {
+        "pin": "110024",
+        "area": "Krishna Market"
+      },
+      {
+        "pin": "110031",
+        "area": "Kailash Nagar"
+      },
+      {
+        "pin": "110032",
+        "area": "Kabool Nagar"
+      },
+      {
+        "pin": "110048",
+        "area": "Kailash Colony"
+      },
+      {
+        "pin": "110048",
+        "area": "Kailash"
+      },
+      {
+        "pin": "110051",
+        "area": "Krishan Nagar Bazar"
+      },
+      {
+        "pin": "110051",
+        "area": "Krishan Nagar H O"
+      },
+      {
+        "pin": "110062",
+        "area": "Khanpur"
+      },
+      {
+        "pin": "110081",
+        "area": "Kanjhawala"
+      },
+      {
+        "pin": "110082",
+        "area": "Khera Kalan"
+      },
+      {
+        "pin": "110084",
+        "area": "Kutubgarh"
+      },
+      {
+        "pin": "110091",
+        "area": "Khichripur"
+      },
+      {
+        "pin": "110091",
+        "area": "Kalyanpuri"
+      },
+      {
+        "pin": "110092",
+        "area": "Kalyan Vas"
+      },
+      {
+        "pin": "110094",
+        "area": "Karawal Nagar"
+      },
+      {
+        "pin": "110001",
+        "area": "Lady Harding Medical College"
+      },
+      {
+        "pin": "110001",
+        "area": "Laxminarain Mandir"
+      },
+      {
+        "pin": "110003",
+        "area": "Lok Nagar Bhawan"
+      },
+      {
+        "pin": "110003",
+        "area": "Lodi Road H O"
+      },
+      {
+        "pin": "110003",
+        "area": "Lodi House Hostel"
+      },
+      {
+        "pin": "110003",
+        "area": "Lodi Colony Market"
+      },
+      {
+        "pin": "110005",
+        "area": "Lower Camp Anand Parbat"
+      },
+      {
+        "pin": "110007",
+        "area": "Lancer Road Market"
+      },
+      {
+        "pin": "110007",
+        "area": "Lok Nayak Bhawan"
+      },
+      {
+        "pin": "110023",
+        "area": "Laxmi Bai Nagar"
+      },
+      {
+        "pin": "110024",
+        "area": "Lajpat Nagar"
+      },
+      {
+        "pin": "110032",
+        "area": "Loni Road"
+      },
+      {
+        "pin": "110035",
+        "area": "Lawrence Road"
+      },
+      {
+        "pin": "110035",
+        "area": "Lekhu Nagar"
+      },
+      {
+        "pin": "110051",
+        "area": "Lajpat Rai Chowk"
+      },
+      {
+        "pin": "110092",
+        "area": "Laxmi Nagar Market"
+      },
+      {
+        "pin": "110002",
+        "area": "Minto Road"
+      },
+      {
+        "pin": "110005",
+        "area": "Model Basti"
+      },
+      {
+        "pin": "110006",
+        "area": "Mori Gate"
+      },
+      {
+        "pin": "110007",
+        "area": "Malka Ganj Market"
+      },
+      {
+        "pin": "110007",
+        "area": "Malka Ganj"
+      },
+      {
+        "pin": "110015",
+        "area": "Mansarover Garden"
+      },
+      {
+        "pin": "110015",
+        "area": "Moti Nagar"
+      },
+      {
+        "pin": "110017",
+        "area": "Malviya Nagar"
+      },
+      {
+        "pin": "110018",
+        "area": "Mahabir Nagar"
+      },
+      {
+        "pin": "110018",
+        "area": "Major Bhupinder Singh Nag"
+      },
+      {
+        "pin": "110021",
+        "area": "Malcha Marg"
+      },
+      {
+        "pin": "110021",
+        "area": "Moti Bagh"
+      },
+      {
+        "pin": "110030",
+        "area": "Mehrauli"
+      },
+      {
+        "pin": "110032",
+        "area": "Mansarover Park"
+      },
+      {
+        "pin": "110033",
+        "area": "Mukerjee Nagar"
+      },
+      {
+        "pin": "110033",
+        "area": "Model Town A Block"
+      },
+      {
+        "pin": "110033",
+        "area": "Model Town II"
+      },
+      {
+        "pin": "110034",
+        "area": "Multani Mohalla"
+      },
+      {
+        "pin": "110048",
+        "area": "Masjidmoth Phase II"
+      },
+      {
+        "pin": "110049",
+        "area": "Masjid Moth Extn"
+      },
+      {
+        "pin": "110053",
+        "area": "Maujpur"
+      },
+      {
+        "pin": "110054",
+        "area": "Maidens Hotel"
+      },
+      {
+        "pin": "110055",
+        "area": "Multani Dhanda"
+      },
+      {
+        "pin": "110057",
+        "area": "Munirka"
+      },
+      {
+        "pin": "110062",
+        "area": "Madangir"
+      },
+      {
+        "pin": "110063",
+        "area": "Madipur"
+      },
+      {
+        "pin": "110064",
+        "area": "Mayapuri Shopping Centre"
+      },
+      {
+        "pin": "110064",
+        "area": "Mayapuri"
+      },
+      {
+        "pin": "110083",
+        "area": "Mangolpuri Block S"
+      },
+      {
+        "pin": "110083",
+        "area": "Mangolpuri Block A"
+      },
+      {
+        "pin": "110083",
+        "area": "Mangolpuri Block 1"
+      },
+      {
+        "pin": "110083",
+        "area": "Mangolpuri"
+      },
+      {
+        "pin": "110001",
+        "area": "North Avenue"
+      },
+      {
+        "pin": "110001",
+        "area": "New Delhi G P O"
+      },
+      {
+        "pin": "110002",
+        "area": "Nidhi"
+      },
+      {
+        "pin": "110011",
+        "area": "Nirman Bhawan"
+      },
+      {
+        "pin": "110012",
+        "area": "N P Laboratories"
+      },
+      {
+        "pin": "110015",
+        "area": "North Industrial Area"
+      },
+      {
+        "pin": "110016",
+        "area": "N I E Compus"
+      },
+      {
+        "pin": "110019",
+        "area": "Nehru Place"
+      },
+      {
+        "pin": "110021",
+        "area": "Nanakpura"
+      },
+      {
+        "pin": "110023",
+        "area": "Netaji Nagar"
+      },
+      {
+        "pin": "110027",
+        "area": "Najafgarh Road"
+      },
+      {
+        "pin": "110028",
+        "area": "Naraina Vihar"
+      },
+      {
+        "pin": "110028",
+        "area": "Naraina"
+      },
+      {
+        "pin": "110028",
+        "area": "Naraina Industrial Estate"
+      },
+      {
+        "pin": "110029",
+        "area": "Nauroji Nagar"
+      },
+      {
+        "pin": "110032",
+        "area": "New Seemapuri"
+      },
+      {
+        "pin": "110033",
+        "area": "New Sabzi Mandi"
+      },
+      {
+        "pin": "110033",
+        "area": "Nirankari Colony"
+      },
+      {
+        "pin": "110036",
+        "area": "Nangli Poona"
+      },
+      {
+        "pin": "110040",
+        "area": "Narela Town"
+      },
+      {
+        "pin": "110040",
+        "area": "Narela"
+      },
+      {
+        "pin": "110041",
+        "area": "Nagloi"
+      },
+      {
+        "pin": "110041",
+        "area": "Nangloi Phase III"
+      },
+      {
+        "pin": "110043",
+        "area": "Najafgarh"
+      },
+      {
+        "pin": "110046",
+        "area": "Nangal Rava"
+      },
+      {
+        "pin": "110048",
+        "area": "N Block Greater"
+      },
+      {
+        "pin": "110052",
+        "area": "Nimri"
+      },
+      {
+        "pin": "110060",
+        "area": "New Rajinder Nagar"
+      },
+      {
+        "pin": "110065",
+        "area": "Nehru Nagar"
+      },
+      {
+        "pin": "110093",
+        "area": "Nand Nagri A Block"
+      },
+      {
+        "pin": "110093",
+        "area": "Nand Nagri"
+      },
+      {
+        "pin": "110093",
+        "area": "Nathu Colony"
+      },
+      {
+        "pin": "110003",
+        "area": "Oberei Intercontinental"
+      },
+      {
+        "pin": "110012",
+        "area": "Organisation"
+      },
+      {
+        "pin": "110020",
+        "area": "Okhla Industrial Estate"
+      },
+      {
+        "pin": "110035",
+        "area": "Onkar Nagar"
+      },
+      {
+        "pin": "110001",
+        "area": "Parliament House"
+      },
+      {
+        "pin": "110001",
+        "area": "Patiala House"
+      },
+      {
+        "pin": "110001",
+        "area": "Parliament Street H O"
+      },
+      {
+        "pin": "110001",
+        "area": "Pragati Maidan"
+      },
+      {
+        "pin": "110003",
+        "area": "Pandara Road"
+      },
+      {
+        "pin": "110003",
+        "area": "Pragati Vihar"
+      },
+      {
+        "pin": "110007",
+        "area": "Patrachar Road"
+      },
+      {
+        "pin": "110007",
+        "area": "Patrachar Vidyala"
+      },
+      {
+        "pin": "110007",
+        "area": "Partap Nagar"
+      },
+      {
+        "pin": "110007",
+        "area": "Pragati Vihar"
+      },
+      {
+        "pin": "110008",
+        "area": "Patel Nagar East"
+      },
+      {
+        "pin": "110008",
+        "area": "Patel Nagar"
+      },
+      {
+        "pin": "110008",
+        "area": "Patel Nagar West"
+      },
+      {
+        "pin": "110008",
+        "area": "Patel Nagar South"
+      },
+      {
+        "pin": "110017",
+        "area": "Pushpa Vihar Sector I"
+      },
+      {
+        "pin": "110017",
+        "area": "Panchseel Enclave"
+      },
+      {
+        "pin": "110022",
+        "area": "Postal Saving Bureau"
+      },
+      {
+        "pin": "110026",
+        "area": "Punjabi Bagh Sector Iii"
+      },
+      {
+        "pin": "110026",
+        "area": "Punjabi Bagh"
+      },
+      {
+        "pin": "110034",
+        "area": "Pitampura"
+      },
+      {
+        "pin": "110035",
+        "area": "Power House"
+      },
+      {
+        "pin": "110045",
+        "area": "Palam Enclave"
+      },
+      {
+        "pin": "110045",
+        "area": "Palam"
+      },
+      {
+        "pin": "110055",
+        "area": "Paharganj"
+      },
+      {
+        "pin": "110055",
+        "area": "P S B Paharganj"
+      },
+      {
+        "pin": "110058",
+        "area": "Possangipur"
+      },
+      {
+        "pin": "110062",
+        "area": "Pushpa Bhawan"
+      },
+      {
+        "pin": "110063",
+        "area": "Paschim Vihar"
+      },
+      {
+        "pin": "110063",
+        "area": "Paschim Vihar Block B"
+      },
+      {
+        "pin": "110072",
+        "area": "P T S Jharoda Kalan"
+      },
+      {
+        "pin": "110092",
+        "area": "Patper Ganj"
+      },
+      {
+        "pin": "110063",
+        "area": "Qr Madipur"
+      },
+      {
+        "pin": "110001",
+        "area": "Rail Bhawan"
+      },
+      {
+        "pin": "110002",
+        "area": "Rajghat Power House"
+      },
+      {
+        "pin": "110004",
+        "area": "Rashtrapati Bhawan"
+      },
+      {
+        "pin": "110006",
+        "area": "Red Fort"
+      },
+      {
+        "pin": "110007",
+        "area": "Rly C A O"
+      },
+      {
+        "pin": "110007",
+        "area": "Rana Pratap Bagh"
+      },
+      {
+        "pin": "110007",
+        "area": "Roshan Area Road"
+      },
+      {
+        "pin": "110007",
+        "area": "Roop Nagar"
+      },
+      {
+        "pin": "110012",
+        "area": "Research Institute"
+      },
+      {
+        "pin": "110015",
+        "area": "Ramesh Nagar H O"
+      },
+      {
+        "pin": "110022",
+        "area": "R K Puram Sector I"
+      },
+      {
+        "pin": "110022",
+        "area": "R K Puram Sector II"
+      },
+      {
+        "pin": "110022",
+        "area": "R K Puram Sector III"
+      },
+      {
+        "pin": "110022",
+        "area": "R K Puram Sector Iv"
+      },
+      {
+        "pin": "110022",
+        "area": "R K Puram Sector XII"
+      },
+      {
+        "pin": "110022",
+        "area": "R K Puram Sector IX"
+      },
+      {
+        "pin": "110022",
+        "area": "R K Puram V"
+      },
+      {
+        "pin": "110022",
+        "area": "R K Puram Sector VII"
+      },
+      {
+        "pin": "110022",
+        "area": "R K Puram Sector VIII"
+      },
+      {
+        "pin": "110027",
+        "area": "Rajouri Market"
+      },
+      {
+        "pin": "110027",
+        "area": "Rajouri Garden"
+      },
+      {
+        "pin": "110031",
+        "area": "Raghubarpura"
+      },
+      {
+        "pin": "110032",
+        "area": "Rohtash Nagar"
+      },
+      {
+        "pin": "110034",
+        "area": "Rani Bagh"
+      },
+      {
+        "pin": "110051",
+        "area": "Radheypuri"
+      },
+      {
+        "pin": "110051",
+        "area": "Ram Nagar"
+      },
+      {
+        "pin": "110060",
+        "area": "Ravinder Rangsala"
+      },
+      {
+        "pin": "110060",
+        "area": "Rajinder Nagar"
+      },
+      {
+        "pin": "110066",
+        "area": "R K Puram West"
+      },
+      {
+        "pin": "110066",
+        "area": "R K Puram"
+      },
+      {
+        "pin": "110001",
+        "area": "Shastri Bhawan"
+      },
+      {
+        "pin": "110001",
+        "area": "Supreme Court"
+      },
+      {
+        "pin": "110001",
+        "area": "Sectt North"
+      },
+      {
+        "pin": "110001",
+        "area": "Sansadiya Soudha"
+      },
+      {
+        "pin": "110003",
+        "area": "Safdarjang Air Port"
+      },
+      {
+        "pin": "110005",
+        "area": "Sat Nahar"
+      },
+      {
+        "pin": "110006",
+        "area": "Sadar Thana Road"
+      },
+      {
+        "pin": "110007",
+        "area": "Shakti Nagar"
+      },
+      {
+        "pin": "110007",
+        "area": "Subzi Mandi"
+      },
+      {
+        "pin": "110007",
+        "area": "Sewa Sangh"
+      },
+      {
+        "pin": "110007",
+        "area": "Safdarjang Air Port"
+      },
+      {
+        "pin": "110011",
+        "area": "South Avenue"
+      },
+      {
+        "pin": "110011",
+        "area": "Sectt South"
+      },
+      {
+        "pin": "110011",
+        "area": "Shahjahan Road"
+      },
+      {
+        "pin": "110015",
+        "area": "Sudershan Park"
+      },
+      {
+        "pin": "110016",
+        "area": "Shri Aurobindo"
+      },
+      {
+        "pin": "110017",
+        "area": "South Malviya Nagar"
+      },
+      {
+        "pin": "110023",
+        "area": "Sarojini Nagar H O"
+      },
+      {
+        "pin": "110027",
+        "area": "Subhash Nagar"
+      },
+      {
+        "pin": "110027",
+        "area": "Subhash Nagar West"
+      },
+      {
+        "pin": "110029",
+        "area": "Safdarjang Enclave"
+      },
+      {
+        "pin": "110031",
+        "area": "Sahstri Nagar"
+      },
+      {
+        "pin": "110032",
+        "area": "Seemapuri Old"
+      },
+      {
+        "pin": "110032",
+        "area": "Shahdara Mandi"
+      },
+      {
+        "pin": "110032",
+        "area": "Shahdara"
+      },
+      {
+        "pin": "110033",
+        "area": "Suraj Nagar"
+      },
+      {
+        "pin": "110033",
+        "area": "Shalimar Bagh"
+      },
+      {
+        "pin": "110034",
+        "area": "Shakurpur Block I"
+      },
+      {
+        "pin": "110034",
+        "area": "Srinagar Colony"
+      },
+      {
+        "pin": "110034",
+        "area": "Saraswati Vihar"
+      },
+      {
+        "pin": "110034",
+        "area": "Shakurbasti R S"
+      },
+      {
+        "pin": "110035",
+        "area": "Sarai Rohila"
+      },
+      {
+        "pin": "110040",
+        "area": "Sanoth"
+      },
+      {
+        "pin": "110041",
+        "area": "Sultanpuri Block F"
+      },
+      {
+        "pin": "110041",
+        "area": "Suttanpuri Block B"
+      },
+      {
+        "pin": "110041",
+        "area": "Sultanpuri Block C"
+      },
+      {
+        "pin": "110042",
+        "area": "Sameypur Badli"
+      },
+      {
+        "pin": "110049",
+        "area": "Sadiq Nagar"
+      },
+      {
+        "pin": "110049",
+        "area": "South Extn Part II"
+      },
+      {
+        "pin": "110049",
+        "area": "South Extn Part I"
+      },
+      {
+        "pin": "110052",
+        "area": "Shastri Nagar"
+      },
+      {
+        "pin": "110052",
+        "area": "Satyawati Nagar"
+      },
+      {
+        "pin": "110053",
+        "area": "Seelampur"
+      },
+      {
+        "pin": "110055",
+        "area": "Swami Ram Tirath Nagar"
+      },
+      {
+        "pin": "110056",
+        "area": "Shakurbasti"
+      },
+      {
+        "pin": "110065",
+        "area": "Sriniwaspuri"
+      },
+      {
+        "pin": "110092",
+        "area": "Shakarpur"
+      },
+      {
+        "pin": "110005",
+        "area": "Than Singh Nagar"
+      },
+      {
+        "pin": "110007",
+        "area": "Timarpur"
+      },
+      {
+        "pin": "110018",
+        "area": "Tilak Nagar"
+      },
+      {
+        "pin": "110018",
+        "area": "Tihar"
+      },
+      {
+        "pin": "110018",
+        "area": "Tilak Nagar East"
+      },
+      {
+        "pin": "110027",
+        "area": "Tatarpur"
+      },
+      {
+        "pin": "110030",
+        "area": "T B Hospital"
+      },
+      {
+        "pin": "110032",
+        "area": "Teliwara"
+      },
+      {
+        "pin": "110044",
+        "area": "Tughlakabad"
+      },
+      {
+        "pin": "110044",
+        "area": "Tughlakabad A F Station"
+      },
+      {
+        "pin": "110091",
+        "area": "Trilokpuri"
+      },
+      {
+        "pin": "110011",
+        "area": "U P S C"
+      },
+      {
+        "pin": "110011",
+        "area": "Udyog Bhawan"
+      },
+      {
+        "pin": "110059",
+        "area": "Uttam Nagar"
+      },
+      {
+        "pin": "110073",
+        "area": "Ujwa"
+      },
+      {
+        "pin": "110015",
+        "area": "Vishnu Garden"
+      },
+      {
+        "pin": "110018",
+        "area": "Vikaspuri"
+      },
+      {
+        "pin": "110018",
+        "area": "Vishnu Garden"
+      },
+      {
+        "pin": "110032",
+        "area": "Vishwa Karma Nagar"
+      },
+      {
+        "pin": "110032",
+        "area": "Vishwan Nagar"
+      },
+      {
+        "pin": "110032",
+        "area": "Vivek Vihar"
+      },
+      {
+        "pin": "110033",
+        "area": "Vijay Nagar"
+      },
+      {
+        "pin": "110057",
+        "area": "Vasant Vihar I"
+      },
+      {
+        "pin": "110057",
+        "area": "Vasant Vihar II"
+      },
+      {
+        "pin": "110003",
+        "area": "Wazir Nagar"
+      },
+      {
+        "pin": "110007",
+        "area": "Wazir Nagar"
+      },
+      {
+        "pin": "110010",
+        "area": "Work Shop"
+      },
+      {
+        "pin": "110052",
+        "area": "Wazirpur Phase III"
+      },
+      {
+        "pin": "110016",
+        "area": "Yusaf Sarai"
+      },
+      {
+        "pin": "110053",
+        "area": "Yamuna Vihar"
+      },
+      {
+        "pin": "110015",
+        "area": "Zakhira"
+      },
+      {
+        "pin": "110025",
+        "area": "Zakhir Nagar"
+      },
+      {
+        "pin": "110053",
+        "area": "Zafrabad"
+      }
+    ]
+  },
+  "chennai": {
+    "source_url": "https://chennai.nic.in/public-utility-category/postal/",
+    "retrieved_at": "2026-10-27",
+    "scope": "Listed government postal reference areas only; not a complete city boundary or ward directory. Unlisted PINs require a verified reference update.",
+    "records": [
+      {
+        "pin": "600001",
+        "area": "General Post Office, Chennai"
+      },
+      {
+        "pin": "600002",
+        "area": "Head Post Office, Anna Salai"
+      }
+    ]
+  },
+  "chandigarh": {
+    "source_url": "https://chandigarhdistrict.nic.in/about-district/std-pin-codes/",
+    "retrieved_at": "2026-10-27",
+    "scope": "Listed government postal reference areas only; not a complete city boundary or ward directory. Unlisted PINs require a verified reference update.",
+    "records": [
+      {
+        "pin": "160002",
+        "area": "AERODROME"
+      },
+      {
+        "pin": "160036",
+        "area": "BADHERI"
+      },
+      {
+        "pin": "160003",
+        "area": "BEHLANA"
+      },
+      {
+        "pin": "160047",
+        "area": "BURAIL"
+      },
+      {
+        "pin": "160014",
+        "area": "DADU MAJRA COLONY"
+      },
+      {
+        "pin": "160101",
+        "area": "DARIA"
+      },
+      {
+        "pin": "160014",
+        "area": "DHANAS"
+      },
+      {
+        "pin": "160002",
+        "area": "HALLOMAJRA"
+      },
+      {
+        "pin": "160001",
+        "area": "HIGH COURT"
+      },
+      {
+        "pin": "160001",
+        "area": "INDL AREA"
+      },
+      {
+        "pin": "160001",
+        "area": "KHUDA ALISHER"
+      },
+      {
+        "pin": "160012",
+        "area": "KHUDA LAHORA"
+      },
+      {
+        "pin": "160101",
+        "area": "KISHANGARH"
+      },
+      {
+        "pin": "160025",
+        "area": "MALOYA"
+      },
+      {
+        "pin": "160101",
+        "area": "MANIMAJRA"
+      },
+      {
+        "pin": "160102",
+        "area": "MAULI JAGRAN"
+      },
+      {
+        "pin": "160102",
+        "area": "RAIPUR KALAN"
+      },
+      {
+        "pin": "160102",
+        "area": "RAIPUR KHURAD"
+      },
+      {
+        "pin": "160011",
+        "area": "SECTOR 10"
+      },
+      {
+        "pin": "160011",
+        "area": "SECTOR 11"
+      },
+      {
+        "pin": "160012",
+        "area": "SECTOR 12"
+      },
+      {
+        "pin": "160014",
+        "area": "SECTOR 14"
+      },
+      {
+        "pin": "160015",
+        "area": "SECTOR 15"
+      },
+      {
+        "pin": "160015",
+        "area": "SECTOR 16"
+      },
+      {
+        "pin": "160017",
+        "area": "SECTOR 17"
+      },
+      {
+        "pin": "160018",
+        "area": "SECTOR 18"
+      },
+      {
+        "pin": "160019",
+        "area": "SECTOR 19"
+      },
+      {
+        "pin": "160020",
+        "area": "SECTOR 20"
+      },
+      {
+        "pin": "160021",
+        "area": "SECTOR 21"
+      },
+      {
+        "pin": "160022",
+        "area": "SECTOR 22"
+      },
+      {
+        "pin": "160023",
+        "area": "SECTOR 23"
+      },
+      {
+        "pin": "160019",
+        "area": "SECTOR 26"
+      },
+      {
+        "pin": "160019",
+        "area": "SECTOR 27"
+      },
+      {
+        "pin": "160030",
+        "area": "SECTOR 29"
+      },
+      {
+        "pin": "160030",
+        "area": "SECTOR 30"
+      },
+      {
+        "pin": "160003",
+        "area": "SECTOR 3"
+      },
+      {
+        "pin": "160030",
+        "area": "SECTOR 31"
+      },
+      {
+        "pin": "160022",
+        "area": "SECTOR 34"
+      },
+      {
+        "pin": "160035",
+        "area": "SECTOR 35"
+      },
+      {
+        "pin": "160036",
+        "area": "SECTOR 36"
+      },
+      {
+        "pin": "160014",
+        "area": "SECTOR 4"
+      },
+      {
+        "pin": "160043",
+        "area": "SECTOR 43"
+      },
+      {
+        "pin": "160047",
+        "area": "SECTOR 47"
+      },
+      {
+        "pin": "160015",
+        "area": "SECTOR 5"
+      },
+      {
+        "pin": "160055",
+        "area": "SECTOR 55"
+      },
+      {
+        "pin": "160055",
+        "area": "SECTOR 56"
+      },
+      {
+        "pin": "160001",
+        "area": "SECTOR 6"
+      },
+      {
+        "pin": "160019",
+        "area": "SECTOR 7"
+      },
+      {
+        "pin": "160009",
+        "area": "SECTOR 8"
+      },
+      {
+        "pin": "160009",
+        "area": "SECTOR 9"
+      }
+    ]
+  }
+}

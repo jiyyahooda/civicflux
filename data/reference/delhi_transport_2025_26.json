@@ -1,0 +1,93 @@
+[
+  {
+    "id": "registered_vehicles",
+    "label": "Registered motor vehicles",
+    "value": 8761919,
+    "unit": "vehicles",
+    "reference_date": "2026-03-19",
+    "source_pdf_page": 3,
+    "primary_pdf_page": 261,
+    "source_url": "https://delhiplanning.delhi.gov.in/sites/default/files/2026-03/economic_survey_english_0.pdf",
+    "scope": "Registered fleet stock; not simultaneous traffic or service vehicles",
+    "verification_status": "Cross-checked against primary Economic Survey text",
+    "operational_eligible": false
+  },
+  {
+    "id": "public_buses",
+    "label": "Public transport bus fleet",
+    "value": 6100,
+    "unit": "buses",
+    "reference_date": "2026-03",
+    "source_pdf_page": 3,
+    "primary_pdf_page": 256,
+    "source_url": "https://delhiplanning.delhi.gov.in/sites/default/files/2026-03/economic_survey_english_0.pdf",
+    "scope": "DTC and DoT public transport; not municipal service vehicles",
+    "verification_status": "Cross-checked against primary Economic Survey text",
+    "operational_eligible": false
+  },
+  {
+    "id": "electric_buses",
+    "label": "Electric public buses",
+    "value": 4338,
+    "unit": "buses",
+    "reference_date": "2026-03",
+    "source_pdf_page": 3,
+    "primary_pdf_page": 259,
+    "source_url": "https://delhiplanning.delhi.gov.in/sites/default/files/2026-03/economic_survey_english_0.pdf",
+    "scope": "Public transport fleet; not available dispatch equipment",
+    "verification_status": "Cross-checked against primary Economic Survey text",
+    "operational_eligible": false
+  },
+  {
+    "id": "metro_length",
+    "label": "Metro network reference",
+    "value": 352,
+    "unit": "km",
+    "reference_date": "2026-03",
+    "source_pdf_page": 3,
+    "primary_pdf_page": 268,
+    "source_url": "https://delhiplanning.delhi.gov.in/sites/default/files/2026-03/economic_survey_english_0.pdf",
+    "scope": "Approximate published network including NCR and airport sections",
+    "verification_status": "Cross-checked against primary Economic Survey text",
+    "operational_eligible": false
+  },
+  {
+    "id": "transport_allocation",
+    "label": "GNCTD transport-sector allocation",
+    "value": 12111,
+    "unit": "crore INR",
+    "reference_date": "2025-26",
+    "source_pdf_page": 3,
+    "primary_pdf_page": 268,
+    "source_url": "https://delhiplanning.delhi.gov.in/sites/default/files/2026-03/economic_survey_english_0.pdf",
+    "scope": "Delhi government transport sector; separate from MCD General Account",
+    "verification_status": "Cross-checked against primary Economic Survey text",
+    "operational_eligible": false
+  },
+  {
+    "id": "transport_utilized",
+    "label": "Reported transport-sector utilization",
+    "value": 10341,
+    "unit": "crore INR",
+    "reference_date": "2026-03-20",
+    "source_pdf_page": 3,
+    "primary_pdf_page": 268,
+    "source_url": "https://delhiplanning.delhi.gov.in/sites/default/files/2026-03/economic_survey_english_0.pdf",
+    "scope": "Historical utilization by 20 March 2026; not a live balance",
+    "verification_status": "Cross-checked against primary Economic Survey text",
+    "operational_eligible": false
+  },
+  {
+    "id": "bus_marshals",
+    "label": "Bus marshals / Home Guards deployed",
+    "value": 2983,
+    "unit": "people",
+    "reference_date": "2026-02-28",
+    "source_pdf_page": null,
+    "primary_pdf_page": 259,
+    "source_url": "https://delhiplanning.delhi.gov.in/sites/default/files/2026-03/economic_survey_english_0.pdf",
+    "scope": "Historical DTC/FCMS bus deployment; not ward-level municipal crews",
+    "verification_status": "Cross-checked against primary Economic Survey text",
+    "operational_eligible": false
+  }
+]

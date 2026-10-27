@@ -27,7 +27,10 @@ def test_locality_routing_persistence_and_admin_reassignment(client):
     queues=client.get('/api/authorities?city_id=delhi').json()
     assert len(queues)==9
     body={'city_id':'delhi','locality':'north_west','category':'water','location':'Local test street','description':'A pipe is leaking near the crossing.'}
+    from backend import config
+    client.post('/api/auth/login',json={'username':config.ADMIN_ID,'password':config.ADMIN_PASSWORD})
     result=client.post('/api/complaints',json=body)
+    client.post('/api/auth/logout')
     assert result.status_code==201
     item=result.json();assert item['authority_id']=='delhi:north_west' and item['external_delivery'] is False
     assert client.get('/api/complaints?authority_id=delhi:north_west').json()[0]['id']==item['id']

@@ -1,0 +1,21 @@
+
+> civicflux-dashboard@2.0.0 build
+> tsc -b && vite build
+
+vite v6.4.5 building for production...
+transforming...
+✓ 2215 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                      0.77 kB │ gzip:   0.44 kB
+dist/assets/index-DZl1dgFk.css     127.95 kB │ gzip:  28.65 kB
+dist/assets/maps-DCIffZry.js       149.58 kB │ gzip:  43.34 kB
+dist/assets/index-CN1tlZ_U.js      358.17 kB │ gzip: 106.84 kB
+dist/assets/charts-CXTw5bax.js     416.10 kB │ gzip: 120.37 kB
+dist/assets/FluxScene-C9EMnhRq.js  542.39 kB │ gzip: 136.79 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 1.83s

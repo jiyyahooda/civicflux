@@ -1,0 +1,1 @@
+export function assetLabel(id:string){const match=/^(drainage|road|pump|water|asset)_(\d+)$/.exec(id);if(!match)return id.replaceAll('_',' ');const names:Record<string,string>={drainage:'Drainage area',road:'Road connection',pump:'Pumping point',water:'Water supply point',asset:'Infrastructure asset'};return names[match[1]]+' '+match[2]}

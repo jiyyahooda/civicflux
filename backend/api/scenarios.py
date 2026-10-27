@@ -38,13 +38,13 @@ class Scenario(BaseModel):
     resources:Resources=Field(default_factory=Resources)
     weights:dict[str,float]|None=None
 @router.get('')
-def index(): return repo.all_records('scenario')
+def index(actor:str=Depends(admin)): return repo.all_records('scenario')
 @router.get('/graph')
-def graph(): return dependencies()
+def graph(actor:str=Depends(admin)): return dependencies()
 @router.get('/defaults')
-def defaults(): return Scenario().model_dump()
+def defaults(actor:str=Depends(admin)): return Scenario().model_dump()
 @router.get('/{identifier}')
-def detail(identifier:str): return repo.get('scenario',identifier)
+def detail(identifier:str,actor:str=Depends(admin)): return repo.get('scenario',identifier)
 @router.post('')
 def run(body:Scenario,actor:str=Depends(admin)):
     from backend.services.city_service import city

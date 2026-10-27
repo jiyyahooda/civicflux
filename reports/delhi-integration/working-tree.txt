@@ -1,0 +1,57 @@
+ M .env.example
+ M README.md
+ M backend/api/feedback.py
+ M backend/api/scenarios.py
+ M backend/db/repository.py
+ M backend/main.py
+ M frontend/src/App.tsx
+ M frontend/src/api/client.ts
+ M frontend/src/components/CascadeGraph.tsx
+ M frontend/src/components/CityHero.tsx
+ M frontend/src/components/FluxScene.tsx
+ M frontend/src/components/ResourceAllocation.tsx
+ M frontend/src/components/ReviewPanel.tsx
+ M frontend/src/components/SourceStatus.tsx
+ M frontend/src/components/StationMap.tsx
+ M frontend/src/main.tsx
+ M frontend/src/pages/Cascade.tsx
+ M frontend/src/pages/Dashboard.tsx
+ M frontend/src/pages/Infrastructure.tsx
+ M frontend/src/pages/Planning.tsx
+ M frontend/src/pages/Predictions.tsx
+ M frontend/vite.config.ts
+ M requirements-backend.txt
+ M tests/test_api_feedback.py
+ M tests/test_current_outlook_and_routing.py
+?? backend/api/assessments.py
+?? backend/api/civic.py
+?? backend/api/references.py
+?? backend/api/resources.py
+?? backend/integrations/weather.py
+?? backend/services/civic_service.py
+?? config/official_notices.json
+?? config/postal_reference.json
+?? data/reference/
+?? frontend/src/components/CivicPanels.tsx
+?? frontend/src/components/DelhiReference.tsx
+?? frontend/src/components/DeveloperTools.tsx
+?? frontend/src/components/GoogleTraffic.tsx
+?? frontend/src/components/ImpactComparison.tsx
+?? frontend/src/components/OperationalResources.tsx
+?? frontend/src/components/RainfallChart.tsx
+?? frontend/src/enhancements.css
+?? frontend/src/pages/CityMap.tsx
+?? frontend/src/pages/OpenReports.tsx
+?? frontend/src/pages/ReportProblem.tsx
+?? frontend/src/pages/ReviewReports.tsx
+?? frontend/src/pages/ScenarioPlanning.tsx
+?? frontend/src/types/civic.ts
+?? frontend/src/types/operational.ts
+?? frontend/src/types/reference.ts
+?? frontend/src/vite-env.d.ts
+?? reports/CIVIC_PLATFORM_ENHANCEMENT.md
+?? reports/DELHI_REFERENCE_INTEGRATION.md
+?? reports/civic-enhancement/
+?? reports/delhi-integration/
+?? tests/test_civic_workflows.py
+?? tests/test_reference_and_resources.py

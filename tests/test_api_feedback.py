@@ -1,4 +1,5 @@
 from test_api_scenarios import run
+from backend import config
 
 def test_reviews_never_approve_and_verification_is_separate(admin_client):
     item=run(admin_client);base='/api/feedback/'+item['id']
@@ -23,11 +24,12 @@ def test_reviews_never_approve_and_verification_is_separate(admin_client):
 
 def test_civilian_complaint_and_admin_transitions(client):
     body={'city_id':'delhi','category':'drainage','location':'Community park entrance','description':'The drain appears blocked after rain.'}
-    item=client.post('/api/complaints',json=body)
+    from test_civic_workflows import report
+    item=report(client)
     assert item.status_code==201
     identifier=item.json()['id']
     assert client.post('/api/complaints/'+identifier,json={'status':'under_review','note':'Checking the report'}).status_code==401
-    client.post('/api/auth/login',json={'username':'admin','password':'001'})
+    assert client.post('/api/auth/login',json={'username':config.ADMIN_ID,'password':config.ADMIN_PASSWORD}).status_code==200
     assert client.post('/api/complaints/'+identifier,json={'status':'closed','note':'Skip review'}).status_code==409
     assert client.post('/api/complaints/'+identifier,json={'status':'under_review','note':'Inspection requested'}).status_code==200
     assert client.get('/api/audit').json()
@@ -36,5 +38,5 @@ def test_civilian_complaint_and_admin_transitions(client):
 
 def test_bad_login_and_cross_origin_admin_write(client):
     assert client.post('/api/auth/login',json={'username':'admin','password':'wrong'}).status_code==401
-    client.post('/api/auth/login',json={'username':'admin','password':'001'})
+    assert client.post('/api/auth/login',json={'username':config.ADMIN_ID,'password':config.ADMIN_PASSWORD}).status_code==200
     assert client.post('/api/scenarios',json={},headers={'Origin':'https://another.example'}).status_code==403
