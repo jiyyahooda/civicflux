@@ -39,7 +39,16 @@ jobs:
           Set-Content -Path .venv-windows/Scripts/transferred-marker.txt -Value 'Incompatible transferred environment.'
       - name: Run actual Windows setup entry point
         if: runner.os == 'Windows'
-        run: powershell -NoProfile -ExecutionPolicy Bypass -File setup-windows.ps1
+        run: |
+          powershell -NoProfile -ExecutionPolicy Bypass -File setup-windows.ps1 *> windows-setup.log
+          $result = $LASTEXITCODE
+          Get-Content windows-setup.log
+          if ($result -ne 0) {
+            $summary = (Get-Content windows-setup.log -Tail 45) -join "`n"
+            $summary = $summary.Replace('%','%25').Replace("`r",'%0D').Replace("`n",'%0A')
+            Write-Output "::error title=Windows first-run setup::$summary"
+            exit $result
+          }
       - name: Run actual macOS setup
         if: runner.os == 'macOS'
         run: bash scripts/setup_mac.sh
