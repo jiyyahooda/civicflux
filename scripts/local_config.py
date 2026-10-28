@@ -1,15 +1,12 @@
-"""Create local settings and apply the owner's shared development login."""
+"""Create local credentials once; preserve existing administrator/provider settings."""
 from pathlib import Path
-from dotenv import set_key
-
-ROOT = Path(__file__).resolve().parents[1]
-path = ROOT / '.env'
+import secrets
+ROOT=Path(__file__).resolve().parents[1]
+path=ROOT/'.env'
 if not path.exists():
-    with path.open('x', encoding='utf-8') as stream:
-        stream.write((ROOT / '.env.example').read_text(encoding='utf-8'))
-# All project contributors currently use the same owner-requested local login.
-# Preserve API keys, database paths and other machine-specific configuration.
-set_key(str(path), 'CIVICFLUX_ADMIN_ID', 'admin')
-set_key(str(path), 'CIVICFLUX_ADMIN_PASSWORD', '001')
-path.chmod(0o600)
-print('Local configuration ready. Admin ID: admin | Password: 001')
+    text=(ROOT/'.env.example').read_text(encoding='utf-8')
+    text=text.replace('CIVICFLUX_ADMIN_PASSWORD=\n','CIVICFLUX_ADMIN_PASSWORD='+secrets.token_urlsafe(24)+'\n')
+    with path.open('x',encoding='utf-8') as stream:stream.write(text)
+    path.chmod(0o600)
+    print('Created local configuration. Read .env privately for the initial supervisor login.')
+else:print('Existing local configuration preserved. Administrator passwords are stored as hashes in the database.')

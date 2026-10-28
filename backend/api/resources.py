@@ -10,6 +10,7 @@ from fastapi import APIRouter,Depends,HTTPException
 from pydantic import BaseModel,Field,ConfigDict,model_validator
 from typing import Literal
 from backend.auth import admin
+from backend.services.administration import require_record,require_scope,require_city,visible
 from backend.db.connection import connection
 from backend.db import repository as repo
 from backend.services.city_service import city
@@ -52,13 +53,14 @@ def pools_for(identifier,public=False):
   rows=db.execute('SELECT body FROM resource_pools WHERE city_id=?',(identifier,)).fetchall()
   results=[describe(db,json.loads(r['body'])) for r in rows]
  if public:
-  keys=('id','city_id','department','service_area','specialization','valid_from','valid_until','updated_at','crews','workers','pumps','vehicles','budget','crew_hours','current','available','assigned')
-  return [{k:p[k] for k in keys} for p in results if p['current']]
+  keys=('id','city_id','pincode','department','service_area','specialization','valid_from','valid_until','updated_at','crews','workers','pumps','vehicles','budget','crew_hours','current','available','assigned')
+  return [{k:p.get(k) for k in keys} for p in results if p['current']]
  return results
 
 class Pool(BaseModel):
  model_config=ConfigDict(extra='forbid',allow_inf_nan=False)
  city_id:str
+ pincode:str|None=None
  department:str=Field(min_length=3,max_length=100)
  service_area:str=Field(min_length=3,max_length=150)
  specialization:str=Field(min_length=3,max_length=150)
@@ -83,14 +85,20 @@ class Pool(BaseModel):
   return self
 
 def save_pool(body,actor,identifier=None):
+ require_scope(actor,body.city_id,body.pincode)
+ if body.pincode:
+  from backend.services.civic_service import verify_pin
+  verify_pin(body.city_id,body.pincode)
  pool=body.model_dump(mode='json');pool['valid_from']=body.valid_from.astimezone(timezone.utc).isoformat();pool['valid_until']=body.valid_until.astimezone(timezone.utc).isoformat();pool.update(updated_at=repo.now(),responsible_admin=actor,id=identifier or str(uuid4()))
  with connection() as db:
   db.execute('BEGIN IMMEDIATE')
   if identifier:
    old=db.execute('SELECT body FROM resource_pools WHERE id=?',(identifier,)).fetchone()
    if old is None:raise HTTPException(404,'Inventory not found')
-   previous=json.loads(old['body'])
-   if previous['city_id']!=pool['city_id']:raise HTTPException(422,'A resource pool cannot move to another city')
+   previous=json.loads(old['body']);require_record(actor,previous)
+   if previous['city_id']!=pool['city_id'] or previous.get('pincode')!=pool.get('pincode'):raise HTTPException(422,'A resource pool cannot move to another city')
+   declared=db.execute('SELECT COALESCE(SUM(budget),0) total FROM locality_budgets WHERE pool_id=? AND is_active=1',(identifier,)).fetchone()['total']
+   if declared>pool['budget']:raise HTTPException(409,'Inventory budget cannot fall below active locality funding declarations')
    used=usage(reservations(db,identifier))
    if any(used[k]>pool[k] for k in ('crews','workers','pumps','vehicles','budget')) or any(used['crew_hours'][k]>pool['crew_hours'][k] for k in used['crew_hours']):raise HTTPException(409,'Inventory cannot be reduced below existing reservations; release or revise the plans first')
   # Prevent overlapping copies of the same authoritative roster from doubling capacity.
@@ -103,7 +111,7 @@ def save_pool(body,actor,identifier=None):
 
 @router.get('/pools')
 def list_pools(city_id:str,actor:str=Depends(admin)):
- city(city_id);return pools_for(city_id)
+ city(city_id);require_city(actor,city_id);return [p for p in pools_for(city_id) if visible(actor,p)]
 @router.post('/pools',status_code=201)
 def create_pool(body:Pool,actor:str=Depends(admin)):return save_pool(body,actor)
 @router.post('/pools/{identifier}')
@@ -129,16 +137,34 @@ class Decision(BaseModel):
 def decide(identifier,body,actor):
  with connection() as db:
   db.execute('BEGIN IMMEDIATE')
-  row=db.execute("SELECT body FROM records WHERE kind='scenario' AND id=?",(identifier,)).fetchone()
+  row=db.execute("SELECT body FROM records WHERE kind IN ('scenario','locality_plan') AND id=?",(identifier,)).fetchone()
   if row is None:raise HTTPException(404,'Plan not found')
-  scenario=json.loads(row['body']);reservation=None
+  scenario=json.loads(row['body']);require_record(actor,scenario);reservation=None
   previous=db.execute("SELECT id,body FROM resource_reservations WHERE scenario_id=? AND status='reserved'",(identifier,)).fetchone()
   if body.decision=='approve_internal':
    poolrow=db.execute('SELECT body FROM resource_pools WHERE id=?',(body.pool_id,)).fetchone()
    if poolrow is None:raise HTTPException(409,'Choose a current authorized operational inventory')
-   pool=json.loads(poolrow['body'])
-   if pool['city_id']!=scenario['city_id'] or not current(pool):raise HTTPException(409,'Inventory is expired or belongs to another city')
+   pool=json.loads(poolrow['body']);require_record(actor,pool)
+   if pool['city_id']!=scenario['city_id'] or (pool.get('pincode') and pool.get('pincode')!=scenario.get('pincode')) or not current(pool):raise HTTPException(409,'Inventory is expired or belongs to another city')
    plan=scenario['allocation']['comparisons'][body.method];selected=plan['selected']
+   if scenario.get('budget_id'):
+    funding=db.execute('SELECT * FROM locality_budgets WHERE id=? AND is_active=1',(scenario['budget_id'],)).fetchone()
+    if not funding or pool['id']!=funding['pool_id']:raise HTTPException(409,'The plan must use its declared locality funding and inventory')
+    spent=0;requested={c['case_id'] for c in selected}
+    for rr in db.execute("SELECT body FROM resource_reservations WHERE status='reserved'"):
+     res=json.loads(rr['body'])
+     if res['scenario_id']==identifier:continue
+     record=db.execute("SELECT body FROM records WHERE kind='locality_plan' AND id=?",(res['scenario_id'],)).fetchone()
+     if record:
+      other=json.loads(record['body'])
+      if requested.intersection(res.get('assignments',{})):raise HTTPException(409,'A selected incident already has a reserved response plan')
+      if other.get('budget_id')==scenario['budget_id']:spent+=res['requirements']['budget']
+    if spent+plan['used']['budget']>funding['budget']:raise HTTPException(409,'Locality funding has been reserved by another plan')
+    for candidate in selected:
+     report=repo.get('complaint',candidate['case_id'])
+     if report.get('validation')!='valid' or report['status']=='closed' or candidate.get('report_updated_at')!=report.get('updated_at'):raise HTTPException(409,'A selected incident is no longer eligible for approval')
+     package=body.assignments.get(candidate['case_id'])
+     if package and (package.crews<candidate['required_crews'] or package.workers<candidate['required_workers'] or package.vehicles<candidate['required_vehicles']):raise HTTPException(422,'An assignment is below the officer-assessed package requirements')
    if not selected:raise HTTPException(409,'This plan has no candidate actions to reserve')
    if set(body.assignments)!={c['case_id'] for c in selected}:raise HTTPException(422,'Record crew, worker and vehicle packages for every selected action')
    assignments={k:v.model_dump() for k,v in body.assignments.items()}
@@ -157,6 +183,7 @@ def decide(identifier,body,actor):
   elif previous:db.execute("UPDATE resource_reservations SET status='released' WHERE id=?",(previous['id'],))
   decision={**body.model_dump(mode='json'),'id':str(uuid4()),'scenario_id':identifier,'actor':actor,'created':repo.now(),'reservation_id':reservation['id'] if reservation else None,'external_dispatch':False,'scope':'Internal administrative decision; scientific approval rules unchanged'}
   db.execute('INSERT INTO records VALUES (?,?,?,?)',(decision['id'],'internal_plan_review',decision['created'],json.dumps(decision)))
+  if scenario.get('budget_id') and body.decision=='approve_internal':scenario['incident_ids']=list(body.assignments)
   scenario['internal_review_status']=body.decision;scenario['external_dispatch']=False
   db.execute('UPDATE records SET body=? WHERE id=?',(json.dumps(scenario),identifier))
   db.execute('INSERT INTO audit(created,actor,event,entity,detail) VALUES (?,?,?,?,?)',(repo.now(),actor,'internal_plan_'+body.decision,identifier,json.dumps({'reservation_id':decision['reservation_id']})))
@@ -166,8 +193,15 @@ def decide(identifier,body,actor):
 def plan_decision(identifier:str,body:Decision,actor:str=Depends(admin)):return decide(identifier,body,actor)
 @router.get('/plans/{identifier}')
 def plan_status(identifier:str,actor:str=Depends(admin)):
- repo.get('scenario',identifier)
+ require_record(actor,repo.get('scenario',identifier))
  with connection() as db:
   reserved=db.execute("SELECT body FROM resource_reservations WHERE scenario_id=? AND status='reserved'",(identifier,)).fetchone()
   history=[json.loads(r['body']) for r in db.execute("SELECT body FROM records WHERE kind='internal_plan_review' ORDER BY created DESC") if json.loads(r['body'])['scenario_id']==identifier]
  return {'reservation':json.loads(reserved['body']) if reserved else None,'history':history,'external_dispatch':False}
+
+
+def plan_status_record(plan):
+ with connection() as db:
+  row=db.execute("SELECT body FROM resource_reservations WHERE scenario_id=? AND status='reserved'",(plan['id'],)).fetchone()
+  decisions=[json.loads(r['body']) for r in db.execute("SELECT body FROM records WHERE kind='internal_plan_review' ORDER BY created DESC") if json.loads(r['body']).get('scenario_id')==plan['id']]
+ return {**plan,'reservation':json.loads(row['body']) if row else None,'decisions':decisions,'progress':'Internal reservation active' if row else plan.get('internal_review_status','pending')}

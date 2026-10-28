@@ -14,6 +14,8 @@ def initialize():
     for configuration in cities():authorities(configuration['id'])
     from backend.api.resources import initialize as initialize_resources
     initialize_resources()
+    from backend.db.municipal import migrate
+    migrate()
 
 def append(kind, body, actor='civilian', event='created'):
     item = {**body, 'id':str(uuid4()), 'created':now()}

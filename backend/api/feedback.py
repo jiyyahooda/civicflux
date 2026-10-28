@@ -3,6 +3,7 @@ from typing import Literal
 from fastapi import APIRouter,Depends
 from pydantic import BaseModel,Field,model_validator
 from backend.auth import admin
+from backend.services.administration import require_record,require_scope,visible,supervisor
 from backend.db import repository as repo
 from backend.services.feedback_service import review,verification
 router=APIRouter(prefix='/api',tags=['human review and community'])
@@ -36,11 +37,15 @@ class Routing(BaseModel):
     locality:Literal['north','north_west','south','south_west','south_east','north_east','east','west','central']
     note:str=Field(min_length=3,max_length=2000)
 @router.get('/feedback')
-def feedback(actor:str=Depends(admin)): return {'reviews':repo.all_records('review'),'verifications':repo.all_records('verification')}
+def feedback(actor:str=Depends(admin)):
+    allowed={s['id'] for s in repo.all_records('scenario') if visible(actor,s)}
+    return {k:[r for r in repo.all_records(kind) if r.get('scenario_id') in allowed] for k,kind in [('reviews','review'),('verifications','verification')]}
 @router.post('/feedback/{identifier}/review')
-def review_scenario(identifier:str,body:Review,actor:str=Depends(admin)): return review(identifier,body.decision,body.note,actor)
+def review_scenario(identifier:str,body:Review,actor:str=Depends(admin)):
+    require_record(actor,repo.get('scenario',identifier));return review(identifier,body.decision,body.note,actor)
 @router.post('/feedback/{identifier}/verification')
-def verify(identifier:str,body:Verification,actor:str=Depends(admin)): return verification(identifier,body,actor)
+def verify(identifier:str,body:Verification,actor:str=Depends(admin)):
+    require_record(actor,repo.get('scenario',identifier));return verification(identifier,body,actor)
 @router.get('/complaints')
 def complaints(authority_id:str|None=None):
     records=repo.all_records('complaint')
@@ -55,13 +60,15 @@ def authority_queues(city_id:str='delhi'):
 def complain(body:Complaint,actor:str=Depends(admin)):
     from backend.services.city_service import city
     from backend.services.authority_service import assign
-    city(body.city_id)
+    city(body.city_id);require_scope(actor,body.city_id)
     return repo.append('complaint',{**body.model_dump(),**assign(body.city_id,body.locality),'status':'submitted','history':[],
         'provenance':'Authorized legacy record import; supporting evidence requires officer verification'})
 @router.post('/complaints/{identifier}')
-def update(identifier:str,body:ComplaintReview,actor:str=Depends(admin)): return repo.update_complaint(identifier,body.status,body.note,actor)
+def update(identifier:str,body:ComplaintReview,actor:str=Depends(admin)):
+    require_record(actor,repo.get('complaint',identifier));return repo.update_complaint(identifier,body.status,body.note,actor)
 @router.post('/complaints/{identifier}/route')
 def route_complaint(identifier:str,body:Routing,actor:str=Depends(admin)):
-    return repo.route_complaint(identifier,body.locality,body.note,actor)
+    require_record(actor,repo.get('complaint',identifier));return repo.route_complaint(identifier,body.locality,body.note,actor)
 @router.get('/audit')
-def audit(actor:str=Depends(admin)): return repo.audit()
+def audit(actor:str=Depends(admin)):
+    supervisor(actor);return repo.audit()

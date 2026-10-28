@@ -8,7 +8,7 @@ CivicFlux: opening this Mac project folder on Windows
    It does not activate the Mac .venv. An unusable old .venv-windows is backed up.
 4. Wait for installation and the frontend build to finish.
 5. Open the URL printed by the launcher: normally http://127.0.0.1:8001/
-   Admin ID: admin | Password: 001
+   Use your configured administrator account. A new setup generates a private initial supervisor password in .env.
 
 Initial setup and live maps need internet access. An old server using port 8001
 must be stopped with Ctrl+C before launching again. No new archive is required.

@@ -29,5 +29,5 @@ os.environ['PYTHONUTF8'] = '1'
 sys.path.insert(0, str(ROOT))
 import uvicorn
 from backend.main import app
-print(f'CivicFlux website: http://127.0.0.1:{args.port}/ | Admin: admin / 001', flush=True)
+print(f'CivicFlux website: http://127.0.0.1:{args.port}/ | Administrator login: use your configured account', flush=True)
 uvicorn.run(app, host='127.0.0.1', port=args.port)

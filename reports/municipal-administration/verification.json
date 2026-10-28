@@ -1,0 +1,27 @@
+{
+  "existing_record_count": 48,
+  "existing_records_unchanged": true,
+  "original_model_notebook_files": 273,
+  "original_hashes_unchanged": true,
+  "models_ready": 9,
+  "backend_tests_passed": 137,
+  "production_build": "passed",
+  "postal_coverage": {
+    "delhi": 77,
+    "chandigarh": 24,
+    "chennai": 2
+  },
+  "live_site": "http://127.0.0.1:8001",
+  "saved_explanation_exports": 6,
+  "browser_checks": [
+    "admin_navigation",
+    "light_burgundy",
+    "dark_orange",
+    "forecast_7_and_10_day_counts",
+    "decisions_map_order",
+    "help_walkthrough",
+    "live_aqi_24_stations",
+    "removed_screenshot_labels",
+    "narrow_layout_no_horizontal_overflow"
+  ]
+}

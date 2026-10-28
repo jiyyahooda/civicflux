@@ -161,3 +161,25 @@ def assess(component:str,body:Assessment):
  response=serve(component,request,PROJECT_ROOT)
  result=present(component,response)
  return {**result,'basis':'User-supplied benchmark history' if body.history_csv else LABELS[component][1]+' · '+('Historical benchmark' if request['mode']=='historical' else 'What-if assessment'),'scope':LABELS[component][2],'assessment_time':request['as_of'],'city_id':body.city_id,'local_prediction':False,'input_age_hours':(response.get('freshness') or {}).get('age_hours'),'data_quality':'Serving-contract checks applied; user histories and declared units are not independently verified.'}
+
+
+@router.get('/{component}/explanation')
+def saved_explanation(component:str):
+    """Expose saved evaluation evidence; never manufacture local SHAP attributions."""
+    import hashlib
+    if component not in LABELS:raise HTTPException(404,'Assessment not found')
+    supported={'rainfall','aqi','traffic','flood','water_network','cascade_risk'}
+    base={'component':component,'local_attribution_available':False,'note':'Global saved evaluation evidence, not causal effects or feature contributions to an individual current forecast. Local SHAP values were not exported.'}
+    if component not in supported:return {**base,'status':'unavailable','features':[],'reason':'No matching feature-attribution export exists for this component. Constraint and dependency explanations remain available in Decisions.'}
+    path=directory_for(PROJECT_ROOT,component)/'permutation_importance.csv'
+    if not path.is_file():return {**base,'status':'unavailable','features':[],'reason':'Saved evaluation evidence is unavailable.'}
+    features=[]
+    with path.open(encoding='utf-8',newline='') as stream:
+        reader=csv.reader(stream);next(reader,None)
+        for row in reader:
+            if len(row)!=2:continue
+            try:value=float(row[1])
+            except ValueError:continue
+            if math.isfinite(value):features.append({'feature':row[0],'importance':value})
+    metric='Increase in held-out mean absolute error after feature shuffling' if component in {'rainfall','aqi','traffic'} else 'Drop in held-out average precision after feature shuffling'
+    return {**base,'status':'available','method':'Saved permutation importance','metric':metric,'features':sorted(features,key=lambda r:r['importance'],reverse=True)[:12],'source':str(path.relative_to(PROJECT_ROOT).as_posix()),'source_sha256':hashlib.sha256(path.read_bytes()).hexdigest()}

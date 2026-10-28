@@ -54,7 +54,7 @@ export default function FluxScene({motion}:{motion:RefObject<HeroMotion>}){
   const key=new THREE.PointLight(0x00e676,65,30);key.position.set(4,4,5);scene.add(key);
   const rim=new THREE.DirectionalLight(0x6688ff,4);rim.position.set(-4,2,-3);scene.add(rim);
   const fill=new THREE.DirectionalLight(0xffffff,3);fill.position.set(1,6,5);scene.add(fill);
-  const theme=()=>{const dark=document.documentElement.dataset.theme==='dark',accent=dark?0x00e676:0xff6b00;
+  const theme=()=>{const dark=document.documentElement.dataset.theme==='dark',accent=new THREE.Color(getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()).getHex();
    accentMaterial.color.setHex(accent);signalMaterial.color.setHex(accent);key.color.setHex(accent);
    materials.forEach(material=>{if(material instanceof THREE.LineBasicMaterial)material.color.setHex(accent)});
    (halo.material as THREE.MeshBasicMaterial).color.setHex(accent);

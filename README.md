@@ -16,7 +16,7 @@ on macOS). Extract a ZIP fully before starting; do not run files inside the ZIP.
 - **Windows:** double-click `START-CIVICFLUX.cmd`. It runs setup when the native
   `.venv` or frontend build is missing, then starts the built website.
 - **macOS:** open Terminal in this folder and run `bash scripts/start_mac.sh`.
-- Open **http://127.0.0.1:8001/** and sign in with **admin / 001**.
+- Open **http://127.0.0.1:8001/** and sign in with your configured administrator account.
 - Keep the server terminal open. The initial setup requires internet access.
 
 For editing with automatic frontend updates, use the separate development servers
@@ -92,8 +92,8 @@ bash scripts/setup_mac.sh
 This installs `libomp` if missing, creates a local environment if absent, installs
 backend/test requirements, checks dependencies and ML imports, creates `.env`
 only when absent, installs the frozen frontend lockfile, and builds the frontend.
-Setup applies the shared administrator login **admin / 001**, including on
-existing clones. API keys, database paths and other `.env` settings are preserved.
+Setup creates local configuration once. Existing administrator settings, API keys
+and database paths are preserved. New administrator passwords are hashed in SQLite.
 
 Run in two terminals:
 
@@ -163,14 +163,14 @@ Stop each server with Ctrl+C.
 |---|---|
 | `CIVICFLUX_DB` | SQLite path; default `var/civicflux.sqlite3`, relative to root |
 | `CIVICFLUX_ADMIN_ID` | Local administrator username |
-| `CIVICFLUX_ADMIN_PASSWORD` | Shared local password: `001` |
+| `CIVICFLUX_ADMIN_PASSWORD` | Initial supervisor credential from private `.env`; database-backed password hashes thereafter |
 | `CIVICFLUX_PUBLIC_FEEDS` | `1` enables public observations; `0` disables network feeds |
 | `CIVICFLUX_IMD_URL`, `CIVICFLUX_CPCB_URL` | Optional verified JSON feeds |
 | `DATA_GOV_IN_API_KEY` | Optional server-side official CPCB source key |
 | `CIVICFLUX_ROOT` | Optional absolute project root override, set in the shell before launch |
 
-Copy `.env.example` to `.env` when configuring manually. The shared login is
-**Admin ID: `admin` · Password: `001`**.
+Copy `.env.example` to `.env` when configuring manually and set a private initial
+supervisor password. Existing local credentials continue working after migration.
 Keep server credentials out of `VITE_*` variables. The optional restricted
 Google Maps browser key uses `VITE_GOOGLE_MAPS_API_KEY` and is public in the browser
 by design; WAQI and OpenWeather keys must remain server-only. Missing feeds produce unavailable/abstained
@@ -515,9 +515,8 @@ actual saved forecast. These display associations do not validate real asset map
 
 Air quality uses live WAQI station data and optional, clearly labelled illustrative
 colour interpolation. Configure server-only `WAQI_API_TOKEN` in private `.env`;
-restart the backend after changing keys. The owner has explicitly shared the Google Maps and WAQI keys in `.env.example`.
-Setup copies these into a new local `.env`; the WAQI token is used by the backend,
-not embedded in frontend code.
+restart the backend after changing keys. Configure provider keys in your private `.env`. WAQI is used by the backend;
+only the restricted Google Maps browser key is embedded in the frontend build.
 `OPENWEATHERMAP_API_KEY` enables optional rain imagery; the existing restricted
 `VITE_GOOGLE_MAPS_API_KEY` enables Google TrafficLayer and requires a Vite restart.
 Static scenario layers work without either of those two optional keys.
@@ -532,8 +531,8 @@ behavior, provider terms and remaining limits. The current map integration and i
 
 The current interface, all nine saved model components, eleven notebooks, Delhi
 reference documents, and static scenario geography are versioned. A fresh clone
-starts with an empty local database: your local reports, uploads and sessions are deliberately excluded. Google Maps and WAQI provider
-keys are intentionally included in `.env.example` with the owner’s permission. Setup creates a local `.env` and applies the shared login **admin / 001**.
+starts with an empty local database: your local reports, uploads and sessions are deliberately excluded. Provider credentials remain local environment settings. Setup creates a private
+`.env` for a new installation and preserves existing local account settings.
 
 For the same optional provider layers, edit your private `.env` after setup:
 
@@ -542,9 +541,8 @@ For the same optional provider layers, edit your private `.env` after setup:
 - `WAQI_API_TOKEN`: your WAQI token for station AQI.
 - `OPENWEATHERMAP_API_KEY`: optional precipitation imagery.
 
-Restart both servers after configuring keys. The shared Google Maps and WAQI
-keys can be copied and used by anyone with repository access; their quotas and
-provider restrictions still apply.
+Restart both servers after configuring provider keys; rebuild the frontend if
+using the single-server production launcher. Provider quotas and restrictions apply.
 The app can run without these keys; affected live layers explain missing setup.
 Public weather feeds still require internet access and their availability can vary.
 To reproduce historical rainfall, AQI, traffic and water examples, also acquire
@@ -556,46 +554,6 @@ it does not run this Python backend just by opening an HTML file. Use the setup
 and run commands above on Windows or macOS. No paid hosting is needed locally.
 
 
-### Shared map keys: existing clones
-
-New installations receive the owner-provided Google Maps and WAQI keys from
-`.env.example` when setup creates `.env`. Existing `.env` files are preserved.
-After `git pull origin main`, copy just `VITE_GOOGLE_MAPS_API_KEY` and
-`WAQI_API_TOKEN` from the updated `.env.example` into your local `.env`. Run `scripts/local_config.py` with your virtual-environment Python to apply
-the shared **admin / 001** login. Restart both development servers. If
-serving a production build, run `corepack pnpm build` inside `frontend` again
-before restarting the backend, because the Google browser key is set at build time.
-
-The OpenStreetMap base maps and static networks do not require either key. If
-all maps are blank, first check that the backend is running on port 8001, the
-frontend is opened at http://127.0.0.1:5173, and the network permits map tiles.
-
-
-### Same administrator login on every contributor's machine
-
-For the current local project setup, everyone uses **Admin ID `admin`** and
-**Password `001`**. Both platform setup scripts apply this shared login while
-preserving provider configuration and the local database.
-
-Existing clones: pull `main`, then run one command from the repository root:
-
-```sh
-# macOS
-.venv/bin/python scripts/local_config.py
-```
-
-```powershell
-# Windows
-.\.venv-windows\Scripts\python.exe scripts/local_config.py
-```
-
-Restart the backend and sign in. This is an intentionally shared, weak local
-development login; use individual strong credentials before public hosting.
-Each machine still has its own reports and database; a shared login does not
-synchronize those records. Historical prediction examples still require the
-documented original datasets.
-
-
 ### If the browser shows `{"detail":"Not Found"}`
 
 Do not keep using an older server terminal after updating the files. Stop it with
@@ -605,3 +563,77 @@ normally http://127.0.0.1:8001/. Paths under `/api` are API endpoints, not pages
 The launcher now rebuilds the frontend on every start and checks for a conflicting
 server before printing its URL. It does not kill unrelated processes. If the
 frontend is absent on a directly started backend, `/` displays setup instructions.
+
+
+## PIN-based administration and municipal decisions
+
+The application imports the bundled government postal-reference snapshots into
+SQLite: Delhi **77** unique PINs, Chandigarh **24**, Chennai **2**. Coverage is
+partial, especially Chennai. Localities are retained; districts and coordinates
+are not invented. A postal PIN is not an MCD ward or verified municipal boundary.
+The sources and coverage are available under Location information in the site.
+
+Existing records, uploads, model artifacts and notebooks are preserved. Additive
+migrations create cities, pincodes, admin_users, city/PIN assignments, complaint
+jurisdictions, locality budgets, login-attempt tracking and duplicate-submission
+claims. Compatibility views expose existing complaints and notices without
+duplicating their JSON records. Existing configured local administrator access
+is migrated to a hashed system-supervisor identity; no new public password is set.
+
+New installations generate a private initial supervisor password in `.env`. After
+initialization, account password/role changes go through Administrator assignments
+or the provisioning script; changing `.env` does not silently reset an existing
+database identity. New accounts need at least eight characters. Do not use a
+postal PIN as a password. The current owner's existing local login is preserved.
+
+Example provisioning from the project root (password is prompted, never an argument):
+
+```sh
+.venv/bin/python scripts/provision_admin.py --username delhi-officer --display-name "Delhi PIN officer" --pin 110001
+```
+
+On Windows use `.\.venv-windows\Scripts\python.exe` for the same script. Use
+`--role city_supervisor --city delhi` to configure citywide review, or multiple
+`--pin` options for a PIN officer. Trusted local configuration or an authenticated
+system supervisor can provision accounts. Assignments do not verify government
+employment; platform notices cannot impersonate an official authority.
+
+Admin navigation starts **Overview → Planning → Decisions**, followed by City map,
+Infrastructure, Predictions and Review reports. Citizens retain Report a problem.
+Every private query/mutation checks database-backed city/PIN permissions. Legacy
+records without a PIN stay accessible to supervisors until reviewed and routed.
+
+Use Review reports to validate evidence and record assessed severity, population
+(unknown/estimated/verified), and an intervention package. A verified population
+claim needs an evidence reference; citizen estimates stay separate. Record a
+current, authorized PIN inventory in Planning. Declare only locality funds
+actually available for the exercise, then create a response proposal. Published
+municipal budgets never become operational capacity automatically.
+
+OR-Tools uses proposed 60% severity / 40% population weights, normalized inputs,
+minimum intervention costs, staff, vehicles, pumps and specialized crew-hours.
+Unknown population remains unknown; available severity weight is renormalized
+when appropriate. Population sums can overlap and are not unique exposed people.
+Approval rechecks current inventory, stale assessments, jurisdiction, locality
+funding, duplicate incidents and reservations inside one SQLite write transaction.
+Approved/deferred/rejected/released decisions and active reservations persist.
+There is no external crew dispatch or unsupported causal risk-reduction estimate.
+
+Decisions reuses the saved research models, graph and optimizer. Current
+assessment is followed immediately by Map scenario, then the what-if controls,
+allocations, impact comparison and cascade view. Real locality packages and the
+hypothetical research graph remain explicitly distinct.
+
+Weather offers Tomorrow, 1 week and 10 days from Open-Meteo. Missing optional
+fields display unavailable. Feels-like and humidity are daily means from hourly
+provider forecasts. These forecasts do not replace saved ML rainfall inference.
+
+Use my location is optional and user-triggered. It sends coordinates in a POST
+body to the configured OpenStreetMap Nominatim lookup; cached rounded requests
+are throttled to one per second in this single-process local application. A
+suggestion always requires manual confirmation. `CIVICFLUX_GEOCODER_URL` can
+change the HTTPS provider. Location denial does not prevent manual selection.
+
+CivicFlux Help is a searchable, role-aware deterministic walkthrough. It does
+not send complaint contents to an AI service or change administrative records.
+See `reports/PIN_MUNICIPAL_INTEGRATION.md` for the implementation, tests and limits.

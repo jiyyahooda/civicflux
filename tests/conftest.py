@@ -14,6 +14,8 @@ def no_live_network_in_unit_tests(monkeypatch):
 @pytest.fixture
 def client(tmp_path,monkeypatch):
     monkeypatch.setattr(config,'DB_PATH',tmp_path/'test.sqlite3')
+    monkeypatch.setattr(config,'ADMIN_ID','admin')
+    monkeypatch.setattr(config,'ADMIN_PASSWORD','001')
     with TestClient(app) as client: yield client
 
 @pytest.fixture

@@ -38,7 +38,7 @@ def execute(body,actor):
         case['cascade_evidence']='declared synthetic outage' if case['node_id'] in body.initial else 'same-graph research cascade score'
     try: allocation=plan(cases,body.resources.model_dump(),body.weights)
     except (ValueError,KeyError,TypeError) as error: raise HTTPException(422,str(error)) from error
-    return repo.append('scenario',{'name':body.name,'city_id':body.city_id,'inputs':body.model_dump(),'synthetic':True,'flood':flood,'cascade':cascade,'allocation':allocation,
+    return repo.append('scenario',{'name':body.name,'city_id':body.city_id,'pincode':body.pincode,'inputs':body.model_dump(),'synthetic':True,'flood':flood,'cascade':cascade,'allocation':allocation,
         'graph_id':graph.graph['graph_id'],'graph_fingerprint':graph_fingerprint(graph),
         'affected_assets':[r for r in cascade['prediction'] if r['node_id'] in body.initial or r.get('review')],
         'dependency_traces':[dependency_trace(graph,body.initial,n,body.load) for n in body.initial],

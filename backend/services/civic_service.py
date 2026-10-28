@@ -18,6 +18,9 @@ def postal(identifier):
 
 def verify_pin(identifier, pin):
     entries = [row for row in postal(identifier)['records'] if row['pin'] == pin]
+    from backend.db.connection import connection
+    with connection() as db:
+        if db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='pincodes'").fetchone() and not db.execute('SELECT 1 FROM pincodes WHERE pincode=? AND city_id=? AND is_active=1',(pin,identifier)).fetchone():entries=[]
     if not entries:
         from fastapi import HTTPException
         raise HTTPException(422, 'PIN is not listed for this city in the verified postal reference. Choose a listed postal area or request a reference update.')
