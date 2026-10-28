@@ -13,7 +13,7 @@ $python = Join-Path $environment 'Scripts/python.exe'
 $nativeReady = $false
 if (Test-Path $python) {
     try {
-        $check = & $python -c 'import sys,platform; assert sys.version_info[:2] == (3,13); assert platform.system() == "Windows"' 2>&1
+        $check = & $python -c "import sys; assert sys.version_info[:2] == (3,13); assert sys.platform == 'win32'" 2>&1
         $nativeReady = ($LASTEXITCODE -eq 0)
     } catch { $nativeReady = $false }
 }
@@ -25,7 +25,7 @@ if (-not $nativeReady) {
     }
     py -3.13 -m venv $environment; Check-Exit
 }
-& $python -c 'import sys,platform; assert sys.version_info[:2] == (3,13); assert platform.system() == "Windows"'; Check-Exit
+& $python -c "import sys; assert sys.version_info[:2] == (3,13); assert sys.platform == 'win32'"; Check-Exit
 & $python -m pip install -r requirements-test.txt; Check-Exit
 & $python -m pip check; Check-Exit
 & $python scripts/check_runtime.py; Check-Exit
