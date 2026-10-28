@@ -43,12 +43,13 @@ def parse(payload, configuration, today):
 async def outlook(identifier):
     configuration=city(identifier)
     now=datetime.now(ZoneInfo(configuration['timezone']))
-    base={'city_id':identifier,'kind':'weather_forecast','provider':'Open-Meteo numerical weather forecast',
+    base={'pincode':configuration.get('pincode'),'city_id':identifier,'kind':'weather_forecast','provider':'Open-Meteo numerical weather forecast',
           'attribution':'Weather data by Open-Meteo.com · CC BY 4.0','timezone':configuration['timezone'],
           'requested_days':14,'checked_at':now.isoformat(),'units':FIELDS,'uncertainty':None}
     try:
         if os.getenv('CIVICFLUX_PUBLIC_FEEDS','1')!='1':raise ValueError('Public provider requests disabled')
         ref=configuration['map_reference']
+        if not ref:raise ValueError('Postal reference coordinates unavailable')
         payload,stamp,warning=await fetch_json(URL,params={'latitude':ref['latitude'],'longitude':ref['longitude'],
             'daily':','.join([*FIELDS,'weather_code','precipitation_probability_max']),'hourly':'apparent_temperature,relative_humidity_2m','forecast_days':15,'timezone':configuration['timezone']},ttl=1800)
         rows=parse(payload,configuration,now.date())

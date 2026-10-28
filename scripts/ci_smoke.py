@@ -36,7 +36,7 @@ with tempfile.TemporaryDirectory(prefix='civicflux-ci-') as temp:
             assert client.get(path).status_code == 200, path
         models = client.get('/api/models').json()
         assert all(row['readiness'] != 'Not ready' for row in models), models
-        assert client.post('/api/auth/login', json={'username': config.ADMIN_ID, 'password': config.ADMIN_PASSWORD}).status_code == 200
+        assert client.post('/api/auth/login', json={'username': config.ADMIN_ID, 'password': '110001'}).status_code == 200
         scenario = client.get('/api/scenarios/defaults').json()
         response = client.post('/api/scenarios', json=scenario)
         assert response.status_code in (200, 201), response.text

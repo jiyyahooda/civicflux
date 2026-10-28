@@ -12,6 +12,8 @@ async def lifespan(app):
     yield
 
 app=FastAPI(title='CivicFlux research and civic resilience API',version='2.0.0',lifespan=lifespan)
+from backend.jurisdiction import JurisdictionMiddleware
+app.add_middleware(JurisdictionMiddleware)
 for router in [auth,models.router,predictions.router,observations.router,cities.router,scenarios.router,feedback.router,civic.router,assessments.router,resources.router,references.router,maps.router,municipal.router,locality_planning.router]:app.include_router(router)
 @app.get('/api/health')
 def health():return {'status':'ok','research_only':True,'automatic_dispatch':False}

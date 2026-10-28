@@ -95,6 +95,9 @@ def present(component,response):
 @router.post('/{component}')
 def assess(component:str,body:Assessment):
  city(body.city_id)
+ from backend.scope import current
+ if current() and component in {'rainfall','aqi','traffic','infrastructure_anomaly','water_network'}:
+  return {'status':'unavailable','summary':'The saved model is not validated for this postal area. Run the area provider forecast above.','metrics':[],'series':[],'intervals':[],'uncertainty_note':'No postal model validation exists.','basis':'Postal scope check','scope':current()['pincode']}
  if component not in LABELS:raise HTTPException(404,'Assessment not found')
  if body.mode=='city' or ((body.mode=='custom' or body.history_csv) and component in ('rainfall','aqi') and body.city_id!='delhi'):
   return {'status':'unavailable','summary':'Live local prediction is not validated for this city and input source. You can run the explicitly identified saved benchmark instead.','metrics':[],'series':[],'intervals':[],'uncertainty_note':'Uncertainty unavailable.','basis':'City applicability check','scope':LABELS[component][2]}

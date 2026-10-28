@@ -44,13 +44,18 @@ def index(actor:str=Depends(admin)): return [s for s in repo.all_records('scenar
 @router.get('/graph')
 def graph(actor:str=Depends(admin)): return dependencies()
 @router.get('/defaults')
-def defaults(actor:str=Depends(admin)): return Scenario().model_dump()
+def defaults(actor:str=Depends(admin)):
+    from backend.scope import current
+    scope=current()
+    return Scenario(city_id=scope['city_id'],pincode=scope['pincode']).model_dump() if scope else Scenario().model_dump()
 @router.get('/{identifier}')
 def detail(identifier:str,actor:str=Depends(admin)):
     item=repo.get('scenario',identifier);require_record(actor,item);return item
 @router.post('')
 def run(body:Scenario,actor:str=Depends(admin)):
     from backend.services.city_service import city
+    from backend.scope import current
+    if current():body=body.model_copy(update={'pincode':current()['pincode']})
     city(body.city_id);require_scope(actor,body.city_id,body.pincode)
     if body.pincode:
         from backend.services.civic_service import verify_pin

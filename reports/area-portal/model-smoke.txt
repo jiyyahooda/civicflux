@@ -1,0 +1,16 @@
+/Users/jiyahooda/Desktop/CivicFlux/.venv/lib/python3.13/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+Loaded: rainfall
+Loaded: aqi
+Loaded: traffic
+Loaded: flood
+Loaded: infrastructure_anomaly
+Loaded: water_network
+Loaded: cascade_risk
+Loaded: resource_optimization
+Loaded: intervention_outcomes
+Prediction and abstention passed: flood
+Prediction and abstention passed: cascade_risk
+Prediction and abstention passed: resource_optimization
+Prediction and abstention passed: intervention_outcomes
+Model loading, API, SQLite, flood/cascade and planning smoke checks passed.

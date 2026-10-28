@@ -91,7 +91,6 @@ def migrate():
         for row in db.execute("SELECT id,body FROM records WHERE kind='complaint'").fetchall():
             body=json.loads(row['body']);pin=body.get('postal_code')
             if db.execute('SELECT 1 FROM pincodes WHERE pincode=? AND city_id=?',(pin,body.get('city_id'))).fetchone():
-                db.execute('INSERT OR IGNORE INTO complaint_jurisdictions VALUES (?,?,?,NULL)',(row['id'],pin,body['city_id']))
+                db.execute('INSERT OR IGNORE INTO complaint_jurisdictions(complaint_id,pincode,city_id,assigned_admin_id) VALUES (?,?,?,NULL)',(row['id'],pin,body['city_id']))
         db.execute('INSERT OR IGNORE INTO schema_migrations VALUES (1,?)',(stamp,))
-    from backend.services.administration import bootstrap
-    bootstrap()
+    # Legacy account rows remain audit history; area identities are seeded by areas.py.

@@ -36,3 +36,6 @@ reference_inputs/
 reports/targeted_review/original_notebooks/
 reports/windows/
 reports/portable-recovery/
+
+# Local jurisdiction migration inventory contains private runtime record IDs
+reports/area-portal/unassigned-records.json

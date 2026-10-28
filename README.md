@@ -16,7 +16,7 @@ on macOS). Extract a ZIP fully before starting; do not run files inside the ZIP.
 - **Windows:** double-click `START-CIVICFLUX.cmd`. It runs setup when the native
   `.venv` or frontend build is missing, then starts the built website.
 - **macOS:** open Terminal in this folder and run `bash scripts/start_mac.sh`.
-- Open **http://127.0.0.1:8001/** and sign in with your configured administrator account.
+- Open **http://127.0.0.1:8001/** and sign in with username admin and the six-digit postal PIN for your area.
 - Keep the server terminal open. The initial setup requires internet access.
 
 For editing with automatic frontend updates, use the separate development servers
@@ -162,15 +162,13 @@ Stop each server with Ctrl+C.
 | Variable | Purpose |
 |---|---|
 | `CIVICFLUX_DB` | SQLite path; default `var/civicflux.sqlite3`, relative to root |
-| `CIVICFLUX_ADMIN_ID` | Local administrator username |
-| `CIVICFLUX_ADMIN_PASSWORD` | Initial supervisor credential from private `.env`; database-backed password hashes thereafter |
 | `CIVICFLUX_PUBLIC_FEEDS` | `1` enables public observations; `0` disables network feeds |
 | `CIVICFLUX_IMD_URL`, `CIVICFLUX_CPCB_URL` | Optional verified JSON feeds |
 | `DATA_GOV_IN_API_KEY` | Optional server-side official CPCB source key |
 | `CIVICFLUX_ROOT` | Optional absolute project root override, set in the shell before launch |
 
-Copy `.env.example` to `.env` when configuring manually and set a private initial
-supervisor password. Existing local credentials continue working after migration.
+Copy `.env.example` to `.env` for provider configuration. Area login uses username
+`admin` and the area’s listed six-digit postal PIN. The previous `001` login is retired.
 Keep server credentials out of `VITE_*` variables. The optional restricted
 Google Maps browser key uses `VITE_GOOGLE_MAPS_API_KEY` and is public in the browser
 by design; WAQI and OpenWeather keys must remain server-only. Missing feeds produce unavailable/abstained
@@ -222,8 +220,7 @@ optional for serving. Do not blindly upgrade serialized-model dependencies.
 ```sh
 .venv/bin/python -m pip check
 .venv/bin/python scripts/verify_runtime.py
-# Existing legacy tests use a fixed synthetic login, only for this test process:
-CIVICFLUX_ADMIN_PASSWORD=001 .venv/bin/python -m pytest -q
+.venv/bin/python -m pytest -q
 cd frontend
 corepack pnpm install --frozen-lockfile
 corepack pnpm build
@@ -235,9 +232,7 @@ Windows equivalents:
 .\.venv-windows\Scripts\python.exe -m pip check
 .\.venv-windows\Scripts\python.exe scripts/verify_runtime.py
 $env:PYTHONUTF8='1'
-$env:CIVICFLUX_ADMIN_PASSWORD='001' # Shared local development login
 .\.venv-windows\Scripts\python.exe -m pytest -q
-Remove-Item Env:CIVICFLUX_ADMIN_PASSWORD
 Set-Location frontend
 corepack pnpm install --frozen-lockfile
 corepack pnpm build
@@ -567,41 +562,45 @@ frontend is absent on a directly started backend, `/` displays setup instruction
 
 ## PIN-based administration and municipal decisions
 
-The application imports the bundled government postal-reference snapshots into
-SQLite: Delhi **77** unique PINs, Chandigarh **24**, Chennai **2**. Coverage is
-partial, especially Chennai. Localities are retained; districts and coordinates
-are not invented. A postal PIN is not an MCD ward or verified municipal boundary.
-The sources and coverage are available under Location information in the site.
+The postal registry contains 77 Delhi, 24 Chandigarh and 2 Chennai PINs (partial coverage).
+One `admins` row is seeded for every listed PIN. All usernames are `admin`; the
+six-digit public postal PIN identifies the account and is its requested password.
+There are no random PINs or additional login secrets. Postal PINs are public, so
+this login identifies an area, not an independently verified municipal officer.
 
-Existing records, uploads, model artifacts and notebooks are preserved. Additive
-migrations create cities, pincodes, admin_users, city/PIN assignments, complaint
-jurisdictions, locality budgets, login-attempt tracking and duplicate-submission
-claims. Compatibility views expose existing complaints and notices without
-duplicating their JSON records. Existing configured local administrator access
-is migrated to a hashed system-supervisor identity; no new public password is set.
-
-New installations generate a private initial supervisor password in `.env`. After
-initialization, account password/role changes go through Administrator assignments
-or the provisioning script; changing `.env` does not silently reset an existing
-database identity. New accounts need at least eight characters. Do not use a
-postal PIN as a password. The current owner's existing local login is preserved.
-
-Example provisioning from the project root (password is prompted, never an argument):
+Use `/admin/login`, for example `admin` / `110001`. An active area session is
+server-derived, HttpOnly, SameSite=Strict, Secure on HTTPS, with a 30-minute idle
+limit and eight-hour maximum lifetime. Five failures per IP lock login for 15
+minutes. Login audit stores time, IP, PIN (never arbitrary password text) and result.
+Old supervisor/password identities remain historical records but cannot log in.
 
 ```sh
-.venv/bin/python scripts/provision_admin.py --username delhi-officer --display-name "Delhi PIN officer" --pin 110001
+.venv/bin/python scripts/seed_area_admins.py
+.venv/bin/python scripts/provision_admin.py --pin 110001 --deactivate
+.venv/bin/python scripts/provision_admin.py --pin 110001
 ```
 
-On Windows use `.\.venv-windows\Scripts\python.exe` for the same script. Use
-`--role city_supervisor --city delhi` to configure citywide review, or multiple
-`--pin` options for a PIN officer. Trusted local configuration or an authenticated
-system supervisor can provision accounts. Assignments do not verify government
-employment; platform notices cannot impersonate an official authority.
+Windows uses `.\.venv-windows\Scripts\python.exe` for these scripts. Seeding is
+idempotent and preserves deactivated areas. To add an entirely new area, first add
+its sourced postal reference to `config/postal_reference.json`, then run the seed
+script. Review reports > Administrator assignments shows only the signed-in area
+and can deactivate it. Cross-area activation/deactivation is a trusted server
+console operation, so an area admin cannot modify another area's access.
 
-Admin navigation starts **Overview → Planning → Decisions**, followed by City map,
-Infrastructure, Predictions and Review reports. Citizens retain Report a problem.
-Every private query/mutation checks database-backed city/PIN permissions. Legacy
-records without a PIN stay accessible to supervisors until reviewed and routed.
+Area queries filter records in SQLite; missing or unmatched PINs stay unassigned
+and are visible to no area account. Exact unambiguous locality matches are
+backfilled. Coordinates alone are not assigned without a postal-boundary source.
+Citywide source data is not relabelled as postal data. Provider weather/CAMS uses
+GeoNames' approximate postal coordinates (CC BY 4.0), independently of complaint
+scope. No coordinate exists in the supplied reference for 160021 and 160035; those
+areas report unavailable instead of using a city-centre fallback. Station AQI is
+hidden in an area session unless postal membership can be verified. The public
+site retains citywide station maps. See `config/postal_centroids.json` for provenance.
+
+The civilian Overview alone displays the latest active notice below the globe.
+The fixed navbar is inert/hidden at the top and reveals after 80px of scrolling.
+The admin portal has its own permanent navigation and area command-centre palette.
+Simulation maps and actions require a valid area session.
 
 Use Review reports to validate evidence and record assessed severity, population
 (unknown/estimated/verified), and an intervention package. A verified population
@@ -628,12 +627,6 @@ Weather offers Tomorrow, 1 week and 10 days from Open-Meteo. Missing optional
 fields display unavailable. Feels-like and humidity are daily means from hourly
 provider forecasts. These forecasts do not replace saved ML rainfall inference.
 
-Use my location is optional and user-triggered. It sends coordinates in a POST
-body to the configured OpenStreetMap Nominatim lookup; cached rounded requests
-are throttled to one per second in this single-process local application. A
-suggestion always requires manual confirmation. `CIVICFLUX_GEOCODER_URL` can
-change the HTTPS provider. Location denial does not prevent manual selection.
-
 CivicFlux Help is a searchable, role-aware deterministic walkthrough. It does
 not send complaint contents to an AI service or change administrative records.
 See `reports/PIN_MUNICIPAL_INTEGRATION.md` for the implementation, tests and limits.
@@ -642,3 +635,12 @@ See `reports/PIN_MUNICIPAL_INTEGRATION.md` for the implementation, tests and lim
 
 See [DEPLOYMENT.md](DEPLOYMENT.md) for the Render setup, environment variables,
 persistence requirements and included Linux container checks.
+
+## Complaint confirmation email
+
+Set `SMTP_USER=civicflux1001@gmail.com`, `SMTP_PASS` to that Gmail account's App
+Password, and `SMTP_PORT=465` (SSL) or `587` (STARTTLS) in your private `.env` or
+host environment. Restart the backend after changes. Never commit the password.
+Receipts are sent only for successfully registered complaints, once per tracking
+ID, with per-IP (10/hour) and per-recipient (3/hour) limits. Email failures do not
+remove the complaint or its tracking ID. SMTP is mocked in automated tests.

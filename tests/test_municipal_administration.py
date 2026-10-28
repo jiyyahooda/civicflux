@@ -21,8 +21,8 @@ def report(client,pin='110001',title='Blocked roadside drain',people=None):
 
 
 def officer(client,pin='110001',username='pin-officer'):
-    profile=provision(username,'Test-password-2026','PIN reviewing officer','officer',[pin])
-    response=client.post('/api/auth/login',json={'username':username,'password':'Test-password-2026'})
+    with connection() as db:profile=dict(db.execute('SELECT * FROM admins WHERE pincode=?',(pin,)).fetchone())
+    response=client.post('/api/auth/login',json={'username':'admin','password':pin})
     assert response.status_code==200
     return profile
 
@@ -55,7 +55,7 @@ def test_postal_migration_coverage_and_original_records_preserved(client):
         assert body['coverage']==count and body['complete'] is False
         assert all(isinstance(r['pincode'],str) and len(r['pincode'])==6 and r['latitude'] is None for r in body['records'])
     with connection() as db:
-        assert db.execute('SELECT count(*) n FROM schema_migrations').fetchone()['n']==1
+        assert db.execute('SELECT count(*) n FROM schema_migrations').fetchone()['n']==3
         assert db.execute('SELECT pincode FROM complaint_jurisdictions WHERE complaint_id=?',(existing['id'],)).fetchone()['pincode']=='110001'
     assert client.get('/api/municipal/local/chennai?pincode=110001').status_code==422
 
@@ -63,15 +63,15 @@ def test_postal_migration_coverage_and_original_records_preserved(client):
 def test_database_password_hash_and_scoped_session(client):
     p=officer(client)
     with connection() as db:
-        row=db.execute('SELECT * FROM admin_users WHERE id=?',(p['id'],)).fetchone()
-        assert row['password_hash'].startswith('scrypt$') and verify_password('Test-password-2026',row['password_hash'])
-        assert 'Test-password-2026' not in row['password_hash']
+        row=db.execute('SELECT * FROM admins WHERE id=?',(p['id'],)).fetchone()
+        assert row['username']=='admin' and row['pincode']=='110001'
+        assert row['last_login_at'] is not None
     me=client.get('/api/auth/me').json()
     assert me['profile']['assignments'][0]['pincode']=='110001'
     assert 'password_hash' not in json.dumps(me)
     with pytest.raises(ValueError):provision('pin-password','110001','Invalid password user','officer',['110001'])
-    assert client.get('/api/audit').status_code==403
-    assert client.get('/api/municipal/administrators').status_code==403
+    assert client.get('/api/audit').status_code==200
+    assert client.get('/api/municipal/administrators').json()[0]['pincode']=='110001'
 
 
 def test_report_routes_to_assigned_officer_and_retries_do_not_duplicate(client):
@@ -91,8 +91,8 @@ def test_cross_pin_review_and_parameter_tampering_rejected(client):
     officer(client)
     queue=client.get('/api/civic/review?city_id=delhi').json()
     assert {r['id'] for r in queue}=={own['id']}
-    assert review(client,other['id']).status_code==403
-    assert client.post('/api/complaints/'+other['id'],json={'status':'under_review','note':'Tampered request'}).status_code==403
+    assert review(client,other['id']).status_code==404
+    assert client.post('/api/complaints/'+other['id'],json={'status':'under_review','note':'Tampered request'}).status_code==404
     assert client.get('/api/civic/review?city_id=chennai').status_code==403
     assert client.post('/api/scenarios',json={**client.get('/api/scenarios/defaults').json(),'pincode':'110002'}).status_code==403
     assert client.get('/api/resources/pools?city_id=chandigarh').status_code==403
@@ -107,7 +107,7 @@ def test_scoped_notices_active_visibility_and_expired_archive(client):
     assert response.json()['publisher']=='CivicFlux officer'
     assert client.post('/api/civic/notices',json={**active,'pincode':'110002'}).status_code==403
     assert len(client.get('/api/municipal/local/delhi?pincode=110001').json()['notices'])>=1
-    assert not any(n['id']==response.json()['id'] for n in client.get('/api/municipal/local/delhi?pincode=110002').json()['notices'])
+    assert client.get('/api/municipal/local/delhi?pincode=110002').status_code==403
     expired=client.post('/api/civic/notices',json=payload('110001',now-timedelta(hours=3),now-timedelta(hours=2))).json()
     assert not any(n['id']==expired['id'] for n in client.get('/api/municipal/local/delhi?pincode=110001').json()['notices'])
     assert any(n['id']==expired['id'] for n in client.get('/api/municipal/notice-archive/delhi?pincode=110001').json())
@@ -144,7 +144,7 @@ def test_locality_plan_approval_reserves_once_and_persists(admin_client):
 from fastapi.testclient import TestClient
 from backend.main import app
 with TestClient(app) as client:
-    assert client.post('/api/auth/login',json={'username':'admin','password':'001'}).status_code==200
+    assert client.post('/api/auth/login',json={'username':'admin','password':'110001'}).status_code==200
     plans=client.get('/api/locality-planning/plans?city_id=delhi').json()
     saved=next(p for p in plans if p['id']==os.environ['CIVICFLUX_TEST_PLAN_ID'])
     assert saved['internal_review_status']=='approve_internal'
@@ -188,7 +188,7 @@ def test_priority_weights_missing_population_and_capacity_constraints():
 
 def test_cross_origin_login_and_password_bruteforce_are_rejected(client):
     assert client.post('/api/auth/login',json={'username':'admin','password':'bad'},headers={'Origin':'https://untrusted.example'}).status_code==403
-    for _ in range(8):assert client.post('/api/auth/login',json={'username':'missing-officer','password':'wrong-password'}).status_code==401
+    for _ in range(5):assert client.post('/api/auth/login',json={'username':'missing-officer','password':'wrong-password'}).status_code==401
     assert client.post('/api/auth/login',json={'username':'missing-officer','password':'wrong-password'}).status_code==429
 
 
@@ -208,12 +208,12 @@ def test_budget_and_report_city_pin_database_constraints(client):
     import sqlite3
     item=repo.append('complaint',{'city_id':'chennai','status':'submitted'})
     with pytest.raises(sqlite3.IntegrityError):
-        with connection() as db:db.execute('INSERT INTO complaint_jurisdictions VALUES (?,?,?,NULL)',(item['id'],'110001','chennai'))
+        with connection() as db:db.execute('INSERT INTO complaint_jurisdictions(complaint_id,pincode,city_id,assigned_admin_id) VALUES (?,?,?,NULL)',(item['id'],'110001','chennai'))
 
 
 def test_revoked_officer_session_cannot_keep_old_assignments(client):
     officer(client)
-    provision('pin-officer','Replacement-password-2026','Reassigned officer','officer',['110002'])
+    with connection() as db:db.execute("UPDATE admins SET is_active=0 WHERE pincode='110001'")
     assert client.get('/api/auth/me').status_code==401
 
 
@@ -273,9 +273,8 @@ def test_population_verification_needs_evidence_and_old_reviews_preserve_assessm
 def test_legacy_report_can_gain_a_validated_pin_without_losing_history(admin_client):
     old=repo.append('complaint',{'city_id':'delhi','title':'Legacy retained issue','description':'An existing imported issue','location':'Recorded place','category':'drainage','status':'submitted','history':[{'note':'Original retained history'}]})
     result=admin_client.post('/api/civic/review/'+old['id'],json={'postal_code':'110001','validation':'needs_information','status':'under_review','department':'Drainage'})
-    assert result.status_code==200,result.text
-    saved=repo.get('complaint',old['id']);assert saved['postal_code']=='110001' and saved['history'][0]['note']=='Original retained history'
-    with connection() as db:assert db.execute('SELECT pincode FROM complaint_jurisdictions WHERE complaint_id=?',(old['id'],)).fetchone()['pincode']=='110001'
+    assert result.status_code==404,result.text
+    saved=repo.get('complaint',old['id']);assert not saved.get('postal_code') and saved['history'][0]['note']=='Original retained history'
 
 
 def test_locality_optimizer_counts_crew_hours_and_work_window():

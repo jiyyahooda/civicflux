@@ -28,7 +28,7 @@ a virtual environment from a different OS. See [README](README.md) for prerequis
 - macOS: install Homebrew, Python 3.13, Node 24 and Corepack, then run
   `bash scripts/start_mac.sh` from Terminal in the project folder.
 - Open **http://127.0.0.1:8001** for this single-server launch. Keep its terminal open.
-- Use the existing configured administrator account, or the private initial supervisor credentials created by setup. Initial dependency downloads require internet.
+- Use username admin and a listed six-digit postal PIN (example: 110001). Initial dependency downloads require internet.
 
 ## Development
 

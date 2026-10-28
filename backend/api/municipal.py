@@ -20,6 +20,8 @@ router=APIRouter(prefix='/api/municipal',tags=['PIN administration'])
 def pins(city_id:str):
     city(city_id)
     with connection() as db:rows=[dict(r) for r in db.execute('SELECT * FROM pincodes WHERE city_id=? AND is_active=1 ORDER BY pincode',(city_id,))]
+    from backend.scope import current
+    if current():rows=[r for r in rows if r['pincode']==current()['pincode']]
     return {'city_id':city_id,'records':rows,'coverage':len(rows),'complete':False,'note':'Verified listed postal references only. PIN codes do not define municipal wards; unlisted areas require a reference update.'}
 
 @router.get('/local/{city_id}')
@@ -36,26 +38,24 @@ def archived(city_id:str,pincode:str|None=None):
         except (ValueError,KeyError,TypeError):return False
     return [{k:n.get(k) for k in keys} for n in repo.all_records('civic_notice') if n['city_id']==city_id and expired(n) and (not n.get('pincode') or n.get('pincode')==pincode)]
 
-class Administrator(BaseModel):
+class AreaAssignment(BaseModel):
     model_config=ConfigDict(extra='forbid')
-    username:str=Field(min_length=3,max_length=80)
-    password:str=Field(min_length=8,max_length=1024)
-    display_name:str=Field(min_length=3,max_length=100)
-    role:str='officer'
-    pins:list[str]=Field(default_factory=list,max_length=200)
-    cities:list[str]=Field(default_factory=list,max_length=3)
+    pincode:str=Field(pattern='^[0-9]{6}$')
+    is_active:bool=True
 
 @router.get('/administrators')
 def administrators(actor:str=Depends(admin)):
-    supervisor(actor)
-    with connection() as db:users=[r['username'] for r in db.execute('SELECT username FROM admin_users ORDER BY username')]
-    return [profile(u) for u in users]
+    u=identity(actor)
+    with connection() as db:return [dict(r) for r in db.execute('SELECT id,username,pincode,area_name,city_id,is_active,created_at,last_login_at FROM admins WHERE pincode=?',(u['pincode'],))]
 
-@router.post('/administrators',status_code=201)
-def add_admin(body:Administrator,actor:str=Depends(admin)):
-    supervisor(actor)
-    try:return provision(body.username,body.password,body.display_name,body.role,body.pins,body.cities,performed_by=actor)
-    except ValueError as error:raise HTTPException(422,str(error))
+@router.post('/administrators')
+def add_admin(body:AreaAssignment,actor:str=Depends(admin)):
+    u=identity(actor)
+    if body.pincode!=u['pincode']:raise HTTPException(403,'Outside your assigned area')
+    with connection() as db:
+        db.execute('UPDATE admins SET is_active=? WHERE pincode=?',(int(body.is_active),u['pincode']))
+        if not body.is_active:db.execute('DELETE FROM sessions WHERE actor=?',(actor,))
+    return {'pincode':u['pincode'],'is_active':body.is_active}
 
 class Location(BaseModel):
     model_config=ConfigDict(extra='forbid',allow_inf_nan=False)

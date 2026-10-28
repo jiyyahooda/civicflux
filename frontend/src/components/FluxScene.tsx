@@ -54,13 +54,13 @@ export default function FluxScene({motion}:{motion:RefObject<HeroMotion>}){
   const key=new THREE.PointLight(0x00e676,65,30);key.position.set(4,4,5);scene.add(key);
   const rim=new THREE.DirectionalLight(0x6688ff,4);rim.position.set(-4,2,-3);scene.add(rim);
   const fill=new THREE.DirectionalLight(0xffffff,3);fill.position.set(1,6,5);scene.add(fill);
-  const theme=()=>{const dark=document.documentElement.dataset.theme==='dark',accent=new THREE.Color(getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()).getHex();
+  const theme=()=>{const dark=document.documentElement.dataset.theme==='dark',accent=dark?0xF5A524:new THREE.Color(getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()).getHex();
    accentMaterial.color.setHex(accent);signalMaterial.color.setHex(accent);key.color.setHex(accent);
    materials.forEach(material=>{if(material instanceof THREE.LineBasicMaterial)material.color.setHex(accent)});
    (halo.material as THREE.MeshBasicMaterial).color.setHex(accent);
-   coreMaterial.color.setHex(dark?0x09251c:0xe5e6df);coreMaterial.metalness=dark?.65:.3;
-   rings.forEach((ring,i)=>(ring.material as THREE.MeshBasicMaterial).color.setHex(i===1?0x839dff:accent));
-   starsMaterial.color.setHex(dark?0x91d0ac:0xc5723e);
+   coreMaterial.color.setHex(dark?0x6D0F25:0xe5e6df);coreMaterial.metalness=dark?.65:.3;rim.color.setHex(dark?0xB3261E:0x6688ff);
+   rings.forEach((ring,i)=>(ring.material as THREE.MeshBasicMaterial).color.setHex(i===1?(dark?0xB3261E:0x839dff):accent));
+   starsMaterial.color.setHex(dark?0xF5A524:0xc5723e);
   };theme();
   const themeObserver=new MutationObserver(theme);themeObserver.observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
   const resize=()=>{const w=node.clientWidth,h=node.clientHeight;if(!w||!h)return;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();};

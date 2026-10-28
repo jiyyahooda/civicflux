@@ -22,6 +22,10 @@ async def observations(identifier):
                 'kind':'model_estimate' if source=='CAMS' else 'observation','model_input_eligible':False,
                 'provider_url':cpcb.REFERENCE if source=='CPCB' else imd.REFERENCE if source=='IMD' else 'https://open-meteo.com/en/docs/air-quality-api',
                 'requires_configuration':source=='CPCB'}
+    from backend.scope import current
+    if current():
+        results=[await load('CAMS',air_quality)] if configuration['map_reference'] else []
+        return {'city_id':identifier,'pincode':current()['pincode'],'checked_at':datetime.now(timezone.utc).isoformat(),'feeds':results,'map_reference':configuration['map_reference'],'notice':'Provider grid at approximate GeoNames postal reference. Not a measured postal boundary.'}
     results=await asyncio.gather(load('IMD',imd),load('CPCB',cpcb),load('CAMS',air_quality))
     return {'city_id':identifier,'checked_at':datetime.now(timezone.utc).isoformat(),'feeds':results,
         'map_reference':configuration['map_reference'],

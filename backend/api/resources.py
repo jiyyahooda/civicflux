@@ -50,7 +50,9 @@ def describe(db,pool):
  return {**pool,'current':current(pool),'assigned':used,'available':free}
 def pools_for(identifier,public=False):
  with connection() as db:
-  rows=db.execute('SELECT body FROM resource_pools WHERE city_id=?',(identifier,)).fetchall()
+  from backend.scope import current
+  scope=current()
+  rows=db.execute("SELECT body FROM resource_pools WHERE city_id=? AND json_extract(body,'$.pincode')=?",(identifier,scope['pincode'])).fetchall() if scope else db.execute('SELECT body FROM resource_pools WHERE city_id=?',(identifier,)).fetchall()
   results=[describe(db,json.loads(r['body'])) for r in rows]
  if public:
   keys=('id','city_id','pincode','department','service_area','specialization','valid_from','valid_until','updated_at','crews','workers','pumps','vehicles','budget','crew_hours','current','available','assigned')
@@ -85,6 +87,8 @@ class Pool(BaseModel):
   return self
 
 def save_pool(body,actor,identifier=None):
+ from backend.scope import current
+ if current():body=body.model_copy(update={'pincode':current()['pincode']})
  require_scope(actor,body.city_id,body.pincode)
  if body.pincode:
   from backend.services.civic_service import verify_pin

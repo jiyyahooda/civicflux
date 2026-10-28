@@ -1,0 +1,4090 @@
+{
+  "source": "https://download.geonames.org/export/zip/IN.zip",
+  "license": "CC BY 4.0",
+  "retrieved_at": "2026-10-29",
+  "source_sha256": "0a292d1dc0266048e7592d8250cf6a5b647ccfd3e2183c95e65d5a3238a0c911",
+  "records": {
+    "160001": {
+      "latitude": 30.7465,
+      "longitude": 76.7417,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "High Court (Chandigarh)",
+          "latitude": 30.7465,
+          "longitude": 76.7417,
+          "accuracy": "1"
+        },
+        {
+          "place": "Vidhansadan",
+          "latitude": 30.7465,
+          "longitude": 76.7417,
+          "accuracy": "1"
+        },
+        {
+          "place": "New Sectt Chandigarh",
+          "latitude": 30.7465,
+          "longitude": 76.7417,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "160002": {
+      "latitude": 30.7465,
+      "longitude": 76.7417,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Hallomajra",
+          "latitude": 30.7465,
+          "longitude": 76.7417,
+          "accuracy": "1"
+        },
+        {
+          "place": "Ind Area Chandigarh",
+          "latitude": 30.7465,
+          "longitude": 76.7417,
+          "accuracy": "1"
+        },
+        {
+          "place": "Ram Darbar",
+          "latitude": 30.7465,
+          "longitude": 76.7417,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "160003": {
+      "latitude": 30.7465,
+      "longitude": 76.7417,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Behlana",
+          "latitude": 30.7465,
+          "longitude": 76.7417,
+          "accuracy": "1"
+        },
+        {
+          "place": "Aerodrome",
+          "latitude": 30.7465,
+          "longitude": 76.7417,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "160009": {
+      "latitude": 30.7465,
+      "longitude": 76.7417,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Sector 9 (Chandigarh)",
+          "latitude": 30.7465,
+          "longitude": 76.7417,
+          "accuracy": "1"
+        },
+        {
+          "place": "Sector 8(Chandgarh)",
+          "latitude": 30.7465,
+          "longitude": 76.7417,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "160011": {
+      "latitude": 30.7301,
+      "longitude": 76.7815,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Sector 11( Chandigarh)",
+          "latitude": 30.7301,
+          "longitude": 76.7815,
+          "accuracy": "1"
+        },
+        {
+          "place": "Sector 10 (Chandigarh)",
+          "latitude": 30.7301,
+          "longitude": 76.7815,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "160012": {
+      "latitude": 30.7301,
+      "longitude": 76.7815,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Engg College",
+          "latitude": 30.7301,
+          "longitude": 76.7815,
+          "accuracy": "1"
+        },
+        {
+          "place": "Sector 12 (Chandigarh)",
+          "latitude": 30.7301,
+          "longitude": 76.7815,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "160014": {
+      "latitude": 30.7695,
+      "longitude": 76.7567,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Sector 14 (Chandigarh)",
+          "latitude": 30.7301,
+          "longitude": 76.7815,
+          "accuracy": "3"
+        },
+        {
+          "place": "Dadu Majra Colony",
+          "latitude": 30.7301,
+          "longitude": 76.7815,
+          "accuracy": "3"
+        },
+        {
+          "place": "Dhanas",
+          "latitude": 30.7695,
+          "longitude": 76.7567,
+          "accuracy": "4"
+        },
+        {
+          "place": "Behlolpur",
+          "latitude": 31.0624,
+          "longitude": 76.4894,
+          "accuracy": "3"
+        },
+        {
+          "place": "Tira",
+          "latitude": 31.0624,
+          "longitude": 76.4894,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "160015": {
+      "latitude": 30.7301,
+      "longitude": 76.7815,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Sector 15 Chandigarh",
+          "latitude": 30.7301,
+          "longitude": 76.7815,
+          "accuracy": "1"
+        },
+        {
+          "place": "Sector 16 (Chandigarh)",
+          "latitude": 30.7301,
+          "longitude": 76.7815,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "160017": {
+      "latitude": 30.7301,
+      "longitude": 76.7815,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Chandigarh G.P.O.",
+          "latitude": 30.7301,
+          "longitude": 76.7815,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "160018": {
+      "latitude": 30.7301,
+      "longitude": 76.7815,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Sector 18 (Chandigarh)",
+          "latitude": 30.7301,
+          "longitude": 76.7815,
+          "accuracy": "1"
+        },
+        {
+          "place": "Govt Press Chandigarh",
+          "latitude": 30.7301,
+          "longitude": 76.7815,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "160019": {
+      "latitude": 30.7301,
+      "longitude": 76.7815,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Sector 26 (Chandigarh)",
+          "latitude": 30.7301,
+          "longitude": 76.7815,
+          "accuracy": "1"
+        },
+        {
+          "place": "Sector 19 (Chandigarh)",
+          "latitude": 30.7301,
+          "longitude": 76.7815,
+          "accuracy": "1"
+        },
+        {
+          "place": "Raj Bhawan (Chandigarh)",
+          "latitude": 30.7301,
+          "longitude": 76.7815,
+          "accuracy": "1"
+        },
+        {
+          "place": "Sector 27(Chandigarh)S.O",
+          "latitude": 30.7301,
+          "longitude": 76.7815,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "160020": {
+      "latitude": 30.7465,
+      "longitude": 76.7417,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Sector 20 (Chandigarh)",
+          "latitude": 30.7465,
+          "longitude": 76.7417,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "160022": {
+      "latitude": 30.7465,
+      "longitude": 76.7417,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Sector 21 (Chandigarh)",
+          "latitude": 30.7465,
+          "longitude": 76.7417,
+          "accuracy": "1"
+        },
+        {
+          "place": "Sector 34(Chandigarh)",
+          "latitude": 30.7465,
+          "longitude": 76.7417,
+          "accuracy": "1"
+        },
+        {
+          "place": "Sector 22 (Chandigarh)",
+          "latitude": 30.7465,
+          "longitude": 76.7417,
+          "accuracy": "1"
+        },
+        {
+          "place": "Sector 35 (Chandigarh)",
+          "latitude": 30.7465,
+          "longitude": 76.7417,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "160023": {
+      "latitude": 30.7465,
+      "longitude": 76.7417,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Sector 23 ( Chandigarh)",
+          "latitude": 30.7465,
+          "longitude": 76.7417,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "160025": {
+      "latitude": 30.7465,
+      "longitude": 76.7417,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Maloya Colony",
+          "latitude": 30.7465,
+          "longitude": 76.7417,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "160030": {
+      "latitude": 30.7325,
+      "longitude": 76.7341,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Sector 31 (Chandigarh)",
+          "latitude": 30.7325,
+          "longitude": 76.7341,
+          "accuracy": "1"
+        },
+        {
+          "place": "Sector 30 (Chandigarh)",
+          "latitude": 30.7325,
+          "longitude": 76.7341,
+          "accuracy": "1"
+        },
+        {
+          "place": "Sector 29 (Chandigarh)",
+          "latitude": 30.7325,
+          "longitude": 76.7341,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "160036": {
+      "latitude": 30.7325,
+      "longitude": 76.7341,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Badheri",
+          "latitude": 30.7325,
+          "longitude": 76.7341,
+          "accuracy": "4"
+        },
+        {
+          "place": "Sector 36 (Chandigarh)",
+          "latitude": 30.7325,
+          "longitude": 76.7341,
+          "accuracy": "3"
+        },
+        {
+          "place": "Sector 40 (Chandigarh)",
+          "latitude": 30.7325,
+          "longitude": 76.7341,
+          "accuracy": "3"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "160043": {
+      "latitude": 30.708,
+      "longitude": 76.7621,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "District Court Sector-43,Chandigar",
+          "latitude": 30.708,
+          "longitude": 76.7621,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "160047": {
+      "latitude": 30.708,
+      "longitude": 76.7621,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Sector 44 (Chandigarh)",
+          "latitude": 30.708,
+          "longitude": 76.7621,
+          "accuracy": "3"
+        },
+        {
+          "place": "Sector 47 Chandigarh",
+          "latitude": 30.708,
+          "longitude": 76.7621,
+          "accuracy": "3"
+        },
+        {
+          "place": "Burail",
+          "latitude": 30.708,
+          "longitude": 76.7621,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "160101": {
+      "latitude": 30.7465,
+      "longitude": 76.7417,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Kishangarh",
+          "latitude": 30.7465,
+          "longitude": 76.7417,
+          "accuracy": "1"
+        },
+        {
+          "place": "Daria",
+          "latitude": 30.7465,
+          "longitude": 76.7417,
+          "accuracy": "1"
+        },
+        {
+          "place": "Mhc Manimajra",
+          "latitude": 30.7465,
+          "longitude": 76.7417,
+          "accuracy": "1"
+        },
+        {
+          "place": "Manimajra",
+          "latitude": 30.7465,
+          "longitude": 76.7417,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "160102": {
+      "latitude": 30.7465,
+      "longitude": 76.7417,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Raipur Kalan",
+          "latitude": 30.7465,
+          "longitude": 76.7417,
+          "accuracy": "1"
+        },
+        {
+          "place": "Mauli Jagran",
+          "latitude": 30.7465,
+          "longitude": 76.7417,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110033": {
+      "latitude": 28.716,
+      "longitude": 77.1429,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Jahangir Puri A Block",
+          "latitude": 28.716,
+          "longitude": 77.1429,
+          "accuracy": "1"
+        },
+        {
+          "place": "N.S.Mandi",
+          "latitude": 28.716,
+          "longitude": 77.1429,
+          "accuracy": "1"
+        },
+        {
+          "place": "Jahangir Puri H Block",
+          "latitude": 28.716,
+          "longitude": 77.1429,
+          "accuracy": "1"
+        },
+        {
+          "place": "Jahangir Puri D Block",
+          "latitude": 28.716,
+          "longitude": 77.1429,
+          "accuracy": "1"
+        },
+        {
+          "place": "Adrash Nagar",
+          "latitude": 28.716,
+          "longitude": 77.1429,
+          "accuracy": "1"
+        },
+        {
+          "place": "Bhalaswa",
+          "latitude": 28.716,
+          "longitude": 77.1429,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110034": {
+      "latitude": 28.716,
+      "longitude": 77.1429,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Maurya Enclave",
+          "latitude": 28.716,
+          "longitude": 77.1429,
+          "accuracy": "1"
+        },
+        {
+          "place": "Rani Bagh",
+          "latitude": 28.716,
+          "longitude": 77.1429,
+          "accuracy": "1"
+        },
+        {
+          "place": "Sri Nagar Colony",
+          "latitude": 28.716,
+          "longitude": 77.1429,
+          "accuracy": "1"
+        },
+        {
+          "place": "Shakur Pur I  Block",
+          "latitude": 28.716,
+          "longitude": 77.1429,
+          "accuracy": "1"
+        },
+        {
+          "place": "Anandvas Shakurpur",
+          "latitude": 28.716,
+          "longitude": 77.1429,
+          "accuracy": "1"
+        },
+        {
+          "place": "Shakurbasti Rs",
+          "latitude": 28.716,
+          "longitude": 77.1429,
+          "accuracy": "1"
+        },
+        {
+          "place": "Saraswati Vihar",
+          "latitude": 28.716,
+          "longitude": 77.1429,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110035": {
+      "latitude": 28.6772,
+      "longitude": 77.1573,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Power House",
+          "latitude": 28.6772,
+          "longitude": 77.1573,
+          "accuracy": "3"
+        },
+        {
+          "place": "Keshav Puram (North West Delhi)",
+          "latitude": 28.6772,
+          "longitude": 77.1573,
+          "accuracy": "3"
+        },
+        {
+          "place": "Sarai Rohilla",
+          "latitude": 28.6772,
+          "longitude": 77.1573,
+          "accuracy": "3"
+        },
+        {
+          "place": "INDERLOK",
+          "latitude": 28.6772,
+          "longitude": 77.1573,
+          "accuracy": "3"
+        },
+        {
+          "place": "Ganeshpura",
+          "latitude": 28.6772,
+          "longitude": 77.1573,
+          "accuracy": "3"
+        },
+        {
+          "place": "Onkar Nagar",
+          "latitude": 28.6772,
+          "longitude": 77.1573,
+          "accuracy": "3"
+        },
+        {
+          "place": "Rampura",
+          "latitude": 28.6772,
+          "longitude": 77.1573,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110036": {
+      "latitude": 28.8127,
+      "longitude": 77.1616,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Bakhtawar Pur",
+          "latitude": 28.8127,
+          "longitude": 77.1616,
+          "accuracy": "3"
+        },
+        {
+          "place": "Bakoli",
+          "latitude": 28.8127,
+          "longitude": 77.1616,
+          "accuracy": "3"
+        },
+        {
+          "place": "Nangal Poona",
+          "latitude": 28.8127,
+          "longitude": 77.1616,
+          "accuracy": "3"
+        },
+        {
+          "place": "Mukhmelpur",
+          "latitude": 28.8127,
+          "longitude": 77.1616,
+          "accuracy": "3"
+        },
+        {
+          "place": "Khampur",
+          "latitude": 28.8243,
+          "longitude": 77.1342,
+          "accuracy": "4"
+        },
+        {
+          "place": "Hiranki",
+          "latitude": 28.7991,
+          "longitude": 77.182,
+          "accuracy": "4"
+        },
+        {
+          "place": "Alipur",
+          "latitude": 28.7986,
+          "longitude": 77.1331,
+          "accuracy": "4"
+        },
+        {
+          "place": "Kadipur",
+          "latitude": 28.774,
+          "longitude": 77.1631,
+          "accuracy": "4"
+        },
+        {
+          "place": "Palla",
+          "latitude": 28.842,
+          "longitude": 77.187,
+          "accuracy": "4"
+        },
+        {
+          "place": "Tajpur Kalan",
+          "latitude": 28.8381,
+          "longitude": 77.17,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110039": {
+      "latitude": 28.805,
+      "longitude": 77.0309,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Auchandi",
+          "latitude": 28.8203,
+          "longitude": 76.9962,
+          "accuracy": "4"
+        },
+        {
+          "place": "Pooth Khurd",
+          "latitude": 28.805,
+          "longitude": 77.0309,
+          "accuracy": "3"
+        },
+        {
+          "place": "Mungeshpur",
+          "latitude": 28.805,
+          "longitude": 77.0309,
+          "accuracy": "3"
+        },
+        {
+          "place": "Jat Khore",
+          "latitude": 28.805,
+          "longitude": 77.0309,
+          "accuracy": "3"
+        },
+        {
+          "place": "Hareveli",
+          "latitude": 28.805,
+          "longitude": 77.0309,
+          "accuracy": "3"
+        },
+        {
+          "place": "Qutabagarh",
+          "latitude": 28.805,
+          "longitude": 77.0309,
+          "accuracy": "3"
+        },
+        {
+          "place": "Katewara",
+          "latitude": 28.805,
+          "longitude": 77.0309,
+          "accuracy": "3"
+        },
+        {
+          "place": "Nangal Thakran",
+          "latitude": 28.805,
+          "longitude": 77.0309,
+          "accuracy": "3"
+        },
+        {
+          "place": "Daryapur Kalan",
+          "latitude": 28.814,
+          "longitude": 77.0111,
+          "accuracy": "4"
+        },
+        {
+          "place": "Ghoga",
+          "latitude": 28.8311,
+          "longitude": 77.05,
+          "accuracy": "4"
+        },
+        {
+          "place": "Barwala",
+          "latitude": 28.7613,
+          "longitude": 77.0628,
+          "accuracy": "4"
+        },
+        {
+          "place": "Bawana",
+          "latitude": 28.7982,
+          "longitude": 77.0343,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110040": {
+      "latitude": 28.84585,
+      "longitude": 77.0934,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Kanya Gurukul",
+          "latitude": 28.8408,
+          "longitude": 77.0939,
+          "accuracy": "3"
+        },
+        {
+          "place": "Lampur",
+          "latitude": 28.8509,
+          "longitude": 77.0659,
+          "accuracy": "4"
+        },
+        {
+          "place": "Sanoth",
+          "latitude": 28.8138,
+          "longitude": 77.0739,
+          "accuracy": "4"
+        },
+        {
+          "place": "Tikri Khurd",
+          "latitude": 28.8354,
+          "longitude": 77.1195,
+          "accuracy": "4"
+        },
+        {
+          "place": "Bankner",
+          "latitude": 28.8525,
+          "longitude": 77.0787,
+          "accuracy": "4"
+        },
+        {
+          "place": "Singhu",
+          "latitude": 28.8512,
+          "longitude": 77.1311,
+          "accuracy": "4"
+        },
+        {
+          "place": "Bhorgarh",
+          "latitude": 28.8293,
+          "longitude": 77.0952,
+          "accuracy": "4"
+        },
+        {
+          "place": "Narela",
+          "latitude": 28.8527,
+          "longitude": 77.0929,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110042": {
+      "latitude": 28.7581,
+      "longitude": 77.1309,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Samai Pur",
+          "latitude": 28.7581,
+          "longitude": 77.1309,
+          "accuracy": "3"
+        },
+        {
+          "place": "Shahbad Daulatpur",
+          "latitude": 28.7581,
+          "longitude": 77.1309,
+          "accuracy": "3"
+        },
+        {
+          "place": "Pehlad Pur",
+          "latitude": 28.7581,
+          "longitude": 77.1309,
+          "accuracy": "3"
+        },
+        {
+          "place": "Delhi Engg. College",
+          "latitude": 28.7581,
+          "longitude": 77.1309,
+          "accuracy": "3"
+        },
+        {
+          "place": "Badli (North West Delhi)",
+          "latitude": 28.7581,
+          "longitude": 77.1309,
+          "accuracy": "3"
+        },
+        {
+          "place": "Siraspur",
+          "latitude": 28.7581,
+          "longitude": 77.1309,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110052": {
+      "latitude": 28.7688,
+      "longitude": 77.0869,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Satyawati Nagar",
+          "latitude": 28.7688,
+          "longitude": 77.0869,
+          "accuracy": "1"
+        },
+        {
+          "place": "Nimri",
+          "latitude": 28.7688,
+          "longitude": 77.0869,
+          "accuracy": "1"
+        },
+        {
+          "place": "Ashok Vihar H.O",
+          "latitude": 28.7688,
+          "longitude": 77.0869,
+          "accuracy": "1"
+        },
+        {
+          "place": "Wazir Pur III",
+          "latitude": 28.7688,
+          "longitude": 77.0869,
+          "accuracy": "1"
+        },
+        {
+          "place": "Shastri Nagar (North West Delhi)",
+          "latitude": 28.7688,
+          "longitude": 77.0869,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110056": {
+      "latitude": 28.7688,
+      "longitude": 77.0869,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "New Multan Nagar",
+          "latitude": 28.7688,
+          "longitude": 77.0869,
+          "accuracy": "1"
+        },
+        {
+          "place": "Shakur Basti Depot",
+          "latitude": 28.7688,
+          "longitude": 77.0869,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110081": {
+      "latitude": 28.7299,
+      "longitude": 76.9929,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Chand Pur",
+          "latitude": 28.7299,
+          "longitude": 76.9929,
+          "accuracy": "3"
+        },
+        {
+          "place": "Majra Dabas",
+          "latitude": 28.7299,
+          "longitude": 76.9929,
+          "accuracy": "3"
+        },
+        {
+          "place": "Lad Pur",
+          "latitude": 28.7299,
+          "longitude": 76.9929,
+          "accuracy": "3"
+        },
+        {
+          "place": "Mubarak Pur Dabas",
+          "latitude": 28.7299,
+          "longitude": 76.9929,
+          "accuracy": "3"
+        },
+        {
+          "place": "Kanjhawla",
+          "latitude": 28.7299,
+          "longitude": 76.9929,
+          "accuracy": "3"
+        },
+        {
+          "place": "Karala",
+          "latitude": 28.7355,
+          "longitude": 77.0352,
+          "accuracy": "4"
+        },
+        {
+          "place": "Gheora",
+          "latitude": 28.6941,
+          "longitude": 77.0016,
+          "accuracy": "4"
+        },
+        {
+          "place": "Jaunti",
+          "latitude": 28.7502,
+          "longitude": 76.9699,
+          "accuracy": "4"
+        },
+        {
+          "place": "Nizampur",
+          "latitude": 28.7178,
+          "longitude": 76.9597,
+          "accuracy": "4"
+        },
+        {
+          "place": "Punjab Khor",
+          "latitude": 28.7759,
+          "longitude": 76.9649,
+          "accuracy": "4"
+        },
+        {
+          "place": "Rani Khera",
+          "latitude": 28.706,
+          "longitude": 77.0258,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110082": {
+      "latitude": 28.78015,
+      "longitude": 77.10215,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Khera Kalan",
+          "latitude": 28.7745,
+          "longitude": 77.1172,
+          "accuracy": "4"
+        },
+        {
+          "place": "Holambi Kalan",
+          "latitude": 28.8044,
+          "longitude": 77.0969,
+          "accuracy": "4"
+        },
+        {
+          "place": "Naya Bans",
+          "latitude": 28.7848,
+          "longitude": 77.1046,
+          "accuracy": "3"
+        },
+        {
+          "place": "Khera Khurd",
+          "latitude": 28.7755,
+          "longitude": 77.0997,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110083": {
+      "latitude": 28.7441,
+      "longitude": 77.0732,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Mangolpuri A Block",
+          "latitude": 28.7441,
+          "longitude": 77.0732,
+          "accuracy": "1"
+        },
+        {
+          "place": "Mangolpuri N Block",
+          "latitude": 28.7441,
+          "longitude": 77.0732,
+          "accuracy": "1"
+        },
+        {
+          "place": "Mangolpuri S Block",
+          "latitude": 28.7441,
+          "longitude": 77.0732,
+          "accuracy": "1"
+        },
+        {
+          "place": "Mangolpuri I  Block",
+          "latitude": 28.7441,
+          "longitude": 77.0732,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110094": {
+      "latitude": 28.6114,
+      "longitude": 77.2982,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Sabhapur",
+          "latitude": 28.7688,
+          "longitude": 77.0869,
+          "accuracy": "1"
+        },
+        {
+          "place": "Gokal Puri",
+          "latitude": 28.6114,
+          "longitude": 77.2982,
+          "accuracy": "1"
+        },
+        {
+          "place": "Johripur",
+          "latitude": 28.6114,
+          "longitude": 77.2982,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110006": {
+      "latitude": 28.7106,
+      "longitude": 77.2115,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Baratooti",
+          "latitude": 28.7106,
+          "longitude": 77.2115,
+          "accuracy": "1"
+        },
+        {
+          "place": "Delhi Sadar Bazar",
+          "latitude": 28.7106,
+          "longitude": 77.2115,
+          "accuracy": "1"
+        },
+        {
+          "place": "Dareeba",
+          "latitude": 28.7106,
+          "longitude": 77.2115,
+          "accuracy": "1"
+        },
+        {
+          "place": "Chandni Chowk",
+          "latitude": 28.7106,
+          "longitude": 77.2115,
+          "accuracy": "1"
+        },
+        {
+          "place": "S.T. Road",
+          "latitude": 28.7106,
+          "longitude": 77.2115,
+          "accuracy": "1"
+        },
+        {
+          "place": "Delhi G.P.O.",
+          "latitude": 28.7106,
+          "longitude": 77.2115,
+          "accuracy": "1"
+        },
+        {
+          "place": "Chawri Bazar",
+          "latitude": 28.7106,
+          "longitude": 77.2115,
+          "accuracy": "1"
+        },
+        {
+          "place": "Jama Masjid",
+          "latitude": 28.6455,
+          "longitude": 77.205,
+          "accuracy": "1"
+        },
+        {
+          "place": "Hauz Qazi",
+          "latitude": 28.6455,
+          "longitude": 77.205,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110007": {
+      "latitude": 28.6764,
+      "longitude": 77.2074,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Delhi University",
+          "latitude": 28.6764,
+          "longitude": 77.2074,
+          "accuracy": "3"
+        },
+        {
+          "place": "Malka Ganj",
+          "latitude": 28.6764,
+          "longitude": 77.2074,
+          "accuracy": "4"
+        },
+        {
+          "place": "C.C.I.",
+          "latitude": 28.6764,
+          "longitude": 77.2074,
+          "accuracy": "3"
+        },
+        {
+          "place": "Kamla Nagar (North Delhi)",
+          "latitude": 28.6764,
+          "longitude": 77.2074,
+          "accuracy": "3"
+        },
+        {
+          "place": "Padam Nagar (North Delhi)",
+          "latitude": 28.6764,
+          "longitude": 77.2074,
+          "accuracy": "3"
+        },
+        {
+          "place": "Gulabi Bagh",
+          "latitude": 28.6764,
+          "longitude": 77.2074,
+          "accuracy": "3"
+        },
+        {
+          "place": "Shakti Nagar (North Delhi)",
+          "latitude": 28.6764,
+          "longitude": 77.2074,
+          "accuracy": "3"
+        },
+        {
+          "place": "Roshan Ara Road",
+          "latitude": 28.6764,
+          "longitude": 77.2074,
+          "accuracy": "3"
+        },
+        {
+          "place": "Roop Nagar",
+          "latitude": 28.6764,
+          "longitude": 77.2074,
+          "accuracy": "3"
+        },
+        {
+          "place": "R.C.A.O.",
+          "latitude": 28.6764,
+          "longitude": 77.2074,
+          "accuracy": "3"
+        },
+        {
+          "place": "Rana Pratap Bagh",
+          "latitude": 28.6764,
+          "longitude": 77.2074,
+          "accuracy": "3"
+        },
+        {
+          "place": "Jawahar Nagar (North Delhi)",
+          "latitude": 28.6764,
+          "longitude": 77.2074,
+          "accuracy": "3"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110054": {
+      "latitude": 28.6921,
+      "longitude": 77.2245,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Patrachar Vidyalay",
+          "latitude": 28.6921,
+          "longitude": 77.2245,
+          "accuracy": "3"
+        },
+        {
+          "place": "Majnu ka Tila",
+          "latitude": 28.6921,
+          "longitude": 77.2245,
+          "accuracy": "3"
+        },
+        {
+          "place": "District Courts (North Delhi)",
+          "latitude": 28.6921,
+          "longitude": 77.2245,
+          "accuracy": "3"
+        },
+        {
+          "place": "Aruna Nagar",
+          "latitude": 28.6921,
+          "longitude": 77.2245,
+          "accuracy": "3"
+        },
+        {
+          "place": "Civil Lines (North Delhi)",
+          "latitude": 28.6804,
+          "longitude": 77.2263,
+          "accuracy": "4"
+        },
+        {
+          "place": "Timarpur",
+          "latitude": 28.7038,
+          "longitude": 77.2227,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110084": {
+      "latitude": 28.7486,
+      "longitude": 77.2096,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Jagatpur",
+          "latitude": 28.7414,
+          "longitude": 77.2199,
+          "accuracy": "4"
+        },
+        {
+          "place": "Burari",
+          "latitude": 28.7557,
+          "longitude": 77.1994,
+          "accuracy": "4"
+        },
+        {
+          "place": "Jharoda Majraa",
+          "latitude": 28.7486,
+          "longitude": 77.2096,
+          "accuracy": "3"
+        },
+        {
+          "place": "Wazirabad Village",
+          "latitude": 28.7486,
+          "longitude": 77.2096,
+          "accuracy": "3"
+        },
+        {
+          "place": "Nathupura Village",
+          "latitude": 28.6109,
+          "longitude": 77.214,
+          "accuracy": "3"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110032": {
+      "latitude": 28.6292,
+      "longitude": 77.298,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Babarpur (North East Delhi)",
+          "latitude": 28.6875,
+          "longitude": 77.2856,
+          "accuracy": "4"
+        },
+        {
+          "place": "Shivaji Park (East Delhi)",
+          "latitude": 28.6292,
+          "longitude": 77.298,
+          "accuracy": "3"
+        },
+        {
+          "place": "Balbir Nagar",
+          "latitude": 28.6292,
+          "longitude": 77.298,
+          "accuracy": "3"
+        },
+        {
+          "place": "Rohtash Nagar",
+          "latitude": 28.6292,
+          "longitude": 77.298,
+          "accuracy": "3"
+        },
+        {
+          "place": "Man Sarovar Park",
+          "latitude": 28.6292,
+          "longitude": 77.298,
+          "accuracy": "3"
+        },
+        {
+          "place": "Vishwas Nagar",
+          "latitude": 28.6292,
+          "longitude": 77.298,
+          "accuracy": "3"
+        },
+        {
+          "place": "Loni Road",
+          "latitude": 28.6292,
+          "longitude": 77.298,
+          "accuracy": "3"
+        },
+        {
+          "place": "Telewara",
+          "latitude": 28.6292,
+          "longitude": 77.298,
+          "accuracy": "3"
+        },
+        {
+          "place": "Distt. Court (KKD)",
+          "latitude": 28.6292,
+          "longitude": 77.298,
+          "accuracy": "3"
+        },
+        {
+          "place": "Shahdara Mandi",
+          "latitude": 28.6292,
+          "longitude": 77.298,
+          "accuracy": "3"
+        },
+        {
+          "place": "Goverdhan Bihari Colony",
+          "latitude": 28.6292,
+          "longitude": 77.298,
+          "accuracy": "3"
+        },
+        {
+          "place": "Shahdara",
+          "latitude": 28.6292,
+          "longitude": 77.298,
+          "accuracy": "4"
+        },
+        {
+          "place": "Bhola Nath Nagar",
+          "latitude": 28.6292,
+          "longitude": 77.298,
+          "accuracy": "3"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110053": {
+      "latitude": 28.6292,
+      "longitude": 77.298,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Bhajan Pura",
+          "latitude": 28.6866,
+          "longitude": 77.2732,
+          "accuracy": "3"
+        },
+        {
+          "place": "Yamuna Vihar",
+          "latitude": 28.6292,
+          "longitude": 77.298,
+          "accuracy": "4"
+        },
+        {
+          "place": "New Usmanpur",
+          "latitude": 28.6292,
+          "longitude": 77.298,
+          "accuracy": "3"
+        },
+        {
+          "place": "Garhi Mandu",
+          "latitude": 28.6292,
+          "longitude": 77.298,
+          "accuracy": "3"
+        },
+        {
+          "place": "Jafrabad (East Delhi)",
+          "latitude": 28.6292,
+          "longitude": 77.298,
+          "accuracy": "3"
+        },
+        {
+          "place": "Jagjit Nagar",
+          "latitude": 28.6292,
+          "longitude": 77.298,
+          "accuracy": "3"
+        },
+        {
+          "place": "Maujpur",
+          "latitude": 28.6292,
+          "longitude": 77.298,
+          "accuracy": "4"
+        },
+        {
+          "place": "Brahampuri",
+          "latitude": 28.6292,
+          "longitude": 77.298,
+          "accuracy": "3"
+        },
+        {
+          "place": "Seelampur",
+          "latitude": 28.6708,
+          "longitude": 77.2721,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110093": {
+      "latitude": 28.6114,
+      "longitude": 77.2982,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Sunder Nagari",
+          "latitude": 28.7077,
+          "longitude": 77.274,
+          "accuracy": "1"
+        },
+        {
+          "place": "Mandoli Saboli",
+          "latitude": 28.7077,
+          "longitude": 77.274,
+          "accuracy": "1"
+        },
+        {
+          "place": "Nand Nagri  C",
+          "latitude": 28.6114,
+          "longitude": 77.2982,
+          "accuracy": "1"
+        },
+        {
+          "place": "Harsh Vihar",
+          "latitude": 28.6114,
+          "longitude": 77.2982,
+          "accuracy": "1"
+        },
+        {
+          "place": "Nand Nagri  A",
+          "latitude": 28.6114,
+          "longitude": 77.2982,
+          "accuracy": "1"
+        },
+        {
+          "place": "Loni Road Housing Complex",
+          "latitude": 28.6114,
+          "longitude": 77.2982,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110031": {
+      "latitude": 28.6548,
+      "longitude": 77.2752,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Shastri Nagar (East Delhi)",
+          "latitude": 28.6548,
+          "longitude": 77.2752,
+          "accuracy": "3"
+        },
+        {
+          "place": "Kailash Nagar",
+          "latitude": 28.6548,
+          "longitude": 77.2752,
+          "accuracy": "3"
+        },
+        {
+          "place": "Raghubar Pura",
+          "latitude": 28.6548,
+          "longitude": 77.2752,
+          "accuracy": "3"
+        },
+        {
+          "place": "Gandhi Nagar Bazar",
+          "latitude": 28.6548,
+          "longitude": 77.2752,
+          "accuracy": "3"
+        },
+        {
+          "place": "Rajgarh Colony",
+          "latitude": 28.659,
+          "longitude": 77.2739,
+          "accuracy": "4"
+        },
+        {
+          "place": "Geeta Colony",
+          "latitude": 28.6507,
+          "longitude": 77.2764,
+          "accuracy": "4"
+        },
+        {
+          "place": "Gandhi Nagar (East Delhi)",
+          "latitude": 28.6548,
+          "longitude": 77.2752,
+          "accuracy": "3"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110051": {
+      "latitude": 28.6292,
+      "longitude": 77.298,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Krishna Nagar H.O",
+          "latitude": 28.6292,
+          "longitude": 77.298,
+          "accuracy": "1"
+        },
+        {
+          "place": "Govind Pura",
+          "latitude": 28.6292,
+          "longitude": 77.298,
+          "accuracy": "1"
+        },
+        {
+          "place": "Azad Nagar (East Delhi)",
+          "latitude": 28.6292,
+          "longitude": 77.298,
+          "accuracy": "1"
+        },
+        {
+          "place": "Ram Nagar (East Delhi)",
+          "latitude": 28.6292,
+          "longitude": 77.298,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110091": {
+      "latitude": 28.6063,
+      "longitude": 77.3045,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Chilla",
+          "latitude": 28.5957,
+          "longitude": 77.3019,
+          "accuracy": "4"
+        },
+        {
+          "place": "Patparganj",
+          "latitude": 28.609,
+          "longitude": 77.2953,
+          "accuracy": "4"
+        },
+        {
+          "place": "Kalyanpuri",
+          "latitude": 28.6142,
+          "longitude": 77.3162,
+          "accuracy": "4"
+        },
+        {
+          "place": "Trilok Puri",
+          "latitude": 28.6063,
+          "longitude": 77.3045,
+          "accuracy": "3"
+        },
+        {
+          "place": "Mayur Vihar Ph-I",
+          "latitude": 28.6063,
+          "longitude": 77.3045,
+          "accuracy": "3"
+        },
+        {
+          "place": "Kalyanvas",
+          "latitude": 28.6063,
+          "longitude": 77.3045,
+          "accuracy": "3"
+        },
+        {
+          "place": "Himmatpuri",
+          "latitude": 28.6063,
+          "longitude": 77.3045,
+          "accuracy": "3"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110092": {
+      "latitude": 28.6266,
+      "longitude": 77.2794,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Mandawali Fazalpur",
+          "latitude": 28.6266,
+          "longitude": 77.2794,
+          "accuracy": "3"
+        },
+        {
+          "place": "Laxmi Nagar (East Delhi)",
+          "latitude": 28.6266,
+          "longitude": 77.2794,
+          "accuracy": "3"
+        },
+        {
+          "place": "IP Extension",
+          "latitude": 28.6266,
+          "longitude": 77.2794,
+          "accuracy": "3"
+        },
+        {
+          "place": "Yozna Vihar",
+          "latitude": 28.6266,
+          "longitude": 77.2794,
+          "accuracy": "3"
+        },
+        {
+          "place": "Surajmal Vihar",
+          "latitude": 28.6266,
+          "longitude": 77.2794,
+          "accuracy": "3"
+        },
+        {
+          "place": "Shakarpur",
+          "latitude": 28.6266,
+          "longitude": 77.2794,
+          "accuracy": "4"
+        },
+        {
+          "place": "Nirman Vihar",
+          "latitude": 28.6266,
+          "longitude": 77.2794,
+          "accuracy": "3"
+        },
+        {
+          "place": "Anand Vihar",
+          "latitude": 28.6266,
+          "longitude": 77.2794,
+          "accuracy": "3"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110096": {
+      "latitude": 28.6114,
+      "longitude": 77.2982,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Vasundhra Enclave",
+          "latitude": 28.6114,
+          "longitude": 77.2982,
+          "accuracy": "1"
+        },
+        {
+          "place": "Mayur Vihar Ph-III",
+          "latitude": 28.6114,
+          "longitude": 77.2982,
+          "accuracy": "1"
+        },
+        {
+          "place": "Ghazipur",
+          "latitude": 28.6114,
+          "longitude": 77.2982,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110001": {
+      "latitude": 28.6431,
+      "longitude": 77.2197,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "New Delhi G.P.O.",
+          "latitude": 28.6369,
+          "longitude": 77.2183,
+          "accuracy": "3"
+        },
+        {
+          "place": "Pragati Maidan Camp",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "3"
+        },
+        {
+          "place": "Election Commission",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "3"
+        },
+        {
+          "place": "Parliament House",
+          "latitude": 28.6407,
+          "longitude": 77.2154,
+          "accuracy": "4"
+        },
+        {
+          "place": "Connaught Place",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "4"
+        },
+        {
+          "place": "Patiala House",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "3"
+        },
+        {
+          "place": "Pragati Maidan",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "3"
+        },
+        {
+          "place": "Baroda House",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "3"
+        },
+        {
+          "place": "Bengali Market",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "3"
+        },
+        {
+          "place": "Bhagat Singh Market",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "3"
+        },
+        {
+          "place": "Constitution House",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "3"
+        },
+        {
+          "place": "Janpath",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "3"
+        },
+        {
+          "place": "Supreme Court",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "3"
+        },
+        {
+          "place": "Sansad Marg H.O",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "3"
+        },
+        {
+          "place": "Lady Harding Medical College",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "3"
+        },
+        {
+          "place": "Krishi Bhawan",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "3"
+        },
+        {
+          "place": "Sansadiya Soudh",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "3"
+        },
+        {
+          "place": "Secretariat North",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "3"
+        },
+        {
+          "place": "North Avenue",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "3"
+        },
+        {
+          "place": "Rail Bhawan",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "3"
+        },
+        {
+          "place": "Shastri Bhawan",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "3"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110002": {
+      "latitude": 28.6453,
+      "longitude": 77.2456,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Civic Centre",
+          "latitude": 28.6109,
+          "longitude": 77.214,
+          "accuracy": "3"
+        },
+        {
+          "place": "Indraprastha H.O",
+          "latitude": 28.6453,
+          "longitude": 77.2456,
+          "accuracy": "3"
+        },
+        {
+          "place": "Ajmeri Gate Extn.",
+          "latitude": 28.6453,
+          "longitude": 77.2456,
+          "accuracy": "3"
+        },
+        {
+          "place": "Darya Ganj",
+          "latitude": 28.6453,
+          "longitude": 77.2456,
+          "accuracy": "4"
+        },
+        {
+          "place": "A.G.C.R.",
+          "latitude": 28.6453,
+          "longitude": 77.2456,
+          "accuracy": "3"
+        },
+        {
+          "place": "Minto Road",
+          "latitude": 28.6453,
+          "longitude": 77.2456,
+          "accuracy": "3"
+        },
+        {
+          "place": "I.P.Estate",
+          "latitude": 28.6453,
+          "longitude": 77.2456,
+          "accuracy": "3"
+        },
+        {
+          "place": "Gandhi Smarak Nidhi",
+          "latitude": 28.6453,
+          "longitude": 77.2456,
+          "accuracy": "3"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110020": {
+      "latitude": 28.5345,
+      "longitude": 77.2779,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "F F C Okhla",
+          "latitude": 28.6109,
+          "longitude": 77.214,
+          "accuracy": "3"
+        },
+        {
+          "place": "Tehkhand",
+          "latitude": 28.5345,
+          "longitude": 77.2779,
+          "accuracy": "3"
+        },
+        {
+          "place": "Okhla Industrial Area Phase-i",
+          "latitude": 28.5345,
+          "longitude": 77.2779,
+          "accuracy": "3"
+        },
+        {
+          "place": "C R R I (South Delhi)",
+          "latitude": 28.5345,
+          "longitude": 77.2779,
+          "accuracy": "3"
+        },
+        {
+          "place": "Okhla Industrial Estate",
+          "latitude": 28.5345,
+          "longitude": 77.2779,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110029": {
+      "latitude": 28.565,
+      "longitude": 77.1972,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Nauroji Nagar",
+          "latitude": 28.6109,
+          "longitude": 77.214,
+          "accuracy": "3"
+        },
+        {
+          "place": "Ansari Nagar",
+          "latitude": 28.565,
+          "longitude": 77.1972,
+          "accuracy": "3"
+        },
+        {
+          "place": "Safdarjung Enclave",
+          "latitude": 28.565,
+          "longitude": 77.1972,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110043": {
+      "latitude": 28.6032,
+      "longitude": 76.9672,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Gopal Nagar",
+          "latitude": 28.6109,
+          "longitude": 77.214,
+          "accuracy": "4"
+        },
+        {
+          "place": "Arjun Park",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "3"
+        },
+        {
+          "place": "Shyam Vihar",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "3"
+        },
+        {
+          "place": "Baprola",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "4"
+        },
+        {
+          "place": "Najafgarh",
+          "latitude": 28.6092,
+          "longitude": 76.9798,
+          "accuracy": "4"
+        },
+        {
+          "place": "Pandwala Kalan",
+          "latitude": 28.6032,
+          "longitude": 76.9672,
+          "accuracy": "3"
+        },
+        {
+          "place": "Jhatikara",
+          "latitude": 28.6032,
+          "longitude": 76.9672,
+          "accuracy": "3"
+        },
+        {
+          "place": "Surehra",
+          "latitude": 28.6032,
+          "longitude": 76.9672,
+          "accuracy": "3"
+        },
+        {
+          "place": "Dichaun Kalan",
+          "latitude": 28.6032,
+          "longitude": 76.9672,
+          "accuracy": "3"
+        },
+        {
+          "place": "Tilangpur Kotla",
+          "latitude": 28.6032,
+          "longitude": 76.9672,
+          "accuracy": "3"
+        },
+        {
+          "place": "Rewla Khanpur",
+          "latitude": 28.6032,
+          "longitude": 76.9672,
+          "accuracy": "3"
+        },
+        {
+          "place": "Papravat",
+          "latitude": 28.6032,
+          "longitude": 76.9672,
+          "accuracy": "3"
+        },
+        {
+          "place": "Dindarpur",
+          "latitude": 28.5981,
+          "longitude": 76.9916,
+          "accuracy": "4"
+        },
+        {
+          "place": "Daulatpur",
+          "latitude": 28.5466,
+          "longitude": 76.9593,
+          "accuracy": "4"
+        },
+        {
+          "place": "Kair",
+          "latitude": 28.6244,
+          "longitude": 76.9176,
+          "accuracy": "4"
+        },
+        {
+          "place": "Khaira",
+          "latitude": 28.5942,
+          "longitude": 76.9701,
+          "accuracy": "4"
+        },
+        {
+          "place": "Mitraon",
+          "latitude": 28.6062,
+          "longitude": 76.946,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110003": {
+      "latitude": 28.5947,
+      "longitude": 77.2264,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Delhi High Court",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "3"
+        },
+        {
+          "place": "Delhi High Court Extension Counter",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "3"
+        },
+        {
+          "place": "Pandara Road",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "4"
+        },
+        {
+          "place": "Aliganj (South Delhi)",
+          "latitude": 28.5838,
+          "longitude": 77.2218,
+          "accuracy": "4"
+        },
+        {
+          "place": "Safdarjung Air Port",
+          "latitude": 28.5947,
+          "longitude": 77.2264,
+          "accuracy": "3"
+        },
+        {
+          "place": "C G O Complex",
+          "latitude": 28.5947,
+          "longitude": 77.2264,
+          "accuracy": "3"
+        },
+        {
+          "place": "Golf Links",
+          "latitude": 28.5947,
+          "longitude": 77.2264,
+          "accuracy": "3"
+        },
+        {
+          "place": "Kasturba Nagar (South Delhi)",
+          "latitude": 28.5947,
+          "longitude": 77.2264,
+          "accuracy": "3"
+        },
+        {
+          "place": "Pragati Vihar",
+          "latitude": 28.5947,
+          "longitude": 77.2264,
+          "accuracy": "3"
+        },
+        {
+          "place": "Lodi Road H.O",
+          "latitude": 28.5947,
+          "longitude": 77.2264,
+          "accuracy": "3"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110004": {
+      "latitude": 28.6455,
+      "longitude": 77.205,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Rashtrapati Bhawan",
+          "latitude": 28.6455,
+          "longitude": 77.205,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110005": {
+      "latitude": 28.6551,
+      "longitude": 77.1833,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Anand Parbat Indl. Area",
+          "latitude": 28.6551,
+          "longitude": 77.1833,
+          "accuracy": "3"
+        },
+        {
+          "place": "Sat Nagar",
+          "latitude": 28.6551,
+          "longitude": 77.1833,
+          "accuracy": "3"
+        },
+        {
+          "place": "Bank Street (Central Delhi)",
+          "latitude": 28.6551,
+          "longitude": 77.1833,
+          "accuracy": "3"
+        },
+        {
+          "place": "Desh Bandhu Gupta Road",
+          "latitude": 28.6551,
+          "longitude": 77.1833,
+          "accuracy": "3"
+        },
+        {
+          "place": "Guru Gobind Singh Marg",
+          "latitude": 28.6551,
+          "longitude": 77.1833,
+          "accuracy": "3"
+        },
+        {
+          "place": "Anand Parbat",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "4"
+        },
+        {
+          "place": "Master Prithvi Nath Marg",
+          "latitude": 28.6551,
+          "longitude": 77.1833,
+          "accuracy": "3"
+        },
+        {
+          "place": "Karol Bagh",
+          "latitude": 28.6514,
+          "longitude": 77.1907,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110008": {
+      "latitude": 28.6466,
+      "longitude": 77.1701,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Patel Nagar (Central Delhi)",
+          "latitude": 28.6466,
+          "longitude": 77.1701,
+          "accuracy": "3"
+        },
+        {
+          "place": "Patel Nagar East",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "4"
+        },
+        {
+          "place": "Dada Ghosh Bhawan",
+          "latitude": 28.6466,
+          "longitude": 77.1701,
+          "accuracy": "3"
+        },
+        {
+          "place": "Patel Nagar West",
+          "latitude": 28.6466,
+          "longitude": 77.1701,
+          "accuracy": "3"
+        },
+        {
+          "place": "Patel Nagar South",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110011": {
+      "latitude": 28.6431,
+      "longitude": 77.2197,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Udyog Bhawan",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "1"
+        },
+        {
+          "place": "Nirman Bhawan",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "1"
+        },
+        {
+          "place": "South Avenue",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110012": {
+      "latitude": 28.6431,
+      "longitude": 77.2197,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "National Physical Laboratory",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "1"
+        },
+        {
+          "place": "Inderpuri",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "1"
+        },
+        {
+          "place": "I.A.R.I.",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110055": {
+      "latitude": 28.6417,
+      "longitude": 77.2132,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "A.K.Market",
+          "latitude": 28.6417,
+          "longitude": 77.2132,
+          "accuracy": "3"
+        },
+        {
+          "place": "Multani Dhanda",
+          "latitude": 28.6417,
+          "longitude": 77.2132,
+          "accuracy": "3"
+        },
+        {
+          "place": "Swami Ram Tirth Nagar",
+          "latitude": 28.6417,
+          "longitude": 77.2132,
+          "accuracy": "3"
+        },
+        {
+          "place": "Pahar Ganj",
+          "latitude": 28.6417,
+          "longitude": 77.2132,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110060": {
+      "latitude": 28.6431,
+      "longitude": 77.2197,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Rajender Nagar",
+          "latitude": 28.6431,
+          "longitude": 77.2197,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110015": {
+      "latitude": 28.6553,
+      "longitude": 77.0657,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "ESI",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "L. M. Nagar Indl. Area",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Ramesh Nagar H.O",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Zakhira",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Karam Pura",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Mansarover Garden",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Moti Nagar",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110018": {
+      "latitude": 28.6396,
+      "longitude": 77.0884,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Vishnu Garden",
+          "latitude": 28.6396,
+          "longitude": 77.0884,
+          "accuracy": "3"
+        },
+        {
+          "place": "Tilak Nagar (West Delhi)",
+          "latitude": 28.6396,
+          "longitude": 77.0884,
+          "accuracy": "4"
+        },
+        {
+          "place": "Chand Nagar",
+          "latitude": 28.6396,
+          "longitude": 77.0884,
+          "accuracy": "3"
+        },
+        {
+          "place": "Chaukhandi",
+          "latitude": 28.6396,
+          "longitude": 77.0884,
+          "accuracy": "3"
+        },
+        {
+          "place": "Vikas Puri",
+          "latitude": 28.6396,
+          "longitude": 77.0884,
+          "accuracy": "3"
+        },
+        {
+          "place": "Khyala Phase -  I",
+          "latitude": 28.6396,
+          "longitude": 77.0884,
+          "accuracy": "3"
+        },
+        {
+          "place": "Khyala Phase - II",
+          "latitude": 28.6396,
+          "longitude": 77.0884,
+          "accuracy": "3"
+        },
+        {
+          "place": "Tilak Nagar East",
+          "latitude": 28.6396,
+          "longitude": 77.0884,
+          "accuracy": "3"
+        },
+        {
+          "place": "Mahabir Nagar",
+          "latitude": 28.6396,
+          "longitude": 77.0884,
+          "accuracy": "3"
+        },
+        {
+          "place": "M.B.S. Nagar",
+          "latitude": 28.6396,
+          "longitude": 77.0884,
+          "accuracy": "3"
+        },
+        {
+          "place": "Fateh Nagar",
+          "latitude": 28.6396,
+          "longitude": 77.0884,
+          "accuracy": "3"
+        },
+        {
+          "place": "Ashok Nagar (West Delhi)",
+          "latitude": 28.6396,
+          "longitude": 77.0884,
+          "accuracy": "3"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110026": {
+      "latitude": 28.6709,
+      "longitude": 77.141,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Punjabi Bagh Sec - III",
+          "latitude": 28.6709,
+          "longitude": 77.141,
+          "accuracy": "3"
+        },
+        {
+          "place": "Shivaji Park (West Delhi)",
+          "latitude": 28.6709,
+          "longitude": 77.141,
+          "accuracy": "3"
+        },
+        {
+          "place": "Ashoka Park Extn.",
+          "latitude": 28.6709,
+          "longitude": 77.141,
+          "accuracy": "3"
+        },
+        {
+          "place": "Punjabi Bagh",
+          "latitude": 28.6709,
+          "longitude": 77.141,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110027": {
+      "latitude": 28.6553,
+      "longitude": 77.0657,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Subhash Nagar West",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Janta Market",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Rajouri Garden J-6",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Tagore Garden",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Rajouri Market",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Subhash Nagar (West Delhi)",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110041": {
+      "latitude": 28.6735,
+      "longitude": 77.014,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Kunwar Singh Nagar",
+          "latitude": 28.6735,
+          "longitude": 77.014,
+          "accuracy": "3"
+        },
+        {
+          "place": "Nilothi",
+          "latitude": 28.6735,
+          "longitude": 77.014,
+          "accuracy": "3"
+        },
+        {
+          "place": "Bakkarwala",
+          "latitude": 28.6735,
+          "longitude": 77.014,
+          "accuracy": "3"
+        },
+        {
+          "place": "Nangloi - II",
+          "latitude": 28.6735,
+          "longitude": 77.014,
+          "accuracy": "3"
+        },
+        {
+          "place": "Hirankudna",
+          "latitude": 28.6715,
+          "longitude": 76.9984,
+          "accuracy": "4"
+        },
+        {
+          "place": "Nangloi - III",
+          "latitude": 28.6735,
+          "longitude": 77.014,
+          "accuracy": "3"
+        },
+        {
+          "place": "Tikri Kalan",
+          "latitude": 28.6836,
+          "longitude": 76.9701,
+          "accuracy": "4"
+        },
+        {
+          "place": "Nilwal",
+          "latitude": 28.6673,
+          "longitude": 76.9793,
+          "accuracy": "4"
+        },
+        {
+          "place": "Nangloi",
+          "latitude": 28.6796,
+          "longitude": 77.068,
+          "accuracy": "4"
+        },
+        {
+          "place": "Ranhola",
+          "latitude": 28.6592,
+          "longitude": 77.0382,
+          "accuracy": "4"
+        },
+        {
+          "place": "Mundka",
+          "latitude": 28.6801,
+          "longitude": 77.0298,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110045": {
+      "latitude": 28.6067,
+      "longitude": 77.08795,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Durga Park",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "3"
+        },
+        {
+          "place": "Mahavir Enclave",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "3"
+        },
+        {
+          "place": "Dabri",
+          "latitude": 28.6099,
+          "longitude": 77.0865,
+          "accuracy": "4"
+        },
+        {
+          "place": "Indira Park",
+          "latitude": 28.6035,
+          "longitude": 77.0894,
+          "accuracy": "3"
+        },
+        {
+          "place": "Palam Village",
+          "latitude": 28.6035,
+          "longitude": 77.0894,
+          "accuracy": "3"
+        },
+        {
+          "place": "Nasirpur",
+          "latitude": 28.5971,
+          "longitude": 77.0923,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110058": {
+      "latitude": 28.6553,
+      "longitude": 77.0657,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "D.E.S.U. Colony",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Jail Road (West Delhi)",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Janakpuri C-4",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Janakpuri A-3",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Janakpuri B-1",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110059": {
+      "latitude": 28.6553,
+      "longitude": 77.0657,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Uttam Nagar",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Matiala",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Hastal Village",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "K-5 Extension Mohan  Garden",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Jeevan Park",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Sanjay Enclave",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "D. K. Mohan Garden",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110063": {
+      "latitude": 28.6553,
+      "longitude": 77.0657,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Paschim Vihar B Block",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Madipur Village",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Jawala Heri",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Paschim Vihar",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Madipur Slum Quarter",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110064": {
+      "latitude": 28.6553,
+      "longitude": 77.0657,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Hari Nagar BE Block",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Hari Nagar (West Delhi)",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Hari Nagar Dadb Block",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Maya Puri",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        },
+        {
+          "place": "Mayapuri Shopping Centre",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110071": {
+      "latitude": 28.5458,
+      "longitude": 77.0784,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Qutub Vihar",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "1"
+        },
+        {
+          "place": "Chhawla",
+          "latitude": 28.5458,
+          "longitude": 77.0784,
+          "accuracy": "1"
+        },
+        {
+          "place": "DC Goyla",
+          "latitude": 28.5458,
+          "longitude": 77.0784,
+          "accuracy": "1"
+        },
+        {
+          "place": "Badusarai",
+          "latitude": 28.5458,
+          "longitude": 77.0784,
+          "accuracy": "1"
+        },
+        {
+          "place": "Kangan Heri",
+          "latitude": 28.5458,
+          "longitude": 77.0784,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110073": {
+      "latitude": 28.5563,
+      "longitude": 76.8963,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Dhansa",
+          "latitude": 28.6553,
+          "longitude": 77.0657,
+          "accuracy": "4"
+        },
+        {
+          "place": "Jafarpur",
+          "latitude": 28.59,
+          "longitude": 76.9205,
+          "accuracy": "4"
+        },
+        {
+          "place": "Ghuman Hera",
+          "latitude": 28.5563,
+          "longitude": 76.8963,
+          "accuracy": "3"
+        },
+        {
+          "place": "Mundela Kalan",
+          "latitude": 28.5563,
+          "longitude": 76.8963,
+          "accuracy": "3"
+        },
+        {
+          "place": "Issapur",
+          "latitude": 28.5563,
+          "longitude": 76.8963,
+          "accuracy": "3"
+        },
+        {
+          "place": "Malik Pur",
+          "latitude": 28.5563,
+          "longitude": 76.8963,
+          "accuracy": "3"
+        },
+        {
+          "place": "Ujwa",
+          "latitude": 28.5563,
+          "longitude": 76.8963,
+          "accuracy": "3"
+        },
+        {
+          "place": "Khera Dabur",
+          "latitude": 28.5563,
+          "longitude": 76.8963,
+          "accuracy": "3"
+        },
+        {
+          "place": "Galib Pur",
+          "latitude": 28.5563,
+          "longitude": 76.8963,
+          "accuracy": "3"
+        },
+        {
+          "place": "Quazipur",
+          "latitude": 28.5563,
+          "longitude": 76.8963,
+          "accuracy": "3"
+        },
+        {
+          "place": "Raota",
+          "latitude": 28.5232,
+          "longitude": 76.9019,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110010": {
+      "latitude": 28.5724,
+      "longitude": 77.0274,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Kirby Place",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "3"
+        },
+        {
+          "place": "505 A B Workshop",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "3"
+        },
+        {
+          "place": "Bazar Road",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "3"
+        },
+        {
+          "place": "A F Palam",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "3"
+        },
+        {
+          "place": "Signal Enclave",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "3"
+        },
+        {
+          "place": "Dhaula Kuan",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "4"
+        },
+        {
+          "place": "Subroto Park",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "3"
+        },
+        {
+          "place": "Station Road (South West Delhi)",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "3"
+        },
+        {
+          "place": "R R Hospital",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "3"
+        },
+        {
+          "place": "Pinto Park",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "3"
+        },
+        {
+          "place": "Delhi Cantt",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "3"
+        },
+        {
+          "place": "C.V.D.",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "3"
+        },
+        {
+          "place": "COD (South West Delhi)",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "3"
+        },
+        {
+          "place": "Aps Colony",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "3"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110016": {
+      "latitude": 28.5531,
+      "longitude": 77.1916,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Hauz Khas Market",
+          "latitude": 28.5531,
+          "longitude": 77.1916,
+          "accuracy": "3"
+        },
+        {
+          "place": "Technology Bhawan",
+          "latitude": 28.5531,
+          "longitude": 77.1916,
+          "accuracy": "3"
+        },
+        {
+          "place": "Green Park Market",
+          "latitude": 28.5531,
+          "longitude": 77.1916,
+          "accuracy": "3"
+        },
+        {
+          "place": "NIE Campus",
+          "latitude": 28.5531,
+          "longitude": 77.1916,
+          "accuracy": "3"
+        },
+        {
+          "place": "Hauz Khas",
+          "latitude": 28.5531,
+          "longitude": 77.1916,
+          "accuracy": "4"
+        },
+        {
+          "place": "IT Hauz Khas",
+          "latitude": 28.5531,
+          "longitude": 77.1916,
+          "accuracy": "3"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110021": {
+      "latitude": 28.5818,
+      "longitude": 77.1793,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Moti Bagh",
+          "latitude": 28.5818,
+          "longitude": 77.1793,
+          "accuracy": "4"
+        },
+        {
+          "place": "Malcha Marg",
+          "latitude": 28.5818,
+          "longitude": 77.1793,
+          "accuracy": "3"
+        },
+        {
+          "place": "Chanakya Puri",
+          "latitude": 28.5818,
+          "longitude": 77.1793,
+          "accuracy": "3"
+        },
+        {
+          "place": "South Delhi Campus",
+          "latitude": 28.5818,
+          "longitude": 77.1793,
+          "accuracy": "3"
+        },
+        {
+          "place": "Nanak Pura",
+          "latitude": 28.5818,
+          "longitude": 77.1793,
+          "accuracy": "3"
+        },
+        {
+          "place": "Anand Niketan",
+          "latitude": 28.5818,
+          "longitude": 77.1793,
+          "accuracy": "3"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110022": {
+      "latitude": 28.5724,
+      "longitude": 77.0274,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "R K Puram Sect-4",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        },
+        {
+          "place": "R K Puram Sect-1",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        },
+        {
+          "place": "R K Puram Sect-5",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        },
+        {
+          "place": "R K Puram Sect7",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        },
+        {
+          "place": "R K Puram Sect-8",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        },
+        {
+          "place": "R K Puram Sect-12",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        },
+        {
+          "place": "R K Puram Sect-3",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        },
+        {
+          "place": "R K Puram Sector - 6 Postal SB",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110023": {
+      "latitude": 28.5724,
+      "longitude": 77.0274,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Kidwai Nagar East",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        },
+        {
+          "place": "Sarojini Nagar H.O",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        },
+        {
+          "place": "Kidwai Nagar West",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        },
+        {
+          "place": "Netaji Nagar (South West Delhi)",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        },
+        {
+          "place": "Laxmi Bai Nagar",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110028": {
+      "latitude": 28.5724,
+      "longitude": 77.0274,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Naraina Industrial Estate H.O",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        },
+        {
+          "place": "Naraina Village",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110030": {
+      "latitude": 28.5724,
+      "longitude": 77.0274,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Ghitorni",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "3"
+        },
+        {
+          "place": "Lado Sarai",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "4"
+        },
+        {
+          "place": "Gadaipur",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "3"
+        },
+        {
+          "place": "T B Hospital",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "3"
+        },
+        {
+          "place": "Sultanpur",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "3"
+        },
+        {
+          "place": "Paryavaran Complex",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "3"
+        },
+        {
+          "place": "Mehrauli",
+          "latitude": 28.52,
+          "longitude": 77.1803,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110037": {
+      "latitude": 28.548,
+      "longitude": 77.1133,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Gurgaon Road",
+          "latitude": 28.548,
+          "longitude": 77.1133,
+          "accuracy": "3"
+        },
+        {
+          "place": "IGI Airport",
+          "latitude": 28.548,
+          "longitude": 77.1133,
+          "accuracy": "3"
+        },
+        {
+          "place": "Palam Airport",
+          "latitude": 28.548,
+          "longitude": 77.1133,
+          "accuracy": "3"
+        },
+        {
+          "place": "Mahipalpur",
+          "latitude": 28.5437,
+          "longitude": 77.1282,
+          "accuracy": "4"
+        },
+        {
+          "place": "Nangal Dewat",
+          "latitude": 28.5522,
+          "longitude": 77.0984,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110038": {
+      "latitude": 28.5724,
+      "longitude": 77.0274,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Rajokari",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        },
+        {
+          "place": "A F Rajokari",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110046": {
+      "latitude": 28.6007,
+      "longitude": 77.1087,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Nangal Raya",
+          "latitude": 28.6093,
+          "longitude": 77.1118,
+          "accuracy": "4"
+        },
+        {
+          "place": "Sagarpur",
+          "latitude": 28.5921,
+          "longitude": 77.1056,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110047": {
+      "latitude": 28.5724,
+      "longitude": 77.0274,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Mandi",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        },
+        {
+          "place": "Jaunapur",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        },
+        {
+          "place": "Aya Nagar",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        },
+        {
+          "place": "Arjungarh",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110057": {
+      "latitude": 28.5724,
+      "longitude": 77.0274,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Vasant Vihar-2",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        },
+        {
+          "place": "Vasant Vihar-1",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110061": {
+      "latitude": 28.5346,
+      "longitude": 77.0536,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Bijwasan",
+          "latitude": 28.5346,
+          "longitude": 77.0536,
+          "accuracy": "4"
+        },
+        {
+          "place": "Shahbad Mohammadpur",
+          "latitude": 28.5346,
+          "longitude": 77.0536,
+          "accuracy": "3"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110066": {
+      "latitude": 28.5724,
+      "longitude": 77.0274,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "R K Puram (Main)",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        },
+        {
+          "place": "R K Puram West",
+          "latitude": 28.5724,
+          "longitude": 77.0274,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110067": {
+      "latitude": 28.5553,
+      "longitude": 77.1743,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "JNU New Campus",
+          "latitude": 28.5553,
+          "longitude": 77.1743,
+          "accuracy": "3"
+        },
+        {
+          "place": "J.N.U.",
+          "latitude": 28.5553,
+          "longitude": 77.1743,
+          "accuracy": "3"
+        },
+        {
+          "place": "Munirka",
+          "latitude": 28.5553,
+          "longitude": 77.1743,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110072": {
+      "latitude": 28.6526,
+      "longitude": 76.9521,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "CRPF Jharoda Kalan",
+          "latitude": 28.6526,
+          "longitude": 76.9521,
+          "accuracy": "3"
+        },
+        {
+          "place": "Jharoda Kalan",
+          "latitude": 28.6526,
+          "longitude": 76.9521,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110013": {
+      "latitude": 28.5878,
+      "longitude": 77.2541,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Hazrat Nizamuddin",
+          "latitude": 28.5878,
+          "longitude": 77.2541,
+          "accuracy": "4"
+        },
+        {
+          "place": "Dargah Sharif",
+          "latitude": 28.5878,
+          "longitude": 77.2541,
+          "accuracy": "3"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110014": {
+      "latitude": 28.5014,
+      "longitude": 77.2274,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Hari Nagar Ashram",
+          "latitude": 28.5014,
+          "longitude": 77.2274,
+          "accuracy": "1"
+        },
+        {
+          "place": "Jeevan Nagar",
+          "latitude": 28.5014,
+          "longitude": 77.2274,
+          "accuracy": "1"
+        },
+        {
+          "place": "Jungpura",
+          "latitude": 28.5014,
+          "longitude": 77.2274,
+          "accuracy": "1"
+        },
+        {
+          "place": "Pratap Market",
+          "latitude": 28.5014,
+          "longitude": 77.2274,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110017": {
+      "latitude": 28.5189,
+      "longitude": 77.2131,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Saket (South Delhi)",
+          "latitude": 28.5189,
+          "longitude": 77.2131,
+          "accuracy": "4"
+        },
+        {
+          "place": "South Malviya Nagar",
+          "latitude": 28.5189,
+          "longitude": 77.2131,
+          "accuracy": "3"
+        },
+        {
+          "place": "Pushp Vihar",
+          "latitude": 28.5189,
+          "longitude": 77.2131,
+          "accuracy": "3"
+        },
+        {
+          "place": "Distt. Court Complex,Saket",
+          "latitude": 28.5189,
+          "longitude": 77.2131,
+          "accuracy": "3"
+        },
+        {
+          "place": "Sarvodya Enclave",
+          "latitude": 28.5189,
+          "longitude": 77.2131,
+          "accuracy": "3"
+        },
+        {
+          "place": "Panchsheel Enclave",
+          "latitude": 28.5189,
+          "longitude": 77.2131,
+          "accuracy": "3"
+        },
+        {
+          "place": "MMTC/STC Colony",
+          "latitude": 28.5189,
+          "longitude": 77.2131,
+          "accuracy": "3"
+        },
+        {
+          "place": "Malviya Nagar (South Delhi)",
+          "latitude": 28.5189,
+          "longitude": 77.2131,
+          "accuracy": "3"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110019": {
+      "latitude": 28.5014,
+      "longitude": 77.2274,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Kalkaji H.O",
+          "latitude": 28.5014,
+          "longitude": 77.2274,
+          "accuracy": "1"
+        },
+        {
+          "place": "Alaknanda",
+          "latitude": 28.5014,
+          "longitude": 77.2274,
+          "accuracy": "1"
+        },
+        {
+          "place": "Nehru Place",
+          "latitude": 28.5014,
+          "longitude": 77.2274,
+          "accuracy": "1"
+        },
+        {
+          "place": "Chittranjan Park",
+          "latitude": 28.5014,
+          "longitude": 77.2274,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110024": {
+      "latitude": 28.5724,
+      "longitude": 77.2365,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Amar Colony",
+          "latitude": 28.5724,
+          "longitude": 77.2365,
+          "accuracy": "3"
+        },
+        {
+          "place": "Lajpat Nagar (South Delhi)",
+          "latitude": 28.5733,
+          "longitude": 77.2402,
+          "accuracy": "4"
+        },
+        {
+          "place": "Krishna Market",
+          "latitude": 28.5724,
+          "longitude": 77.2365,
+          "accuracy": "3"
+        },
+        {
+          "place": "Defence Colony (South Delhi)",
+          "latitude": 28.5714,
+          "longitude": 77.2327,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110025": {
+      "latitude": 28.5672,
+      "longitude": 77.2725,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "New Friends Colony",
+          "latitude": 28.5672,
+          "longitude": 77.2725,
+          "accuracy": "4"
+        },
+        {
+          "place": "Zakir Nagar",
+          "latitude": 28.5672,
+          "longitude": 77.2725,
+          "accuracy": "3"
+        },
+        {
+          "place": "Sukhdev Vihar",
+          "latitude": 28.5672,
+          "longitude": 77.2725,
+          "accuracy": "3"
+        },
+        {
+          "place": "Jamia Nagar",
+          "latitude": 28.5672,
+          "longitude": 77.2725,
+          "accuracy": "3"
+        },
+        {
+          "place": "Abul Fazal Enclave-I",
+          "latitude": 28.5672,
+          "longitude": 77.2725,
+          "accuracy": "3"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110044": {
+      "latitude": 28.5027,
+      "longitude": 77.3084,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Tugalkabad",
+          "latitude": 28.5027,
+          "longitude": 77.3084,
+          "accuracy": "3"
+        },
+        {
+          "place": "Pul Pahladpur",
+          "latitude": 28.5027,
+          "longitude": 77.3084,
+          "accuracy": "3"
+        },
+        {
+          "place": "Jaitpur",
+          "latitude": 28.5027,
+          "longitude": 77.3084,
+          "accuracy": "3"
+        },
+        {
+          "place": "Molarband",
+          "latitude": 28.5029,
+          "longitude": 77.3144,
+          "accuracy": "4"
+        },
+        {
+          "place": "Badarpur (South Delhi)",
+          "latitude": 28.5025,
+          "longitude": 77.3024,
+          "accuracy": "4"
+        },
+        {
+          "place": "BTPS (South Delhi)",
+          "latitude": 28.5027,
+          "longitude": 77.3084,
+          "accuracy": "3"
+        },
+        {
+          "place": "Lal Kuan",
+          "latitude": 28.5027,
+          "longitude": 77.3084,
+          "accuracy": "3"
+        },
+        {
+          "place": "Jaitpur (South Delhi)",
+          "latitude": 28.5027,
+          "longitude": 77.3084,
+          "accuracy": "3"
+        },
+        {
+          "place": "Tugalkabad Railway Colony",
+          "latitude": 28.5027,
+          "longitude": 77.3084,
+          "accuracy": "3"
+        },
+        {
+          "place": "Meethapur",
+          "latitude": 28.5027,
+          "longitude": 77.3084,
+          "accuracy": "3"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110048": {
+      "latitude": 28.5614,
+      "longitude": 77.2384,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Masjid Moth",
+          "latitude": 28.5638,
+          "longitude": 77.2236,
+          "accuracy": "4"
+        },
+        {
+          "place": "Greater Kailash",
+          "latitude": 28.5614,
+          "longitude": 77.2384,
+          "accuracy": "3"
+        },
+        {
+          "place": "Kailash Colony",
+          "latitude": 28.5589,
+          "longitude": 77.2531,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110049": {
+      "latitude": 28.5014,
+      "longitude": 77.2274,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Sadiq Nagar",
+          "latitude": 28.5014,
+          "longitude": 77.2274,
+          "accuracy": "1"
+        },
+        {
+          "place": "New Delhi South Ext-II",
+          "latitude": 28.5014,
+          "longitude": 77.2274,
+          "accuracy": "1"
+        },
+        {
+          "place": "Gautam Nagar",
+          "latitude": 28.5014,
+          "longitude": 77.2274,
+          "accuracy": "1"
+        },
+        {
+          "place": "Gulmohar Park",
+          "latitude": 28.5014,
+          "longitude": 77.2274,
+          "accuracy": "1"
+        },
+        {
+          "place": "Andrewsganj",
+          "latitude": 28.5014,
+          "longitude": 77.2274,
+          "accuracy": "1"
+        },
+        {
+          "place": "Sahpurjat",
+          "latitude": 28.5014,
+          "longitude": 77.2274,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110062": {
+      "latitude": 28.508,
+      "longitude": 77.2294,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Deoli",
+          "latitude": 28.5025,
+          "longitude": 77.2312,
+          "accuracy": "4"
+        },
+        {
+          "place": "Air Force Station Tugalkabad",
+          "latitude": 28.508,
+          "longitude": 77.2294,
+          "accuracy": "3"
+        },
+        {
+          "place": "Khanpur (South Delhi)",
+          "latitude": 28.5136,
+          "longitude": 77.2275,
+          "accuracy": "4"
+        },
+        {
+          "place": "Hamdard Nagar",
+          "latitude": 28.508,
+          "longitude": 77.2294,
+          "accuracy": "3"
+        },
+        {
+          "place": "Dakshinpuri Phase-II",
+          "latitude": 28.508,
+          "longitude": 77.2294,
+          "accuracy": "3"
+        },
+        {
+          "place": "Talimabad",
+          "latitude": 28.508,
+          "longitude": 77.2294,
+          "accuracy": "3"
+        },
+        {
+          "place": "Dr. Ambedkar Nagar (South Delhi)",
+          "latitude": 28.508,
+          "longitude": 77.2294,
+          "accuracy": "3"
+        },
+        {
+          "place": "BSF Camp Tigri",
+          "latitude": 28.508,
+          "longitude": 77.2294,
+          "accuracy": "3"
+        },
+        {
+          "place": "Dakshinpuri Phase-III",
+          "latitude": 28.508,
+          "longitude": 77.2294,
+          "accuracy": "3"
+        },
+        {
+          "place": "Dakshinpuri Phase-I",
+          "latitude": 28.508,
+          "longitude": 77.2294,
+          "accuracy": "3"
+        },
+        {
+          "place": "Pushpa Bhawan",
+          "latitude": 28.508,
+          "longitude": 77.2294,
+          "accuracy": "3"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "110065": {
+      "latitude": 28.5619,
+      "longitude": 77.2553,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Sant Nagar (South Delhi)",
+          "latitude": 28.5619,
+          "longitude": 77.2553,
+          "accuracy": "3"
+        },
+        {
+          "place": "East Of Kailash",
+          "latitude": 28.5589,
+          "longitude": 77.2531,
+          "accuracy": "4"
+        },
+        {
+          "place": "Sriniwaspuri",
+          "latitude": 28.565,
+          "longitude": 77.2574,
+          "accuracy": "4"
+        },
+        {
+          "place": "Nehru Nagar (South Delhi)",
+          "latitude": 28.5619,
+          "longitude": 77.2553,
+          "accuracy": "3"
+        },
+        {
+          "place": "East Of Kailash Phase-I",
+          "latitude": 28.5619,
+          "longitude": 77.2553,
+          "accuracy": "3"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "160055": {
+      "latitude": 30.86935,
+      "longitude": 76.61525,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Daon",
+          "latitude": 31.0624,
+          "longitude": 76.4894,
+          "accuracy": "1"
+        },
+        {
+          "place": "Balongi",
+          "latitude": 31.0624,
+          "longitude": 76.4894,
+          "accuracy": "1"
+        },
+        {
+          "place": "Chandigarh Sector 55",
+          "latitude": 30.6763,
+          "longitude": 76.7411,
+          "accuracy": "1"
+        },
+        {
+          "place": "Chandigarh Sector 56",
+          "latitude": 30.6763,
+          "longitude": 76.7411,
+          "accuracy": "1"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "600001": {
+      "latitude": 13.0914,
+      "longitude": 80.2828,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Mint Building",
+          "latitude": 13.0914,
+          "longitude": 80.2828,
+          "accuracy": "3"
+        },
+        {
+          "place": "Flower Bazaar",
+          "latitude": 13.0914,
+          "longitude": 80.2828,
+          "accuracy": "3"
+        },
+        {
+          "place": "Govt Stanley Hospital",
+          "latitude": 13.0914,
+          "longitude": 80.2828,
+          "accuracy": "3"
+        },
+        {
+          "place": "Mannady (Chennai)",
+          "latitude": 13.093,
+          "longitude": 80.2882,
+          "accuracy": "4"
+        },
+        {
+          "place": "Sowcarpet",
+          "latitude": 13.0898,
+          "longitude": 80.2775,
+          "accuracy": "4"
+        },
+        {
+          "place": "Chennai G.P.O.",
+          "latitude": 13.0914,
+          "longitude": 80.2828,
+          "accuracy": "3"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    },
+    "600002": {
+      "latitude": 13.0744,
+      "longitude": 80.2714,
+      "source": "https://www.geonames.org/postal-codes/IN/",
+      "source_rows": [
+        {
+          "place": "Anna Road H.O",
+          "latitude": 13.0744,
+          "longitude": 80.2714,
+          "accuracy": "3"
+        },
+        {
+          "place": "Madras Electricity System",
+          "latitude": 13.0744,
+          "longitude": 80.2714,
+          "accuracy": "3"
+        },
+        {
+          "place": "Chintadripet",
+          "latitude": 13.0744,
+          "longitude": 80.2714,
+          "accuracy": "4"
+        }
+      ],
+      "method": "Median of GeoNames estimated postal-place coordinates; not a surveyed boundary or an official centroid."
+    }
+  },
+  "missing_pincodes": [
+    "160021",
+    "160035"
+  ]
+}

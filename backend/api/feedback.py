@@ -71,4 +71,8 @@ def route_complaint(identifier:str,body:Routing,actor:str=Depends(admin)):
     require_record(actor,repo.get('complaint',identifier));return repo.route_complaint(identifier,body.locality,body.note,actor)
 @router.get('/audit')
 def audit(actor:str=Depends(admin)):
+    from backend.scope import current
+    if current():
+        from backend.db.connection import connection
+        with connection() as db:return [dict(row) for row in db.execute('SELECT * FROM audit WHERE actor=? ORDER BY id DESC LIMIT 500',(actor,))]
     supervisor(actor);return repo.audit()

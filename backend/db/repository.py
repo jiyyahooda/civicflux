@@ -16,8 +16,14 @@ def initialize():
     initialize_resources()
     from backend.db.municipal import migrate
     migrate()
+    from backend.services.complaint_email import initialize as initialize_mail
+    initialize_mail()
+    from backend.db.areas import migrate as migrate_areas
+    migrate_areas()
 
 def append(kind, body, actor='civilian', event='created'):
+    from backend.scope import bind
+    body=bind(body)
     item = {**body, 'id':str(uuid4()), 'created':now()}
     with connection() as db:
         db.execute('INSERT INTO records VALUES (?,?,?,?)', (item['id'], kind, item['created'], json.dumps(item, allow_nan=False)))
@@ -26,9 +32,15 @@ def append(kind, body, actor='civilian', event='created'):
 
 def all_records(kind):
     with connection() as db:
+        from backend.scope import current
+        scope=current()
+        if scope:return [json.loads(r['body']) for r in db.execute("SELECT body FROM records WHERE kind=? AND json_extract(body,'$.city_id')=? AND coalesce(json_extract(body,'$.pincode'),json_extract(body,'$.postal_code'),json_extract(body,'$.inputs.pincode'))=? ORDER BY created DESC",(kind,scope['city_id'],scope['pincode']))]
         return [json.loads(r['body']) for r in db.execute('SELECT body FROM records WHERE kind=? ORDER BY created DESC',(kind,))]
 
 def record_scenario_review(identifier, body, actor):
+    scenario_scope=get('scenario',identifier)
+    from backend.scope import pin_of
+    body={**body,'city_id':scenario_scope['city_id'],'pincode':pin_of(scenario_scope)}
     """Persist the review and visible scenario status atomically, never approval."""
     states={'pending':'pending','defer':'deferred','reject':'rejected'}
     if body['decision'] not in states or body.get('dispatch_allowed') is not False:
@@ -48,10 +60,12 @@ def record_scenario_review(identifier, body, actor):
 
 def get(kind, identifier):
     with connection() as db: row=db.execute('SELECT body FROM records WHERE kind=? AND id=?',(kind,identifier)).fetchone()
-    if row is None: raise HTTPException(404, 'Record not found')
+    from backend.scope import allows
+    if row is None or not allows(json.loads(row['body'])): raise HTTPException(404, 'Record not found')
     return json.loads(row['body'])
 
 def update_complaint(identifier, status, note, actor):
+    get('complaint',identifier)
     with connection() as db:
         db.execute('BEGIN IMMEDIATE')
         row=db.execute("SELECT body FROM records WHERE kind='complaint' AND id=?",(identifier,)).fetchone()
@@ -68,6 +82,7 @@ def audit():
     with connection() as db: return [dict(r) for r in db.execute('SELECT * FROM audit ORDER BY id DESC LIMIT 500')]
 
 def route_complaint(identifier,locality,note,actor):
+    get('complaint',identifier)
     from backend.services.authority_service import assign
     original=get('complaint',identifier)
     routing=assign(original['city_id'],locality)
@@ -83,6 +98,9 @@ def route_complaint(identifier,locality,note,actor):
 
 
 def revise(kind, identifier, changes, actor, event):
+    get(kind,identifier)
+    from backend.scope import bind
+    changes=bind(changes)
     with connection() as db:
         db.execute('BEGIN IMMEDIATE')
         row=db.execute('SELECT body FROM records WHERE kind=? AND id=?',(kind,identifier)).fetchone()

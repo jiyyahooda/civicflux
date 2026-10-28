@@ -20,9 +20,9 @@ uploaded. It never retrains models or copies your local database/photos.
 2. Choose **New > Blueprint** and select `jiyyahooda/civicflux`, branch `main`.
    Render reads `render.yaml`. Alternatively choose **New > Web Service**, the
    same repository, **Docker** language and root `Dockerfile`.
-3. Enter `CIVICFLUX_ADMIN_PASSWORD`, `VITE_GOOGLE_MAPS_API_KEY` (a browser key
+3. Enter `VITE_GOOGLE_MAPS_API_KEY` (a browser key
    restricted to Maps JavaScript API), and `WAQI_API_TOKEN` when prompted.
-   The administrator ID is `admin`. No secrets are committed to this configuration.
+   Area login is `admin` plus a listed six-digit postal PIN; the previous `001` login is retired. No secrets are committed to this configuration.
    Optional `OPENWEATHERMAP_API_KEY` can be added in Environment for rain tiles.
 4. Keep the Docker command unset: the image already runs
    `python -m uvicorn backend.main:app --host 0.0.0.0 --port $PORT` (8001 locally).
@@ -50,9 +50,9 @@ For durable records, choose a paid instance with sufficient memory, attach a
 persistent disk at `/var/data`, and set `CIVICFLUX_DB=/var/data/civicflux.sqlite3`.
 Uploads are automatically stored beside it at `/var/data/uploads`. Update the
 Blueprint as well if you manage this service through it. A new disk starts empty:
-no private local records are transferred automatically. Set the initial admin
-credential before first boot; changing the environment password later does not
-reset an existing database account. Use the account-management tools for that.
+no private local records are transferred automatically. Area accounts are seeded
+from the committed postal reference. Use scripts/provision_admin.py on the trusted
+server console to activate or deactivate an area.
 
 ## Data and feature availability
 

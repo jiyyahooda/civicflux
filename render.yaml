@@ -10,10 +10,6 @@ services:
     dockerContext: .
     healthCheckPath: /api/health
     envVars:
-      - key: CIVICFLUX_ADMIN_ID
-        value: admin
-      - key: CIVICFLUX_ADMIN_PASSWORD
-        sync: false
       - key: VITE_GOOGLE_MAPS_API_KEY
         sync: false
       - key: WAQI_API_TOKEN

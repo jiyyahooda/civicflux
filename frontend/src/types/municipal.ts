@@ -1,6 +1,6 @@
 import type {Scenario,Allocation,Candidate} from './api';
 import type {Reservation,PlanReview} from './operational';
-export type AdminProfile={id:string;username:string;display_name:string;role:string;cities:string[];assignments:{pincode:string;city_id:string;locality_name:string}[]};
+export type AdminProfile={pincode?:string;area_name?:string;city_id?:string;latitude?:number|null;longitude?:number|null;coordinate_source?:string;id:string;username:string;display_name:string;role:string;cities:string[];assignments:{pincode:string;city_id:string;locality_name:string}[]};
 export type Pin={pincode:string;city_id:string;locality_name:string;source:string;jurisdiction_note:string};
 export type Budget={id:string;city_id:string;pincode:string;pool_id:string;budget:number;severity_weight:number;population_weight:number;fiscal_year:string;source_ref:string};
 export type LocalCandidate=Pick<Candidate,'case_id'|'node_id'|'cost'|'duration_hours'|'pumps_required'|'crew_type'>&{title:string;required_crews:number;required_workers:number;required_vehicles:number;reason:string;affected_people_count:number|null;damage_priority:string};

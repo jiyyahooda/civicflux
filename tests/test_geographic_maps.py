@@ -3,17 +3,19 @@ from backend.integrations.waqi import normalize_stations
 from backend.graph import dependencies
 from backend.db.connection import connection
 
-def test_demo_geography_retains_real_reference_and_synthetic_asset_scope(client):
+def test_demo_geography_retains_real_reference_and_synthetic_asset_scope(admin_client):
+ client=admin_client
  body=client.get('/api/maps/geography/delhi').json()
  assert body['status']=='available' and body['synthetic'] and body['real_incidents'] is False
  assert len(body['sources'])==8 and len(body['assets'])==40
  graph=dependencies()
  assert body['graph_fingerprint']==graph['fingerprint']
  assert {a['id'] for a in body['assets']}=={n['id'] for n in graph['nodes']}
- assert all(a['synthetic'] and 'not a surveyed' in a['location_status'] for a in body['assets'])
+ assert all(a['synthetic'] and a['pincode']=='110001' for a in body['assets'])
+ assert body['reference']['features']==[]
  assert all(f['properties']['condition']=='unknown' and f['properties']['source_url'].startswith('https://www.openstreetmap.org/') for f in body['reference']['features'])
- assert client.get('/api/maps/geography/chennai').json()['status']=='unavailable'
- assert client.get('/api/maps/geography/unknown').status_code==404
+ assert client.get('/api/maps/geography/chennai').status_code==403
+ assert client.get('/api/maps/geography/unknown').status_code==403
 
 def test_station_parser_rejects_missing_values_invalid_positions_and_duplicates():
  row={'uid':1,'lat':28.6,'lon':77.2,'aqi':'147','station':{'name':'Test station','time':'2026-10-28 00:00:00'}}
@@ -67,7 +69,8 @@ def test_precipitation_configuration_and_bounded_tiles_do_not_expose_key(client,
  assert client.get('/api/maps/rain-tiles/30/1/1.png').status_code==422
 
 
-def test_scenario_download_carries_only_declared_simulation_inputs(client):
+def test_scenario_download_carries_only_declared_simulation_inputs(admin_client):
+ client=admin_client
  response=client.get('/api/maps/geography/delhi/download?rain_mm=120&blockage=0.7&volume=1500&capacity=1200&outages=pump_0,drainage_1')
  assert response.status_code==200 and 'attachment' in response.headers['content-disposition']
  body=response.json();assert body['synthetic'] and body['real_incidents'] is False

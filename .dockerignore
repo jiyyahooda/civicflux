@@ -25,3 +25,5 @@ data/raw
 PACKAGE-MANIFEST.json
 PACKAGED-LINKS.json
 reports/targeted_review/original_notebooks
+
+reports/area-portal/unassigned-records.json

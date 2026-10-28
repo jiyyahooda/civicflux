@@ -38,13 +38,15 @@ def context(identifier):
     from backend.api.references import reference
     from backend.api.resources import pools_for
     snapshots=json.loads((CONFIG/'official_notices.json').read_text(encoding='utf-8'))
-    notices=[n for n in [*repo.all_records('civic_notice'),*snapshots] if n['city_id']==identifier and active(n)]
-    inventory=[n for n in repo.all_records('resource_inventory') if n['city_id']==identifier and active(n)]
+    from backend.scope import allows
+    notices=[n for n in [*repo.all_records('civic_notice'),*snapshots] if n['city_id']==identifier and active(n) and allows(n)]
+    inventory=[n for n in repo.all_records('resource_inventory') if n['city_id']==identifier and active(n) and allows(n)]
     publications=[n for n in repo.all_records('publication') if n['city_id']==identifier]
     reports=[n for n in repo.all_records('complaint') if n['city_id']==identifier]
     confirmed=[n for n in reports if n.get('validation')=='valid' and n['status']!='closed']
-    return {'city_id':identifier,'city_name':configuration['name'],'checked_at':repo.now(),
-      'reference':reference(identifier), 'operational_pools':pools_for(identifier,public=True),
+    from backend.scope import current
+    return {'pincode':current()['pincode'] if current() else None,'city_id':identifier,'city_name':configuration['name'],'checked_at':repo.now(),
+      'reference':None if current() else reference(identifier), 'operational_pools':pools_for(identifier,public=True),
       'sources':SOURCES[identifier], 'notices':notices, 'publications':publications,
       'inventory':inventory[:1], 'confirmed_active_count':len(confirmed),
       'official_notices_status':'approved_imports_only',

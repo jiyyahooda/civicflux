@@ -9,8 +9,9 @@ DAILY=['temperature_2m_max','temperature_2m_min','precipitation_sum','precipitat
 
 async def weather(identifier):
  c=city(identifier); ref=c['map_reference']
- base={'city_id':identifier,'provider':'Open-Meteo Weather','source_url':'https://open-meteo.com/en/docs', 'attribution':'Weather data by Open-Meteo.com · CC BY 4.0','checked_at':datetime.now(timezone.utc).isoformat(),'resolution_note':'One provider grid near the city reference; no neighbourhood rainfall coverage is implied.'}
+ base={'pincode':c.get('pincode'),'city_id':identifier,'provider':'Open-Meteo Weather','source_url':'https://open-meteo.com/en/docs', 'attribution':'Weather data by Open-Meteo.com · CC BY 4.0','checked_at':datetime.now(timezone.utc).isoformat(),'resolution_note':'One provider grid near the city reference; no neighbourhood rainfall coverage is implied.'}
  try:
+  if not ref:raise ValueError('Postal reference coordinates unavailable')
   if os.getenv('CIVICFLUX_PUBLIC_FEEDS','1')!='1':raise ValueError('Provider requests are disabled')
   p,stamp,warning=await fetch_json(URL,params={'latitude':ref['latitude'],'longitude':ref['longitude'],'current':','.join(CURRENT),'daily':','.join(DAILY),'hourly':'precipitation,temperature_2m','forecast_days':7,'timezone':c['timezone']},ttl=900)
   if p.get('timezone')!=c['timezone'] or abs(p['latitude']-ref['latitude'])>1 or abs(p['longitude']-ref['longitude'])>1:raise ValueError('Weather location could not be verified')

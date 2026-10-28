@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Literal
 from uuid import uuid4
 import math
-from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
+from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile, Request
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field, model_validator, ConfigDict
 from PIL import Image, ImageOps, UnidentifiedImageError
@@ -41,7 +41,7 @@ def reports(city_id:str):
     return [public_report(item) for item in repo.all_records('complaint') if item['city_id']==city_id]
 
 @router.post('/reports',status_code=201)
-async def submit_report(city_id:str=Form(...), title:str=Form(...,min_length=3,max_length=120), category:str=Form(...), location:str=Form(...,min_length=3,max_length=200), description:str=Form(...,min_length=8,max_length=2000), postal_code:str=Form(...), email:str=Form(...), latitude:float|None=Form(None), longitude:float|None=Form(None), reported_damage_priority:str|None=Form(None), reported_affected_people_count:int|None=Form(None), images:list[UploadFile]=File(...)):
+async def submit_report(request:Request,city_id:str=Form(...), title:str=Form(...,min_length=3,max_length=120), category:str=Form(...), location:str=Form(...,min_length=3,max_length=200), description:str=Form(...,min_length=8,max_length=2000), postal_code:str=Form(...), email:str=Form(...), latitude:float|None=Form(None), longitude:float|None=Form(None), reported_damage_priority:str|None=Form(None), reported_affected_people_count:int|None=Form(None), images:list[UploadFile]=File(...)):
     configuration=city(city_id)
     if category not in CATEGORIES:raise HTTPException(422,'Choose a supported problem category')
     if not __import__('re').fullmatch('[1-9][0-9]{5}',postal_code):raise HTTPException(422,'Enter a six-digit Indian PIN')
@@ -95,7 +95,10 @@ async def submit_report(city_id:str=Form(...), title:str=Form(...,min_length=3,m
             except OSError:pass
         if isinstance(exc,HTTPException):raise exc
         raise HTTPException(503,'The report could not be saved with its photos. Please try again or ask the administrator to check storage permissions.') from exc
-    return public_report(item)
+    import asyncio
+    from backend.services.complaint_email import confirmation
+    status=await asyncio.to_thread(confirmation,item,request.client.host if request.client else 'unknown')
+    return {**public_report(item),'confirmation_email':status}
 
 @router.get('/reports/{identifier}')
 def report_status(identifier:str):

@@ -34,7 +34,17 @@ def bootstrap():
         for c in db.execute('SELECT id FROM cities').fetchall():db.execute('INSERT INTO admin_city_assignments VALUES (?,?)',(identifier,c['id']))
 
 
+def area_identity(actor):
+    if not actor.startswith('area:'):return None
+    with connection() as db:row=db.execute('SELECT * FROM admins WHERE id=? AND is_active=1',(actor[5:],)).fetchone()
+    if not row:raise HTTPException(401,'Administrator account is inactive')
+    u=dict(row)
+    return {**u,'display_name':u['area_name'],'role':'area_admin','cities':[u['city_id']],
+      'assignments':[{'pincode':u['pincode'],'city_id':u['city_id'],'locality_name':u['area_name']}]}
+
 def identity(actor):
+    scoped=area_identity(actor)
+    if scoped:return scoped
     with connection() as db:
         row=db.execute('SELECT * FROM admin_users WHERE username=? AND is_active=1',(actor,)).fetchone()
         if not row:raise HTTPException(401,'Administrator account is inactive')
@@ -46,11 +56,12 @@ def identity(actor):
 
 def profile(actor):
     u=identity(actor)
-    return {k:u[k] for k in ('id','username','display_name','role','cities','assignments')}
+    return {k:u[k] for k in ('id','username','display_name','role','cities','assignments','pincode','area_name','city_id','latitude','longitude','coordinate_source') if k in u}
 
 
 def permitted(actor,city_id,pincode=None):
     u=identity(actor)
+    if u['role']=='area_admin':return city_id==u['city_id'] and pincode in (None,u['pincode'])
     if u['role']=='system_supervisor':return True
     if u['role']=='city_supervisor' and city_id in u['cities']:return True
     return pincode is not None and any(a['city_id']==city_id and a['pincode']==pincode for a in u['assignments'])
@@ -67,8 +78,12 @@ def require_city(actor,city_id):
 
 
 def record_pin(item):return item.get('pincode') or item.get('postal_code') or item.get('inputs',{}).get('pincode')
-def visible(actor,item):return permitted(actor,item.get('city_id'),record_pin(item))
-def require_record(actor,item):require_scope(actor,item.get('city_id'),record_pin(item))
+def visible(actor,item):
+    u=identity(actor)
+    if u['role']=='area_admin':return item.get('city_id')==u['city_id'] and record_pin(item)==u['pincode']
+    return permitted(actor,item.get('city_id'),record_pin(item))
+def require_record(actor,item):
+    if not visible(actor,item):raise HTTPException(403,'Outside your assigned area')
 def supervisor(actor):
     if identity(actor)['role']!='system_supervisor':raise HTTPException(403,'System supervisor permission required')
 

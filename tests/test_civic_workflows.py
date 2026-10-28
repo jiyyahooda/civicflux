@@ -50,32 +50,33 @@ def test_review_private_notes_public_reply_and_verified_location(client):
     assert any(x['event']=='officer_report_review' for x in client.get('/api/audit').json())
 
 def test_notices_expire_and_rosters_are_city_scoped(client):
-    login(client);now=datetime.now(timezone.utc)
+    assert client.post('/api/auth/login',json={'username':'admin','password':'600001'}).status_code==200
+    now=datetime.now(timezone.utc)
     body={'city_id':'chennai','valid_from':(now-timedelta(hours=1)).isoformat(),'valid_until':(now+timedelta(hours=1)).isoformat(),'headline':'Officer test notice','area':'Recorded test area','description':'Check the current officer information.','kind':'platform_notice'}
     assert client.post('/api/civic/notices',json=body).status_code==201
     body['valid_from']=(now-timedelta(days=2)).isoformat();body['valid_until']=(now-timedelta(days=1)).isoformat()
     assert client.post('/api/civic/notices',json=body).status_code==201
     assert len(client.get('/api/civic/context/chennai').json()['notices'])==1
-    assert not any(n['headline']=='Officer test notice' for n in client.get('/api/civic/context/delhi').json()['notices'])
+    assert client.get('/api/civic/context/delhi').status_code==403
     body.update(kind='official_import',source_url='https://traffic.delhipolice.gov.in/en')
     assert client.post('/api/civic/notices',json=body).status_code==422
     inventory={'city_id':'chennai','valid_from':(now-timedelta(minutes=1)).isoformat(),'valid_until':(now+timedelta(hours=1)).isoformat(),'budget':1000,'crew_hours':10,'pumps':1,'vehicles':1,'source_ref':'Authorized test roster','scope':'Test area'}
     assert client.post('/api/civic/inventory',json=inventory).status_code==201
     assert len(client.get('/api/civic/context/chennai').json()['inventory'])==1
-    assert not client.get('/api/civic/context/delhi').json()['inventory']
+    assert client.get('/api/civic/context/delhi').status_code==403
 
 def test_all_nine_assessment_adapters_call_saved_systems_and_abstain(client):
     catalog=client.get('/api/assessments?city_id=chennai').json();assert len(catalog)==9
     assert all(not tool['city_prediction_available'] for tool in catalog)
     for entry in discover(PROJECT_ROOT):
         component=entry['component']
-        response=client.post('/api/assessments/'+component,json={'city_id':'chennai','mode':'reference','values':{}})
-        assert response.status_code==200,(component,response.text)
-        result=response.json();assert result['status']=='complete',(component,result)
+        from backend.api.assessments import assess,Assessment
+        result=assess(component,Assessment(city_id='chennai',mode='reference',values={}));assert result['status']=='complete',(component,result)
         assert result['metrics'] and not result['local_prediction']
         assert 'confidence' not in result
-        local=client.post('/api/assessments/'+component,json={'city_id':'chennai','mode':'city','values':{}}).json()
+        local=assess(component,Assessment(city_id='chennai',mode='city',values={}))
         assert local['status']=='unavailable' and local['metrics']==[]
+    login(client)
     invalid=client.post('/api/assessments/flood',json={'city_id':'delhi','values':{'area_m2':5}})
     assert invalid.status_code==422
 

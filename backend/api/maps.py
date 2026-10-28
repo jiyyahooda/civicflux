@@ -1,7 +1,8 @@
 """Read-only map references and explicitly synthetic map states."""
 import json,os
 from pathlib import Path
-from fastapi import APIRouter,Response,HTTPException,Query
+from fastapi import APIRouter,Response,HTTPException,Query,Depends
+from backend.auth import admin
 from pydantic import BaseModel,Field,ConfigDict
 from backend.integrations.waqi import air_quality
 from backend.services.city_service import city
@@ -10,18 +11,30 @@ router=APIRouter(prefix='/api/maps',tags=['geographic display and simulated scen
 
 @router.get('/air/{identifier}')
 async def air(identifier:str,response:Response):
+ from backend.scope import current
+ if current():return {'city_id':identifier,'city_name':current()['area_name'].split(',')[0]+' · '+current()['pincode'],'pincode':current()['pincode'],'attributions':[],'map_url':'https://aqicn.org/','fetched_at':__import__('datetime').datetime.now(__import__('datetime').timezone.utc).isoformat(),'status':'unavailable','stations':[],'reason':'No monitoring stations have verified membership in this postal area. Use the area CAMS estimate in Overview.'}
  response.headers['Cache-Control']='no-store'
  return await air_quality(identifier)
 
 @router.get('/geography/{identifier}')
-def geography(identifier:str):
+def geography(identifier:str,actor:str=Depends(admin)):
  city(identifier)
- if identifier!='delhi':return {'city_id':identifier,'status':'unavailable','reason':'The named scenario geography is available for Delhi only.'}
- return json.loads((PROJECT_ROOT/'data/geography/delhi_demo.json').read_text(encoding='utf-8'))
+ from backend.scope import current
+ if identifier!='delhi' and not current():return {'city_id':identifier,'status':'unavailable','reason':'The named scenario geography is available for Delhi only.'}
+ body=json.loads((PROJECT_ROOT/'data/geography/delhi_demo.json').read_text(encoding='utf-8'))
+ from backend.scope import current
+ scope=current()
+ if scope:
+  if scope['latitude'] is None:return {'status':'unavailable','reason':'Postal reference coordinates unavailable.'}
+  import math
+  for i,asset in enumerate(body['assets']):
+   asset.update(latitude=scope['latitude']+.003*math.sin(i*2.4),longitude=scope['longitude']+.003*math.cos(i*2.4),label=scope['area_name'].split(',')[0]+' · '+asset['kind']+' '+str(i+1),anchor=scope['pincode'],pincode=scope['pincode'],synthetic=True,location_status='Hypothetical asset around the postal reference; not surveyed equipment')
+  body['reference']={'type':'FeatureCollection','features':[]};body['pincode']=scope['pincode'];body['source_note']='Hypothetical network layout at GeoNames postal reference. No postal boundary or surveyed network is asserted.'
+ return body
 
 @router.get('/geography/{identifier}/download')
-def download_geography(identifier:str,rain_mm:float=Query(60,ge=0,le=200),blockage:float=Query(.35,ge=0,le=1),volume:int=Query(900,ge=0,le=100000),capacity:int=Query(1200,gt=0,le=100000),outages:str=Query('',max_length=1000)):
- body=geography(identifier)
+def download_geography(identifier:str,rain_mm:float=Query(60,ge=0,le=200),blockage:float=Query(.35,ge=0,le=1),volume:int=Query(900,ge=0,le=100000),capacity:int=Query(1200,gt=0,le=100000),outages:str=Query('',max_length=1000),actor:str=Depends(admin)):
+ body=geography(identifier,actor)
  if body.get('status')!='available':raise HTTPException(404,'Scenario geography unavailable')
  ids=outages.split(',') if outages else body['default_outages']
  if any(i not in {a['id'] for a in body['assets']} for i in ids):raise HTTPException(422,'Unknown simulated asset')

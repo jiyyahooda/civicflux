@@ -46,7 +46,7 @@ with tempfile.TemporaryDirectory(prefix='civicflux-launch-') as temp:
                 for asset in assets:
                     response = client.get(asset)
                     assert response.status_code == 200 and not response.headers.get('content-type','').startswith('text/html'), asset
-                assert client.post('/api/auth/login', json={'username':'admin','password':'001'}).status_code == 200
+                assert client.post('/api/auth/login', json={'username':'admin','password':'110001'}).status_code == 200
                 geo = client.get('/api/maps/geography/delhi').json()
                 assert len(geo['assets']) == 40
                 assert client.get('/api/reference/delhi').status_code == 200

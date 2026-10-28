@@ -73,8 +73,9 @@ def test_internal_approval_reserves_and_release_restores_capacity(admin_client):
 
 def test_concurrent_plans_cannot_double_book_inventory(admin_client):
  a=scenario(admin_client);b=scenario(admin_client);pool,_=pool_for(admin_client,a)
+ actor=admin_client.get('/api/auth/me').json()['actor']
  def attempt(plan):
-  try:decide(plan['id'],Decision(**approval(plan,pool)),config.ADMIN_ID);return 200
+  try:decide(plan['id'],Decision(**approval(plan,pool)),actor);return 200
   except HTTPException as error:return error.status_code
  with ThreadPoolExecutor(max_workers=2) as executor:codes=list(executor.map(attempt,[a,b]))
  assert sorted(codes)==[200,409]
@@ -84,8 +85,8 @@ def test_concurrent_plans_cannot_double_book_inventory(admin_client):
 def test_inventory_city_and_shift_validity_are_enforced(admin_client):
  plan=scenario(admin_client);pool,body=pool_for(admin_client,plan)
  assert admin_client.post('/api/resources/pools',json=body).status_code==409
- other={**body,'city_id':'chennai'};foreign=admin_client.post('/api/resources/pools',json=other).json()
- assert admin_client.post('/api/resources/plans/'+plan['id']+'/decision',json=approval(plan,foreign)).status_code==409
+ other={**body,'city_id':'chennai'}
+ assert admin_client.post('/api/resources/pools',json=other).status_code==403
  past={**body,'valid_from':(datetime.now(timezone.utc)-timedelta(days=2)).isoformat(),'valid_until':(datetime.now(timezone.utc)-timedelta(days=1)).isoformat()}
  assert admin_client.post('/api/resources/pools/'+pool['id'],json=past).status_code==200
  assert admin_client.post('/api/resources/plans/'+plan['id']+'/decision',json=approval(plan,pool)).status_code==409
@@ -100,8 +101,11 @@ def test_custom_water_histories_and_anomaly_sensor_use_original_serving(client):
  f=fixture('water_network',PROJECT_ROOT)
  csvs={k:pd.DataFrame(rows).to_csv(index=False) for k,rows in f['measurements'].items()}
  body={'city_id':'delhi','mode':'custom','measurement_csv':csvs,'as_of':f['as_of'],'observation_time':f['observation_time'],'units_confirmed':True}
- result=client.post('/api/assessments/water_network',json=body)
- assert result.status_code==200 and result.json()['status']=='complete',result.text
- assert result.json()['local_prediction'] is False
+ assert client.post('/api/assessments/water_network',json=body).status_code==401
+ from backend.api.assessments import assess,Assessment
+ result=assess('water_network',Assessment(**body))
+ assert result['status']=='complete' and result['local_prediction'] is False
  body['units_confirmed']=False
- assert client.post('/api/assessments/water_network',json=body).status_code==422
+ from fastapi import HTTPException
+ with pytest.raises(HTTPException) as error:assess('water_network',Assessment(**body))
+ assert error.value.status_code==422
