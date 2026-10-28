@@ -1,5 +1,14 @@
 # Deploy CivicFlux on Render
 
+Live site: https://civicflux.onrender.com/
+
+Render dashboard: https://dashboard.render.com/web/srv-dbh0pde1egvs73eb9dhg
+
+The initial service was created using the public repository connection. To deploy
+subsequent main-branch commits, use **Manual Deploy > Deploy latest commit** in
+Render. Automatic deployment requires configuring the GitHub provider integration
+or linking this repository through a Blueprint.
+
 The Dockerfile builds React using Node 24 and the locked pnpm version, installs
 Python 3.13 serving dependencies and Linux OpenMP, then serves the frontend and
 API from one FastAPI process. No local virtual environment or Node modules are
