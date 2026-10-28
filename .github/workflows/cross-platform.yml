@@ -13,7 +13,7 @@ jobs:
       matrix:
         include:
           - os: windows-latest
-            python: ./.venv/Scripts/python.exe
+            python: ./.venv-windows/Scripts/python.exe
           - os: macos-latest
             python: ./.venv/bin/python
     runs-on: ${{ matrix.os }}
@@ -30,12 +30,25 @@ jobs:
           node-version: '24'
       - name: Install Corepack
         run: npm install --global corepack --force
+      - name: Simulate a copied Mac environment and incompatible Windows environment
+        if: runner.os == 'Windows'
+        run: |
+          New-Item -ItemType Directory -Path .venv -Force | Out-Null
+          Set-Content -Path .venv/mac-environment-marker.txt -Value 'Do not activate or delete the copied Mac environment.'
+          New-Item -ItemType Directory -Path .venv-windows/Scripts -Force | Out-Null
+          Set-Content -Path .venv-windows/Scripts/transferred-marker.txt -Value 'Incompatible transferred environment.'
       - name: Run actual Windows setup entry point
         if: runner.os == 'Windows'
         run: powershell -NoProfile -ExecutionPolicy Bypass -File setup-windows.ps1
       - name: Run actual macOS setup
         if: runner.os == 'macOS'
         run: bash scripts/setup_mac.sh
+      - name: Verify Windows repaired its own environment and preserved the Mac environment
+        if: runner.os == 'Windows'
+        run: |
+          if (-not (Test-Path .venv/mac-environment-marker.txt)) { throw 'Mac environment was modified.' }
+          if (-not (Get-ChildItem -Directory -Filter '.venv-windows-transferred-*')) { throw 'Transferred environment was not preserved.' }
+          ./.venv-windows/Scripts/python.exe -c "import platform,sys; assert platform.system() == 'Windows'; assert sys.version_info[:2] == (3,13)"
       - name: Verify portable fingerprint paths
         run: ${{ matrix.python }} -m pytest tests/test_cross_platform_fingerprints.py -q
       - name: Verify models and application without restricted datasets

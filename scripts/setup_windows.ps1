@@ -7,17 +7,32 @@ foreach ($name in @('py', 'node', 'corepack')) {
 }
 node -e 'if(parseInt(process.versions.node)<24)process.exit(1)'
 Check-Exit
-if (-not (Test-Path '.venv')) { py -3.13 -m venv .venv; Check-Exit }
-$python = Join-Path $PWD '.venv/Scripts/python.exe'
-if (-not (Test-Path $python)) { throw 'Transferred or broken .venv: rename it and rerun setup.' }
-& $python -c 'import sys; assert sys.version_info[:2] == (3,13)'; Check-Exit
+# Keep Windows dependencies separate from a copied Mac .venv.
+$environment = Join-Path $PWD '.venv-windows'
+$python = Join-Path $environment 'Scripts/python.exe'
+$nativeReady = $false
+if (Test-Path $python) {
+    try {
+        $check = & $python -c 'import sys,platform; assert sys.version_info[:2] == (3,13); assert platform.system() == "Windows"' 2>&1
+        $nativeReady = ($LASTEXITCODE -eq 0)
+    } catch { $nativeReady = $false }
+}
+if (-not $nativeReady) {
+    if (Test-Path $environment) {
+        $backup = $environment + '-transferred-' + (Get-Date -Format 'yyyyMMddHHmmssfff')
+        Move-Item -LiteralPath $environment -Destination $backup
+        Write-Host 'Preserved the unusable transferred Windows environment in a timestamped backup.'
+    }
+    py -3.13 -m venv $environment; Check-Exit
+}
+& $python -c 'import sys,platform; assert sys.version_info[:2] == (3,13); assert platform.system() == "Windows"'; Check-Exit
 & $python -m pip install -r requirements-test.txt; Check-Exit
 & $python -m pip check; Check-Exit
 & $python scripts/check_runtime.py; Check-Exit
 & $python scripts/local_config.py; Check-Exit
 Push-Location frontend
 try {
-    corepack pnpm install --frozen-lockfile; Check-Exit
+    corepack pnpm install --force --frozen-lockfile; Check-Exit
     corepack pnpm build; Check-Exit
 } finally { Pop-Location }
 Write-Host 'Ready. Run scripts/run_windows.ps1 backend and scripts/run_windows.ps1 frontend in separate terminals.'

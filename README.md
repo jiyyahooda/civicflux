@@ -139,11 +139,11 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/run_windows.ps1 fron
 Equivalent backend command:
 
 ```powershell
-.\.venv\Scripts\python.exe -m uvicorn backend.main:app --host 127.0.0.1 --port 8001
+.\.venv-windows\Scripts\python.exe -m uvicorn backend.main:app --host 127.0.0.1 --port 8001
 ```
 
 For the frontend, `cd frontend` then `corepack pnpm dev`.
-The root Windows `.cmd` launcher now uses the same native `.venv` and backend
+The root Windows `.cmd` launcher now uses the native `.venv-windows` and backend
 port 8001 as the platform scripts.
 
 ## Local URLs and configuration
@@ -197,7 +197,7 @@ preserved. Saved forecast examples and several tests need the original CSVs.
 Acquire the documented source versions with:
 
 ```sh
-# Use .venv/Scripts/python.exe instead on Windows.
+# Use .venv-windows/Scripts/python.exe instead on Windows.
 .venv/bin/python download_data.py
 .venv/bin/python download_battledim.py
 ```
@@ -232,11 +232,11 @@ corepack pnpm build
 Windows equivalents:
 
 ```powershell
-.\.venv\Scripts\python.exe -m pip check
-.\.venv\Scripts\python.exe scripts/verify_runtime.py
+.\.venv-windows\Scripts\python.exe -m pip check
+.\.venv-windows\Scripts\python.exe scripts/verify_runtime.py
 $env:PYTHONUTF8='1'
 $env:CIVICFLUX_ADMIN_PASSWORD='001' # Shared local development login
-.\.venv\Scripts\python.exe -m pytest -q
+.\.venv-windows\Scripts\python.exe -m pytest -q
 Remove-Item Env:CIVICFLUX_ADMIN_PASSWORD
 Set-Location frontend
 corepack pnpm install --frozen-lockfile
@@ -586,7 +586,7 @@ Existing clones: pull `main`, then run one command from the repository root:
 
 ```powershell
 # Windows
-.\.venv\Scripts\python.exe scripts/local_config.py
+.\.venv-windows\Scripts\python.exe scripts/local_config.py
 ```
 
 Restart the backend and sign in. This is an intentionally shared, weak local

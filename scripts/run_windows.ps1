@@ -3,7 +3,7 @@ $ErrorActionPreference = 'Stop'
 $env:PYTHONUTF8 = '1'
 Set-Location (Join-Path $PSScriptRoot '..')
 if ($Service -eq 'backend') {
-    $python = Join-Path $PWD '.venv/Scripts/python.exe'
+    $python = Join-Path $PWD '.venv-windows/Scripts/python.exe'
     if (-not (Test-Path $python)) { throw 'Run scripts/setup_windows.ps1 first.' }
     & $python scripts/check_runtime.py --configured
     if ($LASTEXITCODE -ne 0) { throw 'Backend configuration check failed.' }

@@ -38,8 +38,9 @@ Then open **http://127.0.0.1:5173**. Vite proxies `/api` to port **8001**.
 After frontend edits, rebuild before using the single-server launcher:
 `cd frontend` then `corepack pnpm build`.
 
-Both Windows setup entry points use `.venv/Scripts/python.exe`. Older instructions
-referring to `.venv-windows`, a prebuilt ZIP, or port 8000 are obsolete.
+Both Windows setup entry points use native Python 3.13 in `.venv-windows`.
+macOS uses `.venv`. A copied Python 3.12 Windows environment is preserved as a
+timestamped backup and replaced; old instructions using port 8000 are obsolete.
 
 ## Pages and access
 

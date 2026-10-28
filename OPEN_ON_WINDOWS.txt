@@ -1,0 +1,17 @@
+CivicFlux: opening this Mac project folder on Windows
+
+1. Copy the folder completely onto Windows; do not run it inside an archive.
+2. Install native 64-bit Python 3.13 with its py launcher, Node.js 24,
+   and Corepack (npm install -g corepack).
+3. Double-click START-CIVICFLUX.cmd. Keep the terminal open.
+   The launcher creates/validates .venv-windows and reinstalls Windows Node dependencies.
+   It does not activate the Mac .venv. An unusable old .venv-windows is backed up.
+4. Wait for installation and the frontend build to finish.
+5. Open the URL printed by the launcher: normally http://127.0.0.1:8001/
+   Admin ID: admin | Password: 001
+
+Initial setup and live maps need internet access. An old server using port 8001
+must be stopped with Ctrl+C before launching again. No new archive is required.
+Mac virtual environments and node_modules are not portable; Windows setup rebuilds
+them for that computer. The Mac .venv is left untouched.
+Original datasets and saved models remain in this folder.
