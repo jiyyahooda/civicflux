@@ -1,0 +1,24 @@
+# Free trial configuration: SQLite/uploads are ephemeral until a paid disk is added.
+services:
+  - type: web
+    name: civicflux
+    runtime: docker
+    repo: https://github.com/jiyyahooda/civicflux
+    branch: main
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/health
+    envVars:
+      - key: CIVICFLUX_ADMIN_ID
+        value: admin
+      - key: CIVICFLUX_ADMIN_PASSWORD
+        sync: false
+      - key: VITE_GOOGLE_MAPS_API_KEY
+        sync: false
+      - key: WAQI_API_TOKEN
+        sync: false
+      - key: CIVICFLUX_PUBLIC_FEEDS
+        value: "1"
+      - key: CIVICFLUX_DB
+        value: /app/var/civicflux.sqlite3

@@ -1,0 +1,33 @@
+name: Deployment container
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  container:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the actual deployment image
+        run: docker build -t civicflux-ci .
+      - name: Check Linux model loading and inference
+        run: docker run --rm --entrypoint python civicflux-ci scripts/ci_smoke.py
+      - name: Check served frontend and health over HTTP
+        shell: bash
+        run: |
+          docker run -d --name civicflux-http -p 8001:8001 -e CIVICFLUX_PUBLIC_FEEDS=0 civicflux-ci
+          trap 'docker logs civicflux-http; docker rm -f civicflux-http' EXIT
+          for attempt in {1..60}; do
+            if curl --fail --silent http://127.0.0.1:8001/api/health > /tmp/health.json; then break; fi
+            sleep 2
+          done
+          curl --fail --silent http://127.0.0.1:8001/ > /tmp/index.html
+          python - <<'PYTEST'
+          import json
+          from pathlib import Path
+          assert json.loads(Path('/tmp/health.json').read_text())['status'] == 'ok'
+          assert 'id="root"' in Path('/tmp/index.html').read_text()
+          PYTEST

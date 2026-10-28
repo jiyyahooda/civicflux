@@ -1,0 +1,27 @@
+# Machine-specific dependencies, credentials, and personal runtime records
+.git
+.venv*
+**/node_modules
+frontend/dist
+**/__pycache__
+**/*.pyc
+**/.pytest_cache
+**/*.tsbuildinfo
+.env
+.env.*
+!.env.example
+**/*.pem
+**/*.key
+var
+**/uploads
+**/*.sqlite*
+**/*.db
+**/*.log
+**/*.zip
+**/*.tar*
+**/.DS_Store
+reference_inputs
+data/raw
+PACKAGE-MANIFEST.json
+PACKAGED-LINKS.json
+reports/targeted_review/original_notebooks

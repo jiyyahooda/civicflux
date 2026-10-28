@@ -637,3 +637,8 @@ change the HTTPS provider. Location denial does not prevent manual selection.
 CivicFlux Help is a searchable, role-aware deterministic walkthrough. It does
 not send complaint contents to an AI service or change administrative records.
 See `reports/PIN_MUNICIPAL_INTEGRATION.md` for the implementation, tests and limits.
+
+## Online deployment
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for the Render setup, environment variables,
+persistence requirements and included Linux container checks.
