@@ -16,12 +16,7 @@ jobs:
         run: |
           set -o pipefail
           if ! docker build --progress=plain -t civicflux-ci . 2>&1 | tee /tmp/civicflux-build.log; then
-            python - <<'PYERROR'
-            from pathlib import Path
-            message='\n'.join(Path('/tmp/civicflux-build.log').read_text().splitlines()[-55:])
-            message=message.replace('%','%25').replace('\r','%0D').replace('\n','%0A')
-            print('::error title=Container build failure::'+message)
-            PYERROR
+            python scripts/report_container_failure.py /tmp/civicflux-build.log
             exit 1
           fi
       - name: Check Linux model loading and inference
