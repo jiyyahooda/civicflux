@@ -2,7 +2,7 @@
 FROM node:24-bookworm-slim AS frontend
 WORKDIR /build/frontend
 RUN npm install --global corepack --force
-COPY frontend/package.json frontend/pnpm-lock.yaml ./
+COPY frontend/package.json frontend/pnpm-lock.yaml frontend/pnpm-workspace.yaml ./
 RUN corepack pnpm install --frozen-lockfile
 COPY frontend/ ./
 # A restricted browser key is public by design. Never pass server secrets here.
