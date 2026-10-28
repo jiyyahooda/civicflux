@@ -73,7 +73,7 @@ def test_concurrent_bundle_loading_does_not_patch_xgboost():
 
 
 def test_readiness_requires_current_portable_export_hashes(tmp_path):
-    report = json.loads((ROOT / 'reports/windows/inference/traffic.json').read_text())
+    report = json.loads((ROOT / 'reports/integration/traffic.json').read_text())
     assert report['passed'] and report['runtime_artifact_hashes']
     report['runtime_artifact_hashes'] = {}
     (tmp_path / 'traffic.json').write_text(json.dumps(report))

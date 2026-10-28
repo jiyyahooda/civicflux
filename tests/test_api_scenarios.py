@@ -45,7 +45,7 @@ def test_incompatible_graph_manifest_rejected(admin_client,monkeypatch):
 def test_trained_flood_failure_is_explicit_without_fallback(admin_client):
     from pathlib import Path
     import json
-    report=json.loads((Path(__file__).resolve().parents[1]/'reports/windows/inference/flood.json').read_text())
+    report=json.loads((Path(__file__).resolve().parents[1]/'reports/integration/flood.json').read_text())
     body=admin_client.get('/api/scenarios/defaults').json();body['flood_engine']='trained_surrogate'
     response=admin_client.post('/api/scenarios',json=body)
     if report['passed']: assert response.status_code==200
