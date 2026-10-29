@@ -1,0 +1,1 @@
+PASS: real launcher, built HTML/JS/CSS, admin login, 40 map assets, references and nine model components.

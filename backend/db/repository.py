@@ -20,6 +20,8 @@ def initialize():
     initialize_mail()
     from backend.db.areas import migrate as migrate_areas
     migrate_areas()
+    from backend.data_integration.service import initialize as initialize_open_data
+    initialize_open_data()
 
 def append(kind, body, actor='civilian', event='created'):
     from backend.scope import bind

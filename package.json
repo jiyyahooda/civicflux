@@ -1,0 +1,13 @@
+{
+  "name": "civicflux-data-tools",
+  "private": true,
+  "packageManager": "pnpm@12.15.0",
+  "scripts": {
+    "data:fetch": "node scripts/data_command.cjs fetch",
+    "data:build": "node scripts/data_command.cjs build",
+    "data:verify": "node scripts/data_command.cjs verify",
+    "data:status": "node scripts/data_command.cjs status",
+    "preflight": "node scripts/data_command.cjs preflight",
+    "verify": "node scripts/data_command.cjs verify-all"
+  }
+}

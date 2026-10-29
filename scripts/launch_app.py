@@ -19,6 +19,10 @@ assets = re.findall(r'(?:src|href)="(/assets/[^\"]+)"', index.read_text(encoding
 if not assets or any(not (ROOT / 'frontend/dist' / asset.lstrip('/')).is_file() for asset in assets):
     raise SystemExit('Frontend build is incomplete. Rerun the platform setup to rebuild it.')
 with socket.socket() as probe:
+    # A recently stopped POSIX server can leave TIME_WAIT sockets; match uvicorn's
+    # address reuse without enabling SO_REUSEPORT or weakening Windows exclusivity.
+    if os.name != 'nt':
+        probe.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     try:
         probe.bind(('127.0.0.1', args.port))
     except OSError:

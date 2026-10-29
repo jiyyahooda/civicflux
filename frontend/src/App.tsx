@@ -7,6 +7,8 @@ import {getScenarios,getComplaints,getFeedback} from './api/operations';
 import {useApi} from './hooks/useApi';
 import CitySelector from './components/CitySelector';
 import Dashboard from './pages/Dashboard';
+import {OpenDataOverview,DataSources} from './components/OpenData';
+import './open-data.css';
 import Predictions from './pages/Predictions';
 import Infrastructure from './pages/Infrastructure';
 import Planning from './pages/Planning';
@@ -27,7 +29,7 @@ import type {City,Graph,ScenarioInput,Scenario,Audit} from './types/api';
 
 
 export default function App(){
-  const [page,setPage]=useState('Overview'),[city,setCity]=useState('delhi');
+  const [page,setPage]=useState(location.pathname==='/data-sources'?'Data and sources':'Overview'),[city,setCity]=useState('delhi');
   const [dark,setDark]=useState(localStorage.getItem('civicflux-theme')==='dark');
   const [admin,setAdmin]=useState(false),[login,setLogin]=useState(location.pathname==='/admin/login'),[mobileNav,setMobileNav]=useState(false);
   const [preparedResources,setPreparedResources]=useState<ScenarioInput['resources']|null>(null);
@@ -74,6 +76,8 @@ export default function App(){
         {errors.length>0&&<div className="error" role="alert">{admin?[...new Set(errors)].join(' · '):'Some information is unavailable. Try refreshing or check the source panels.'} <button onClick={()=>{setSessionError('');refresh()}}>Retry</button></div>}
         {models.loading&&!models.data&&page!=='Overview'&&<p className="loading" role="status">Loading research inventory…</p>}
         {page==='Overview'&&admin?<AdminOverview city={activeCity} observations={currentObservations} weather={currentWeather} context={currentCivic} reports={localReports} navigate={navigate}/>:page==='Overview'&&<Dashboard notice={<LocalContext city={city} pin={pin} onPin={setPin} revision={revision}/>}  models={models.data??[]} observations={currentObservations} city={activeCity} reports={localReports} weather={currentWeather} context={currentCivic} navigate={navigate} admin={admin}/>}
+        {page==='Overview'&&city!=='delhi'&&<OpenDataOverview city={city} pin={pin} onPin={setPin} admin={admin}/>}
+        {page==='Data and sources'&&<DataSources/>}
         {page==='Predictions'&&<Predictions city={activeCity} models={models.data??[]} admin={admin}/>}
         {page==='Infrastructure'&&<Infrastructure city={activeCity} context={currentCivic} reports={localReports} observations={currentObservations} weather={currentWeather}/>}
         {page==='City map'&&<CityMap admin={admin} key={city} city={activeCity} observations={currentObservations} weather={currentWeather} context={currentCivic} reports={localReports}/>}
@@ -85,7 +89,7 @@ export default function App(){
         {page==='Decisions'&&admin&&<Decisions observations={currentObservations} resourceOverride={preparedResources} onUsePool={r=>{setPreparedResources(r);navigate('Decisions')}} pincode={pin} key={city+pin} defaults={defaults.data} scenario={scenario} city={activeCity} graph={graph.data} onRun={s=>{setChosen(s);refresh()}} context={currentCivic} weather={currentWeather} feedback={feedback.data??{reviews:[],verifications:[]}} onSaved={refresh} revision={revision} scenarios={localScenarios} onSelect={setChosen}/>}
 
         {page==='Model validation'&&<ModelValidation models={models.data??[]}/>}
-        <footer><span className="footer-brand">CIVICFLUX</span></footer>
+        <footer><span className="footer-brand">CIVICFLUX</span>{city!=='delhi'&&<a href="/data-sources" onClick={e=>{e.preventDefault();navigate('Data and sources')}}>Data and sources</a>}</footer>
       </main>;
   if(!sessionReady)return <div className="session-loading" role="status">Opening CivicFlux…</div>;
   if(admin&&profile)return <AdminWelcome key={profile.id}><AdminShell dark={dark} onThemeChange={()=>setDark(!dark)} profile={profile} page={page} navigate={navigate} onSignOut={portal}>{content}</AdminShell></AdminWelcome>;

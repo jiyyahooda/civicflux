@@ -46,7 +46,7 @@ def funding(client,pool):
 
 
 def test_postal_migration_coverage_and_original_records_preserved(client):
-    expected={'delhi':77,'chandigarh':24,'chennai':2}
+    expected={'delhi':77,'chandigarh':24,'chennai':10}
     existing=repo.append('complaint',{'city_id':'delhi','postal_code':'110001','description':'Preserved legacy record','status':'submitted'})
     repo.initialize()
     assert repo.get('complaint',existing['id'])['description']=='Preserved legacy record'

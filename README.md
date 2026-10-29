@@ -644,3 +644,81 @@ host environment. Restart the backend after changes. Never commit the password.
 Receipts are sent only for successfully registered complaints, once per tracking
 ID, with per-IP (10/hour) and per-recipient (3/hour) limits. Email failures do not
 remove the complaint or its tracking ID. SMTP is mocked in automated tests.
+
+## Chennai and Chandigarh open data
+
+Delhi remains unchanged. The application retains its 103 original PINs and adds eight verified Chennai entries. New map snapshots, historical reservoir storage and independently cached modelled conditions are documented in [the integration report](docs/OPEN_DATA_INTEGRATION.md). Three remote sources are currently unavailable (OpenCity 2015 zone: HTTP 404; Overpass facilities: HTTP 406). They are omitted from maps and listed explicitly in Data and sources.
+
+```sh
+corepack pnpm run data:fetch
+corepack pnpm run data:build
+corepack pnpm run data:verify
+corepack pnpm run data:status
+corepack pnpm run preflight -- --warm
+corepack pnpm run verify
+```
+
+The final command includes strict source completeness and therefore reports failure until all mandatory sources are fetched. The existing site remains usable. No models are retrained. Reservoir readings end in December 2021 and are historical; percentages are withheld pending official capacity verification. See the report for the exact fixture differences approved by the user, full source checksums, licence obligations and verification limits.
+
+### Snapshot and live sources
+
+- [Chandigarh boundary](https://raw.githubusercontent.com/datameet/Municipal_Spatial_Data/9b4d1c2ece54cdeb6f5e8bad9ccad7844f783b17/Chandigarh/Chandigarh_Boundary.geojson) — chandigarh; OK; CC BY-SA 2.5 India; Chandigarh Municipal Spatial Data via DataMeet India community (CC BY-SA 2.5 India). Used for Map scenario boundaries and coordinate validation.
+- [Chandigarh sectors](https://raw.githubusercontent.com/datameet/Municipal_Spatial_Data/9b4d1c2ece54cdeb6f5e8bad9ccad7844f783b17/Chandigarh/Chandigarh_Sectors.geojson) — chandigarh; OK; CC BY-SA 2.5 India; Chandigarh Municipal Spatial Data via DataMeet India community (CC BY-SA 2.5 India). Used for Map scenario boundaries and coordinate validation.
+- [Chennai metropolitan outline](https://raw.githubusercontent.com/datameet/Municipal_Spatial_Data/9b4d1c2ece54cdeb6f5e8bad9ccad7844f783b17/Chennai/CMA.geojson) — chennai; OK; CC BY-SA 2.5 India; Chennai Municipal Data, received from the Transparent Chennai team, via DataMeet India community (CC BY-SA 2.5 India). Used for Map scenario boundaries and coordinate validation.
+- [Flood hazard zones](https://data.opencity.in/api/3/action/resource_show?id=e61afe07-0f52-4be9-bdf3-5eb0f62b2ed6) — chennai; OK; Public Domain; Greater Chennai Corporation via OpenCity.in; credit Vaidyanathan R (Public Domain). Used for Historical flood exposure, never an operational warning.
+- [Flooding points in 2015](https://data.opencity.in/api/3/action/resource_show?id=80ed2fa7-1150-4f55-8125-682ab55282ac) — chennai; OK; Public Domain; Greater Chennai Corporation via OpenCity.in; credit Vaidyanathan R (Public Domain). Used for Historical flood exposure, never an operational warning.
+- [2015 inundation zone](https://data.opencity.in/api/3/action/resource_show?id=7cb3cecf-a95a-4786-8032-9c7417655d24) — chennai; NOT FETCHED; Public Domain; chennaifloodsdss.in via OpenCity.in (Public Domain). Used for Historical flood exposure, never an operational warning.
+- [Inundation depth points](https://data.opencity.in/api/3/action/resource_show?id=ceddf53f-03c0-4866-8ba8-5e84c8007a85) — chennai; OK; Public Domain; Greater Chennai Corporation via OpenCity.in; credit Vaidyanathan R (Public Domain). Used for Historical flood exposure, never an operational warning.
+- [Chennai wards](https://raw.githubusercontent.com/datameet/Municipal_Spatial_Data/9b4d1c2ece54cdeb6f5e8bad9ccad7844f783b17/Chennai/Wards.geojson) — chennai; OK; CC BY-SA 2.5 India; Chennai Municipal Data, received from the Transparent Chennai team, via DataMeet India community (CC BY-SA 2.5 India). Used for Map scenario boundaries and coordinate validation.
+- [Chandigarh facilities](https://overpass-api.de/api/interpreter) — chandigarh; NOT FETCHED; ODbL; ©️ OpenStreetMap contributors (ODbL). Used for Nearby facility reference points; availability is unknown.
+- [Chennai facilities](https://overpass-api.de/api/interpreter) — chennai; NOT FETCHED; ODbL; ©️ OpenStreetMap contributors (ODbL). Used for Nearby facility reference points; availability is unknown.
+- [Chembarambakkam historical storage](https://data.opencity.in/api/3/action/resource_show?id=db41b1a4-5746-46d0-a006-e8fe2b1545a9) — chennai; OK; Public Domain; Chennai Metropolitan Water Supply and Sewerage Board via OpenCity.in (Public Domain). Used for Historical monthly reservoir storage.
+- [Cholavaram historical storage](https://data.opencity.in/api/3/action/resource_show?id=20dc9876-ef1d-4cf1-9c42-f9d6c1f137db) — chennai; OK; Public Domain; Chennai Metropolitan Water Supply and Sewerage Board via OpenCity.in (Public Domain). Used for Historical monthly reservoir storage.
+- [Kannankottai-Thervoy Kandigai historical storage](https://data.opencity.in/api/3/action/resource_show?id=e0355257-d2d9-48be-a31e-6596a5fcdc07) — chennai; OK; Public Domain; Chennai Metropolitan Water Supply and Sewerage Board via OpenCity.in (Public Domain). Used for Historical monthly reservoir storage.
+- [Poondi historical storage](https://data.opencity.in/api/3/action/resource_show?id=8b0c0edc-4204-4f0f-8dc7-2db4817af04f) — chennai; OK; Public Domain; Chennai Metropolitan Water Supply and Sewerage Board via OpenCity.in (Public Domain). Used for Historical monthly reservoir storage.
+- [Puzhal (Red Hills) historical storage](https://data.opencity.in/api/3/action/resource_show?id=febf2951-71eb-4807-9a06-246dadc1ef04) — chennai; OK; Public Domain; Chennai Metropolitan Water Supply and Sewerage Board via OpenCity.in (Public Domain). Used for Historical monthly reservoir storage.
+- [Veeranam historical storage](https://data.opencity.in/api/3/action/resource_show?id=a2f9aaad-7ac2-4a01-90d6-801eeef7d4b6) — chennai; OK; Public Domain; Chennai Metropolitan Water Supply and Sewerage Board via OpenCity.in (Public Domain). Used for Historical monthly reservoir storage.
+- [All India Pincode Directory](https://raw.githubusercontent.com/dropdevrahul/pincodes-india/d817d3e652e8167a70507350d9a8e4acda9113ef/pincode.csv) — chennai,chandigarh; OK; GODL-India; Department of Posts, Government of India, All India Pincode Directory (data.gov.in), Government Open Data License - India, via community mirror. Used for Postal reference points; Delhi is excluded from all updates..
+
+Live: Air quality: CAMS ENSEMBLE data provider (Copernicus Atmosphere Monitoring Service) via Open-Meteo.com; River discharge: GloFAS via Open-Meteo.com (CC BY 4.0, free non-commercial service).
+
+### Evaluated, not used
+
+- Chandigarh wards: Duplicate ward 5, reserve polygon, missing and duplicated population values; sectors used instead.
+- Chennai Wards-2008: Pre-2011 boundaries; excluded.
+- Princeton / Stanford Chandigarh shapefiles: Access restricted.
+- Census 2011 ward data: Identifiers do not match shipped layers; no formula requires it.
+- GCC Budget 2026-27: PDF; link only: https://data.opencity.in/dataset/gcc-budget-2026-27
+- GCC Relief Centres: October 2024 PDF; link only: https://data.opencity.in/dataset/gcc-relief-centres
+- GCC stormwater base maps: PDF; link only, not parsed.
+- Return-period flood KMLs: Out of scope.
+- GCC GIS REST server: Availability and licence unconfirmed.
+- Smart Cities portal: No Chandigarh catalogue enumerated.
+- Complaint datasets: No verified open complaint data supplied; existing records retained, no synthetic operational reports added.
+- AQICN: Requires token and separate terms; existing Delhi integration unchanged.
+- GCC fire stations: Optional; no licence stated, not redistributed.
+- GCC health centres: Optional, not integrated; coordinate columns not verified.
+- GCC flood hotspots 2020: Optional; not integrated.
+- CPCB data.gov.in: Optional; no verified API resource/key configured for this integration.
+
+### Source publication and record counts
+
+| Source | Published | Retrieved (UTC) | Input → output |
+|---|---|---|---|
+| chd_boundary | 2023-11-16 | 2026-10-29T20:21:33.669536+00:00 | 1 → 1 |
+| chd_sectors | 2023-11-16 | 2026-10-29T20:21:33.711828+00:00 | 63 → 63 |
+| che_cma | 2023-11-16 | 2026-10-29T20:21:33.702206+00:00 | 1 → 1 |
+| che_flood_hazard | 2025-11-25 | 2026-10-29T20:21:39.141827+00:00 | 7453 → 7189 |
+| che_flood_points_2015 | 2025-11-25 | 2026-10-29T20:21:34.979541+00:00 | 753 → 753 |
+| che_flood_zone_2015 | 2024-01-10 | None | None → None |
+| che_inundation_points | 2025-11-25 | 2026-10-29T20:21:35.011077+00:00 | 192 → 192 |
+| che_wards | 2023-11-16 | 2026-10-29T20:21:33.936996+00:00 | 201 → 200 |
+| facilities_chandigarh | Not supplied | None | None → None |
+| facilities_chennai | Not supplied | None | None → None |
+| lake_chembarambakkam | 2025-11-27 | 2026-10-29T20:21:37.289021+00:00 | 228 → 228 |
+| lake_cholavaram | 2025-11-27 | 2026-10-29T20:21:36.556854+00:00 | 228 → 228 |
+| lake_kannankottai | 2025-11-27 | 2026-10-29T20:21:37.234220+00:00 | 24 → 24 |
+| lake_poondi | 2025-11-27 | 2026-10-29T20:21:36.584546+00:00 | 228 → 228 |
+| lake_puzhal | 2025-11-27 | 2026-10-29T20:21:38.052749+00:00 | 228 → 228 |
+| lake_veeranam | 2025-11-27 | 2026-10-29T20:21:37.266674+00:00 | 228 → 228 |
+| pin_directory | Not supplied | 2026-10-29T20:21:37.618563+00:00 | 157126 → 19 |

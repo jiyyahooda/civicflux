@@ -19,3 +19,7 @@ tzdata==2026.5
 python-multipart==0.0.32
 Pillow==13.0.0
 email-validator==2.3.0
+
+# Reproducible open-data geometry validation (native wheels on supported platforms).
+shapely==2.1.2
+pyproj==3.7.2

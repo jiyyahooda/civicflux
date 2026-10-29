@@ -1,0 +1,23 @@
+PASS integrity checks
+INCOMPLETE sources: che_flood_zone_2015, facilities_chandigarh, facilities_chennai
+PASS parsed manifest with 17 sources
+Delhi excluded from cache warming and data updates.
+PASS live cache 160011 air=True river=True
+PASS live cache 160009 air=True river=True
+PASS live cache 160003 air=True river=True
+PASS live cache 160002 air=True river=True
+PASS live cache 160017 air=True river=True
+PASS live cache 160014 air=True river=True
+PASS live cache 160036 air=True river=True
+PASS live cache 160019 air=True river=True
+PASS live cache 160047 air=True river=True
+WARN live cache 600002 air=True river=False
+WARN live cache 600004 air=True river=False
+WARN live cache 600001 air=True river=False
+WARN live cache 600006 air=True river=False
+PASS live cache 600017 air=True river=True
+WARN live cache 600020 air=True river=False
+PASS live cache 600040 air=True river=True
+WARN live cache 600028 air=True river=False
+PASS live cache 600042 air=True river=True
+PASS live cache 600083 air=True river=True

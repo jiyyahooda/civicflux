@@ -13,7 +13,7 @@ def login(c,pin='110001',name='admin'):
 def test_area_seed_unique_public_pin_identities(client):
  with connection() as db:
   rows=db.execute('SELECT * FROM admins').fetchall()
-  assert len(rows)==103 and len({r['pincode'] for r in rows})==103
+  assert len(rows)==111 and len({r['pincode'] for r in rows})==111
   assert all(r['username']=='admin' and len(r['pincode'])==6 for r in rows)
  assert login(client,'110001').status_code==200
  profile=client.get('/api/auth/me').json()['profile']
@@ -136,4 +136,4 @@ def test_database_migration_hides_unassigned_and_has_no_random_password(client):
  assert repo.get('civic_notice',b['id'])['pincode'] is None
  assert login(client).status_code==200
  assert client.get('/api/municipal/local/delhi').status_code==200
- with connection() as db:assert db.execute('SELECT count(*) FROM admins').fetchone()[0]==103
+ with connection() as db:assert db.execute('SELECT count(*) FROM admins').fetchone()[0]==111
