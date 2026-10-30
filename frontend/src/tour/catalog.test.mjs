@@ -1,0 +1,25 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync,readdirSync} from 'node:fs';
+import {resolve} from 'node:path';
+import ts from 'typescript';
+const root=resolve(import.meta.dirname,'..');
+const source=readFileSync(resolve(import.meta.dirname,'catalog.ts'),'utf8');
+const js=ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.ESNext,target:ts.ScriptTarget.ES2022}}).outputText;
+const {tourCatalog,availableSteps,readProgress}=await import('data:text/javascript;base64,'+Buffer.from(js).toString('base64'));
+test('every tour step has a unique stable identity and real guidance',()=>{assert.equal(new Set(tourCatalog.map(s=>s.id)).size,tourCatalog.length);for(const s of tourCatalog){assert.ok(s.target&&s.title&&s.text&&s.topic&&s.page);assert.ok(s.text.length>60)}});
+test('public tours never enter restricted municipal pages or tools',()=>{for(const city of ['delhi','chennai','chandigarh']){const steps=availableSteps({admin:false,city,supervisor:false});assert.ok(steps.some(s=>s.id==='report-form'));assert.ok(steps.every(s=>!['Planning','Decisions','Review reports','City infra'].includes(s.page)));assert.ok(steps.every(s=>s.condition!=='admin'&&s.condition!=='supervisor'));assert.ok(!steps.some(s=>s.id==='open-layers'));assert.ok(!steps.some(s=>s.id==='model-water_network'))}});
+test('officers and supervisors receive their own actual capabilities',()=>{const officer=availableSteps({admin:true,city:'delhi',supervisor:false}),supervisor=availableSteps({admin:true,city:'delhi',supervisor:true});assert.equal(officer[0].id,'admin-area');assert.ok(officer.some(s=>s.id==='scenario-run'));assert.ok(officer.some(s=>s.id==='model-water_network'));assert.ok(!officer.some(s=>s.id==='report-submit'));assert.ok(!officer.some(s=>s.id==='audit'));assert.ok(supervisor.some(s=>s.id==='audit'));assert.ok(supervisor.some(s=>s.id==='supervisor-records'))});
+test('city-specific snapshots are never presented as another city',()=>{const by=city=>availableSteps({admin:true,city,supervisor:false});assert.ok(by('delhi').some(s=>s.id==='delhi-reference'));assert.ok(!by('chennai').some(s=>s.id==='delhi-reference'));assert.ok(by('chennai').some(s=>s.id==='reservoirs'));assert.ok(!by('chandigarh').some(s=>s.id==='reservoirs'));assert.ok(!by('delhi').some(s=>s.id==='data-sources'))});
+test('corrupt or hostile storage cannot create progress entries',()=>{for(const value of ['broken','null','[]','1'])assert.deepEqual(readProgress(value),{});assert.deepEqual(readProgress('{"landing":"completed","unknown":"completed","report-form":"skipped","scenario-run":"something"}'),{landing:'completed','report-form':'skipped'})});
+function files(dir){return readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?files(resolve(dir,e.name)):e.name.endsWith('.tsx')?[resolve(dir,e.name)]:[])}
+const controls=files(root).filter(f=>!f.includes('/tour/')).map(f=>readFileSync(f,'utf8')).join('\n');
+const ids=new Set([...controls.matchAll(/data-tour="([a-z-]+)"/g)].map(m=>m[1]));
+for(const id of ['all','rainfall','air','traffic','water','infrastructure'])ids.add('map-'+id);
+for(const id of ['all','road','water','drainage'])ids.add('scenario-'+id+'-layer');
+for(const id of ['rainfall','aqi','traffic','flood','water_network','cascade_risk','resource_optimization','intervention_outcomes'])ids.add('assessment-'+id);
+for(const id of ['scenario-road','scenario-rain'])ids.add(id);
+test('every spotlight and prerequisite resolves to an existing declared UI target',()=>{for(const s of tourCatalog){for(const match of s.target.matchAll(/data-tour="([\w-]+)"/g))assert.ok(ids.has(match[1]),s.id+' target '+match[1]);for(const id of s.prepare??[])assert.ok(ids.has(id),s.id+' prepare '+id)}});
+test('automated prerequisites never point at a real write boundary',()=>{const writeIds=[...controls.matchAll(/data-tour="([\w-]+)" data-tour-save=/g)].map(m=>m[1]);for(const s of tourCatalog)for(const id of s.prepare??[])assert.ok(!writeIds.includes(id),s.id+' would automatically save '+id)});
+test('hidden anomaly and unreachable legacy workflows are not advertised',()=>{assert.ok(!tourCatalog.some(s=>s.id.includes('infrastructure_anomaly')));assert.ok(tourCatalog.every(s=>!['Operations','Model validation'].includes(s.page)))});
+console.log('Coverage:',tourCatalog.length,'steps;',new Set(tourCatalog.map(s=>s.topic)).size,'topics');

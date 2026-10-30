@@ -1,0 +1,18 @@
+$ node --test src/tour/catalog.test.mjs
+Coverage: 99 steps; 25 topics
+✔ every tour step has a unique stable identity and real guidance (0.40875ms)
+✔ public tours never enter restricted municipal pages or tools (0.176875ms)
+✔ officers and supervisors receive their own actual capabilities (0.112208ms)
+✔ city-specific snapshots are never presented as another city (0.173ms)
+✔ corrupt or hostile storage cannot create progress entries (0.395666ms)
+✔ every spotlight and prerequisite resolves to an existing declared UI target (0.156375ms)
+✔ automated prerequisites never point at a real write boundary (0.155917ms)
+✔ hidden anomaly and unreachable legacy workflows are not advertised (0.056333ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 182.750208

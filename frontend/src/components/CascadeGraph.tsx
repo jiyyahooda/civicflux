@@ -15,7 +15,7 @@ export default function CascadeGraph({graph,initial=[],risks=[],planned=[],city}
   const edges=graph.edges.filter(e=>e.source===selected||e.target===selected);
   const visible=(id:string)=>{const n=graph.nodes.find(n=>n.id===id)!;return (filter==='all'||n.node_type===filter)&&(id+' '+assetLabel(id,city)).toLowerCase().includes(search.toLowerCase())};
   const changeZoom=(amount:number)=>{const next=Math.min(1.7,Math.max(.7,zoom+amount)),p=pos(selected);setZoom(next);setPan({x:p.x-500/next,y:p.y-310/next})};
-  return <div className="panel graph-panel">
+  return <div data-tour="graph" className="panel graph-panel">
     <div className="network-stats"><span><b>{graph.nodes.length}</b> assets</span><span><b>{graph.edges.length}</b> dependencies</span><span className="badge simulation">Planning network</span><div className="graph-tools"><button aria-label="Zoom out" onClick={()=>changeZoom(-.15)}><Minus size={14}/></button><span>{Math.round(zoom*100)}%</span><button aria-label="Zoom in" onClick={()=>changeZoom(.15)}><Plus size={14}/></button><button aria-label="Reset graph zoom" onClick={()=>{setZoom(1);setPan({x:0,y:0});setFilter('all');setSearch('')}}><RotateCcw size={14}/></button></div></div>
     <div className="graph-filters"><label className="graph-search"><Search size={13}/><input aria-label="Find infrastructure asset" placeholder="Find an asset…" value={search} onChange={e=>setSearch(e.target.value)}/></label><div className="filter-chips">{['all',...kinds].map(k=><button key={k} aria-pressed={filter===k} onClick={()=>setFilter(k)}>{k}</button>)}</div></div>
     <div className="graph-scroll"><svg role="group" tabIndex={0} aria-label="Interactive schematic infrastructure graph" viewBox={`${pan.x} ${pan.y} ${1000/zoom} ${620/zoom}`}

@@ -11,13 +11,14 @@ import {OpenDataOverview,DataSources} from './components/OpenData';
 import './open-data.css';
 import Predictions from './pages/Predictions';
 import Infrastructure from './pages/Infrastructure';
+import NotificationBell from './components/NotificationBell';
 import Planning from './pages/Planning';
 import Decisions from './pages/Decisions';
 import AdminWelcome from './components/AdminWelcome';
 import AdminShell from './components/AdminShell';
 import AdminOverview from './pages/AdminOverview';
 import LocalContext from './components/LocalContext';
-import CivicHelp from './components/CivicHelp';
+import ProductTour from './tour/ProductTour';
 import type {AdminProfile} from './types/municipal';
 import CityMap from './pages/CityMap';
 import ReportProblem from './pages/ReportProblem';
@@ -29,17 +30,19 @@ import type {City,Graph,ScenarioInput,Scenario,Audit} from './types/api';
 
 
 export default function App(){
-  const [page,setPage]=useState(location.pathname==='/data-sources'?'Data and sources':'Overview'),[city,setCity]=useState('delhi');
+  const [page,setPage]=useState(location.pathname==='/data-sources'?'Data and sources':/^\/(?:admin\/)?(?:infrastructure|city-infra)\/?$/.test(location.pathname)?'City infra':'Overview'),[city,setCity]=useState('delhi');
   const [dark,setDark]=useState(localStorage.getItem('civicflux-theme')==='dark');
   const [admin,setAdmin]=useState(false),[login,setLogin]=useState(location.pathname==='/admin/login'),[mobileNav,setMobileNav]=useState(false);
   const [preparedResources,setPreparedResources]=useState<ScenarioInput['resources']|null>(null);
   const [sessionReady,setSessionReady]=useState(false);
   const [profile,setProfile]=useState<AdminProfile|null>(null),[pin,setPin]=useState('');
-  const navigation=admin?['Overview','Planning','Decisions','City map','Infrastructure','Predictions','Review reports']:['Overview','City map','Infrastructure','Predictions','Report a problem'];
+  const navigation=admin?['Overview','Planning','Decisions','City map','City infra','Predictions','Review reports']:['Overview','City map','Predictions','Report a problem'];
   const [username,setUsername]=useState('admin'),[password,setPassword]=useState(''),[loginError,setLoginError]=useState(''),[logging,setLogging]=useState(false);
   const [revision,setRevision]=useState(0),[chosen,setChosen]=useState<Scenario|null>(null),[scrolled,setScrolled]=useState(false),[sessionError,setSessionError]=useState('');
   const modal=useRef<HTMLElement>(null);
-  const cities=useApi(()=>api<City[]>('cities'),[admin]);
+  const publicHeader=useRef<HTMLElement>(null),[headerHeight,setHeaderHeight]=useState(160);
+  useEffect(()=>{if(admin||!sessionReady||!publicHeader.current)return;const node=publicHeader.current;const measure=()=>setHeaderHeight(node.getBoundingClientRect().height);const observer=new ResizeObserver(measure);observer.observe(node);measure();return()=>observer.disconnect()},[admin,sessionReady]);
+  const cities=useApi(()=>api<City[]>('cities'),[admin,revision]);
   const models=useApi(getModels,[revision],{keepPreviousData:true});
   const observations=useApi(()=>getObservations(city),[city,revision,admin,pin]);
   const scenarios=useApi(()=>admin?getScenarios():Promise.resolve([]),[admin,revision],{keepPreviousData:true});
@@ -60,7 +63,7 @@ export default function App(){
   const refresh=()=>setRevision(n=>n+1);
   const navigate=(value:string)=>{setPage(value);setMobileNav(false)};
   useEffect(()=>{window.scrollTo(0,0)},[page]);
-  useEffect(()=>{if(!admin&&['Planning','Decisions','Review reports'].includes(page))setPage('Overview');if(admin&&page==='Report a problem')setPage('Review reports')},[admin,page]);
+  useEffect(()=>{if(!sessionReady)return;if(!admin&&page==='City infra'){setPage('Overview');setLogin(true);history.replaceState({},'', '/admin/login')}if(!admin&&['Planning','Decisions','Review reports'].includes(page))setPage('Overview');if(admin&&page==='Report a problem')setPage('Review reports')},[admin,page,sessionReady]);
   useEffect(()=>{const expired=()=>{setAdmin(false);setProfile(null);setChosen(null);setPreparedResources(null);setSessionError('Your admin session expired. Sign in again to continue.');setLogin(true)};window.addEventListener('civicflux-session-expired',expired);return()=>window.removeEventListener('civicflux-session-expired',expired)},[]);
   useEffect(()=>{document.documentElement.dataset.theme=dark?'dark':'light';localStorage.setItem('civicflux-theme',dark?'dark':'light')},[dark]);
   useEffect(()=>{api<{profile:AdminProfile}>('auth/me').then(session=>{setProfile(session.profile);const first=session.profile.assignments[0];if(first){setCity(first.city_id);setPin(first.pincode)}else if(session.profile.role!=='system_supervisor'&&session.profile.cities.length){setCity(session.profile.cities[0]);setPin('')}setAdmin(true)}).catch(()=>setAdmin(false)).finally(()=>setSessionReady(true));const timer=setInterval(refresh,60000);return()=>clearInterval(timer)},[]);
@@ -71,16 +74,16 @@ export default function App(){
   async function portal(){if(!admin){setLoginError('');history.pushState({},'', '/admin/login');setLogin(true);return}try{await api('auth/logout',{});setAdmin(false);setProfile(null);setPin('');setChosen(null);setPreparedResources(null);setPage('Overview');history.replaceState({},'', '/');refresh()}catch(e){setSessionError((e as Error).message)}}
   const errors=[cities.error,models.error,observations.error,scenarios.error,graph.error,defaults.error,complaints.error,weather.error,civic.error,feedback.error,audit.error,sessionError].filter(Boolean);
   const content=<main>
-        {page!=='Overview'&&<div className="page-heading"><div><span className="eyebrow">{activeCity?.name.toUpperCase()} / CIVICFLUX</span><h1>{page}<span>.</span></h1></div><button className="refresh-button" onClick={refresh}><RefreshCw size={15}/>Refresh</button></div>}
+        {page!=='Overview'&&<div className="page-heading"><div><span className="eyebrow">{activeCity?.name.toUpperCase()} / CIVICFLUX</span><h1>{page}<span>.</span></h1></div><button data-tour="refresh" className="refresh-button" onClick={refresh}><RefreshCw size={15}/>Refresh</button></div>}
 
         {errors.length>0&&<div className="error" role="alert">{admin?[...new Set(errors)].join(' · '):'Some information is unavailable. Try refreshing or check the source panels.'} <button onClick={()=>{setSessionError('');refresh()}}>Retry</button></div>}
         {models.loading&&!models.data&&page!=='Overview'&&<p className="loading" role="status">Loading research inventory…</p>}
-        {page==='Overview'&&admin?<AdminOverview city={activeCity} observations={currentObservations} weather={currentWeather} context={currentCivic} reports={localReports} navigate={navigate}/>:page==='Overview'&&<Dashboard notice={<LocalContext city={city} pin={pin} onPin={setPin} revision={revision}/>}  models={models.data??[]} observations={currentObservations} city={activeCity} reports={localReports} weather={currentWeather} context={currentCivic} navigate={navigate} admin={admin}/>}
+        {page==='Overview'&&admin?<AdminOverview onRefresh={refresh} city={activeCity} observations={currentObservations} weather={currentWeather} context={currentCivic} reports={localReports} navigate={navigate}/>:page==='Overview'&&<Dashboard notice={<LocalContext city={city} pin={pin} onPin={setPin} revision={revision}/>}  models={models.data??[]} observations={currentObservations} city={activeCity} reports={localReports} weather={currentWeather} context={currentCivic} navigate={navigate} admin={admin}/>}
         {page==='Overview'&&city!=='delhi'&&<OpenDataOverview city={city} pin={pin} onPin={setPin} admin={admin}/>}
         {page==='Data and sources'&&<DataSources/>}
-        {page==='Predictions'&&<Predictions city={activeCity} models={models.data??[]} admin={admin}/>}
-        {page==='Infrastructure'&&<Infrastructure city={activeCity} context={currentCivic} reports={localReports} observations={currentObservations} weather={currentWeather}/>}
-        {page==='City map'&&<CityMap admin={admin} key={city} city={activeCity} observations={currentObservations} weather={currentWeather} context={currentCivic} reports={localReports}/>}
+        {page==='Predictions'&&activeCity&&<Predictions key={city+String(admin)} city={activeCity} models={(models.data??[]).filter(m=>m.component!=='infrastructure_anomaly')} admin={admin}/>}
+        {page==='City infra'&&admin&&<Infrastructure key={city}/>}
+        {page==='City map'&&<CityMap onRetry={refresh} admin={admin} key={city} city={activeCity} observations={currentObservations} weather={currentWeather} context={currentCivic} reports={localReports}/>}
         {page==='Report a problem'&&!admin&&<ReportProblem key={city+pin} initialPin={pin} city={activeCity} onSaved={refresh}/>}
         {page==='Open reports'&&<OpenReports key={city} reports={localReports}/>}
         {page==='Review reports'&&admin&&<ReviewReports key={city} supervisor={profile?.role==='system_supervisor'} pincode={pin} city={city} revision={revision} onSaved={refresh}/>}
@@ -92,13 +95,14 @@ export default function App(){
         <footer><span className="footer-brand">CIVICFLUX</span>{city!=='delhi'&&<a href="/data-sources" onClick={e=>{e.preventDefault();navigate('Data and sources')}}>Data and sources</a>}</footer>
       </main>;
   if(!sessionReady)return <div className="session-loading" role="status">Opening CivicFlux…</div>;
-  if(admin&&profile)return <AdminWelcome key={profile.id}><AdminShell dark={dark} onThemeChange={()=>setDark(!dark)} profile={profile} page={page} navigate={navigate} onSignOut={portal}>{content}</AdminShell></AdminWelcome>;
-  return <div className={'app-shell '+(mobileNav?'mobile-nav-open':'')}>
-    <a className="landing-admin-link" href="/admin/login" onClick={e=>{e.preventDefault();portal()}}>Admin</a><div className="main-shell"><header className={'topbar civilian-topbar '+(scrolled?'is-scrolled':'')} inert={!scrolled}><div className="top-brand-row"><a className="navigation-brand" href="#overview" onClick={e=>{e.preventDefault();navigate('Overview')}}><span className="brand-mark"><Activity size={23}/></span><span className="brand-civic">Civic</span><span className="brand-flux">Flux</span></a></div><div className="topbar-actions"><span className="mode-indicator"><i className="status-dot"/>{admin?'Admin workspace · '+(activeCity?.name??city)+(pin?' · PIN '+pin:profile?.role==='officer'?' · Choose an assigned PIN':' · Supervisor'):'Public access'}</span><CitySelector cities={(cities.data??[]).filter(c=>!admin||!profile||profile.role==='system_supervisor'||profile.cities.includes(c.id)||profile.assignments.some(a=>a.city_id===c.id))} value={city} onChange={v=>{setCity(v);setChosen(null);setPin(profile?.assignments.find(a=>a.city_id===v)?.pincode??'')}}/><button className="icon-button" aria-label={dark?'Switch to light theme':'Switch to dark theme'} onClick={()=>setDark(!dark)}>{dark?<Sun size={17}/>:<Moon size={17}/>}</button><button className="portal-button" aria-label={admin?'Sign out':'Admin login'} onClick={portal}>{admin?<LogOut size={15}/>:<LogIn size={15}/>}<span>{admin?'Sign out':'Admin login'}</span></button></div><nav className="horizontal-navigation" aria-label="Main navigation">{navigation.map((title,i)=><button key={title} aria-current={page===title?'page':undefined} className={page===title?'nav-item active':'nav-item'} onClick={()=>navigate(title)}><span>{title}</span><small>{String(i+1).padStart(2,'0')}</small></button>)}</nav></header>
+  const guide=<ProductTour key={admin?profile?.id:'public'} admin={admin} identity={admin?profile?.id??'admin':'public'} supervisor={profile?.role==='system_supervisor'} city={city} pin={pin} page={page} navigate={navigate}/>;
+  if(admin&&profile)return <AdminWelcome key={profile.id}><><AdminShell dark={dark} onThemeChange={()=>setDark(!dark)} profile={profile} page={page} navigate={navigate} onSignOut={portal}>{content}</AdminShell>{guide}</></AdminWelcome>;
+  return <div style={{'--public-header-height':headerHeight+'px'} as React.CSSProperties} className={'app-shell '+(page!=='Overview'?'interior-page ':'')+(mobileNav?'mobile-nav-open':'')}>
+    <a className="landing-admin-link" href="/admin/login" onClick={e=>{e.preventDefault();portal()}}>Admin</a><div className="main-shell"><header ref={publicHeader} className={'topbar civilian-topbar '+(scrolled||page!=='Overview'?'is-scrolled':'')} inert={!scrolled&&page==='Overview'}><div className="top-brand-row"><a className="navigation-brand" href="#overview" onClick={e=>{e.preventDefault();navigate('Overview')}}><span className="brand-mark"><Activity size={23}/></span><span className="brand-civic">Civic</span><span className="brand-flux">Flux</span></a></div><div className="topbar-actions"><span className="mode-indicator"><i className="status-dot"/>{admin?'Admin workspace · '+(activeCity?.name??city)+(pin?' · PIN '+pin:profile?.role==='officer'?' · Choose an assigned PIN':' · Supervisor'):'Public access'}</span><CitySelector cities={(cities.data??[]).filter(c=>!admin||!profile||profile.role==='system_supervisor'||profile.cities.includes(c.id)||profile.assignments.some(a=>a.city_id===c.id))} value={city} onChange={v=>{setCity(v);setChosen(null);setPreparedResources(null);setPin(profile?.assignments.find(a=>a.city_id===v)?.pincode??'')}}/><NotificationBell city={city} revision={revision}/><button data-tour="theme" className="icon-button" aria-label={dark?'Switch to light theme':'Switch to dark theme'} onClick={()=>setDark(!dark)}>{dark?<Sun size={17}/>:<Moon size={17}/>}</button><button data-tour="admin-login" className="portal-button" aria-label={admin?'Sign out':'Admin login'} onClick={portal}>{admin?<LogOut size={15}/>:<LogIn size={15}/>}<span>{admin?'Sign out':'Admin login'}</span></button></div><nav data-tour="public-nav" className="horizontal-navigation" aria-label="Main navigation">{navigation.map((title,i)=><button key={title} aria-current={page===title?'page':undefined} className={page===title?'nav-item active':'nav-item'} onClick={()=>navigate(title)}><span>{title}</span><small>{String(i+1).padStart(2,'0')}</small></button>)}</nav></header>
       {content}
 
     </div>
-    <CivicHelp admin={admin} navigate={navigate}/>
+    {guide}
     {login&&<div className="modal-backdrop" onClick={e=>{if(e.target===e.currentTarget)setLogin(false)}}><section ref={modal} role="dialog" aria-modal="true" aria-labelledby="login-title" className="login-modal"><button className="close-button" aria-label="Close login" onClick={()=>setLogin(false)}><X size={20}/></button><span className="brand-mark"><ShieldCheck size={26}/></span><span className="eyebrow">THE HUMAN IN THE LOOP</span><h2 id="login-title">Your area.<br/><em>Your workspace.</em></h2><p>Use username admin and your area’s six-digit postal PIN. Your session is limited to that area.</p><form onSubmit={authenticate}><label>Admin ID<input autoFocus autoComplete="username" placeholder="admin" readOnly required value={username} onChange={e=>setUsername(e.target.value)}/></label><label>Password<input type="password" autoComplete="current-password" placeholder="Six-digit postal PIN" inputMode="numeric" pattern="[0-9]{6}" minLength={6} maxLength={6} required value={password} onChange={e=>setPassword(e.target.value)}/></label><button className="primary" disabled={logging}>{logging?'Signing in…':'Enter the admin portal'}<ArrowUpRight size={18}/></button>{loginError&&<div className="error" role="alert">{loginError}</div>}</form><small>Public analysis stays available without an account.</small></section></div>}
   </div>
 }

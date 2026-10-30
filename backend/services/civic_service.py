@@ -14,7 +14,11 @@ SOURCES = {
 
 def postal(identifier):
     city(identifier)
-    return json.loads((CONFIG/'postal_reference.json').read_text(encoding='utf-8'))[identifier]
+    original=json.loads((CONFIG/'postal_reference.json').read_text(encoding='utf-8'))[identifier]
+    from backend.db.connection import connection
+    with connection() as db:rows=db.execute('SELECT pincode,locality_name FROM pincodes WHERE city_id=? AND is_active=1 ORDER BY pincode',(identifier,)).fetchall()
+    known={r['pin'] for r in original['records']}
+    return {**original,'records':original['records']+[{'pin':r['pincode'],'area':r['locality_name']} for r in rows if r['pincode'] not in known]}
 
 def verify_pin(identifier, pin):
     entries = [row for row in postal(identifier)['records'] if row['pin'] == pin]
@@ -46,7 +50,7 @@ def context(identifier):
     confirmed=[n for n in reports if n.get('validation')=='valid' and n['status']!='closed']
     from backend.scope import current
     return {'pincode':current()['pincode'] if current() else None,'city_id':identifier,'city_name':configuration['name'],'checked_at':repo.now(),
-      'reference':None if current() else reference(identifier), 'operational_pools':pools_for(identifier,public=True),
+      'reference':None, 'operational_pools':pools_for(identifier,public=True),
       'sources':SOURCES[identifier], 'notices':notices, 'publications':publications,
       'inventory':inventory[:1], 'confirmed_active_count':len(confirmed),
       'official_notices_status':'approved_imports_only',

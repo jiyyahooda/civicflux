@@ -1,5 +1,5 @@
 export type Coordinates={latitude:number;longitude:number};
-export type City={id:string;name:string;timezone:string;verified_asset_mapping:boolean;research_components:string[];limitations:string;map_reference?:Coordinates};
+export type City={pincode?:string;id:string;name:string;timezone:string;verified_asset_mapping:boolean;research_components:string[];limitations:string;map_reference?:Coordinates};
 export type Model={component:string;version:string;readiness:string;readiness_reason:string;geographic_scope:string;units:unknown;horizon:string;provenance:string;validation_status:string;metrics:Record<string,unknown>;selected_model:string;artifact:string|null;feature_schema:string;operational_supported:boolean};
 export type Prediction={component:string;model_version:string;status:string;prediction:Record<string,unknown>[]|Record<string,unknown>|null;uncertainty:{level:number;intervals:{entity:string;lower_90:number;upper_90:number}[];method:string}|null;freshness?:{age_hours:number};units:unknown;horizon:string;warnings:string[];geographic_scope:string;research_only:boolean};
 export type Example={response:Prediction;request_clock:string;input_kind:string};

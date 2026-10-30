@@ -12,6 +12,8 @@ from project_paths import PROJECT_ROOT
 from src.civicflux.integration import fixture
 
 def test_reference_tables_retain_scope_dates_and_reconciliation(client):
+ assert client.get('/api/reference/delhi').status_code==401
+ assert client.post('/api/auth/login',json={'username':'admin','password':'110001'}).status_code==200
  ref=client.get('/api/reference/delhi').json()
  assert len(ref['budget'])==16 and len(ref['drainage_basins'])==3 and len(ref['roads'])==29
  assert not ref['operational_eligible']
@@ -23,8 +25,8 @@ def test_reference_tables_retain_scope_dates_and_reconciliation(client):
  assert sum(b['historical_natural_drains'] for b in ref['drainage_basins'])==201
  assert all(b['inventory_year']==1976 and b['geometry'] is None for b in ref['drainage_basins'])
  assert next(x['value'] for x in ref['transport'] if x['id']=='registered_vehicles')==8761919
- assert client.get('/api/reference/chennai').json()['status']=='unavailable'
- assert client.get('/api/reference/chandigarh').json()['status']=='unavailable'
+ assert client.get('/api/reference/chennai').status_code==404
+ assert client.get('/api/reference/chandigarh').status_code==404
  assert client.get('/api/civic/context/delhi').json()['operational_pools']==[]
  doc=client.get('/api/reference/delhi/source');assert doc.status_code==200 and doc.content.startswith(b'%PDF')
  assert hashlib.sha256(doc.content).hexdigest()==ref['source_sha256']

@@ -722,3 +722,24 @@ Live: Air quality: CAMS ENSEMBLE data provider (Copernicus Atmosphere Monitoring
 | lake_puzhal | 2025-11-27 | 2026-10-29T20:21:38.052749+00:00 | 228 → 228 |
 | lake_veeranam | 2025-11-27 | 2026-10-29T20:21:37.266674+00:00 | 228 → 228 |
 | pin_directory | Not supplied | 2026-10-29T20:21:37.618563+00:00 | 157126 → 19 |
+
+## City infra, notifications and email review
+
+Infrastructure now lives in the authenticated **City infra** tab. Its static reference
+is shared across PINs within a city; operational permissions remain PIN-scoped. Public
+interior pages keep their navigation visible. See [the portal review and sender setup](docs/PORTAL_FIXES_REVIEW.md)
+for the complete checklist, local review steps, Windows instructions, unavailable feeds,
+notification polling limits and the verified free Gmail SMTP option. No mailbox is
+created by setup and no email delivery is claimed without provider acceptance.
+
+## Interactive onboarding (local)
+
+Use **Show me around** on first use, or **Help / Take a tour** at the bottom right.
+Choose the full public/municipal path or a feature topic. Sign in normally to access
+admin topics; the guide does not grant permissions. During a tour, saving a report,
+scenario, notice, inventory, budget or decision requires a separate real-change confirmation.
+Completion is stored locally per account/anonymous browser. **Restart from beginning**
+resets this tour progress, not application records.
+
+See [the complete feature audit and review checklist](docs/ONBOARDING_COVERAGE.md).
+Run tour regressions with `corepack pnpm --dir frontend test:tour`.

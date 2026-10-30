@@ -29,7 +29,8 @@ def geography(identifier:str,actor:str=Depends(admin)):
   import math
   for i,asset in enumerate(body['assets']):
    asset.update(latitude=scope['latitude']+.003*math.sin(i*2.4),longitude=scope['longitude']+.003*math.cos(i*2.4),label=scope['area_name'].split(',')[0]+' · '+asset['kind']+' '+str(i+1),anchor=scope['pincode'],pincode=scope['pincode'],synthetic=True,location_status='Hypothetical asset around the postal reference; not surveyed equipment')
-  body['reference']={'type':'FeatureCollection','features':[]};body['pincode']=scope['pincode'];body['source_note']='Hypothetical network layout at GeoNames postal reference. No postal boundary or surveyed network is asserted.'
+  body['reference']={'type':'FeatureCollection','features':[]};body['pincode']=scope['pincode'];body['city_id']=identifier;body['source_note']='Hypothetical network layout at '+str(scope.get('coordinate_source') or 'unverified postal reference')+'. No postal boundary or surveyed network is asserted.'
+  if identifier!='delhi':body['sources']=[]
  return body
 
 @router.get('/geography/{identifier}/download')
@@ -39,7 +40,7 @@ def download_geography(identifier:str,rain_mm:float=Query(60,ge=0,le=200),blocka
  ids=outages.split(',') if outages else body['default_outages']
  if any(i not in {a['id'] for a in body['assets']} for i in ids):raise HTTPException(422,'Unknown simulated asset')
  body.update(assumptions={'rain_mm':rain_mm,'blockage':blockage,'vehicles_per_hour':volume,'capacity_per_hour':capacity},declared_outages=ids,warning='Simulated positions, links and conditions; not surveyed infrastructure or live incident records.')
- return Response(json.dumps(body,indent=2,allow_nan=False),media_type='application/json',headers={'Content-Disposition':'attachment; filename="civicflux-delhi-simulated-scenario.json"'})
+ return Response(json.dumps(body,indent=2,allow_nan=False),media_type='application/json',headers={'Content-Disposition':f'attachment; filename="civicflux-{identifier}-simulated-scenario.json"'})
 
 class TrafficInput(BaseModel):
  model_config=ConfigDict(extra='forbid',allow_inf_nan=False)

@@ -1,0 +1,26 @@
+/* Solid accent surfaces use their contrast token; data-map colours stay independent. */
+.primary,.primary:hover:not(:disabled),.primary:active,.primary:focus-visible,.primary small,.primary strong,.primary svg {color:var(--on-accent)!important}
+.primary:disabled{opacity:1;filter:saturate(.65)}
+option:checked{background:var(--accent);color:var(--on-accent)}
+.station-pin>span{color:var(--on-accent)}
+:root:not([data-theme=dark]) ::selection{color:#fff}
+:root:not([data-theme=dark]) .stat.accent-stat{--text:#fff;--muted:#fff;color:#fff}
+:root:not([data-theme=dark]) .stat.accent-stat :is(p,small,strong,span){color:#fff}
+.graph-node.failed text{fill:var(--on-accent)}
+.admin-topbar{position:sticky;top:0;z-index:1050;background:var(--admin-frame)}
+.admin-topbar nav{scrollbar-width:thin}
+.city-infra-content{display:grid;gap:1rem;min-width:0}
+.city-infra-content .panel{min-width:0}
+.notification-bell{position:relative;display:inline-flex}
+.notification-unread{position:absolute;right:7px;top:6px;width:9px;height:9px;border-radius:50%;background:var(--accent);border:2px solid var(--surface)}
+.notification-popover{position:fixed;z-index:1400;right:12px;top:12px;width:min(440px,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow:auto;padding:1rem;border:1px solid var(--line);border-radius:1.1rem;background:var(--surface);color:var(--text);box-shadow:0 14px 60px #0004}
+.notification-popover h2{font-size:1.25rem}
+.notification-popover h3{font-size:1rem}
+.notification-item{padding:1rem 0;border-top:1px solid var(--line);overflow-wrap:anywhere}
+.notification-item.is-read{border-left:2px solid var(--line);padding-left:.65rem}
+.notification-new{display:inline-block;font-size:.75rem;margin-left:.5rem;border-radius:1rem;padding:.1rem .4rem;background:var(--accent);color:var(--on-accent)}
+.notification-popover time{font-size:var(--type-small);color:var(--muted)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:600px){.admin-topbar nav,.admin-topbar nav.expanded{display:flex!important;order:4;flex:1 1 100%;justify-content:flex-start;flex-wrap:wrap;overflow:visible;gap:.25rem;max-width:100%;padding-bottom:.4rem}.admin-topbar nav button{white-space:nowrap;font-size:var(--type-small);flex:1 1 auto}.admin-menu{display:none!important}.admin-topbar-actions{flex-wrap:wrap;justify-content:flex-end}.admin-topbar{padding-block:.65rem}.admin-topbar .admin-wordmark{font-size:1.45rem}}
+
+.app-shell.interior-page .main-shell main{padding-top:calc(var(--public-header-height,160px) + 1.5rem)}

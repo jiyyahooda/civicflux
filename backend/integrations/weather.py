@@ -14,7 +14,7 @@ async def weather(identifier):
   if not ref:raise ValueError('Postal reference coordinates unavailable')
   if os.getenv('CIVICFLUX_PUBLIC_FEEDS','1')!='1':raise ValueError('Provider requests are disabled')
   p,stamp,warning=await fetch_json(URL,params={'latitude':ref['latitude'],'longitude':ref['longitude'],'current':','.join(CURRENT),'daily':','.join(DAILY),'hourly':'precipitation,temperature_2m','forecast_days':7,'timezone':c['timezone']},ttl=900)
-  if p.get('timezone')!=c['timezone'] or abs(p['latitude']-ref['latitude'])>1 or abs(p['longitude']-ref['longitude'])>1:raise ValueError('Weather location could not be verified')
+  if not (p.get('timezone')==c['timezone'] or {p.get('timezone'),c['timezone']}=={'Asia/Kolkata','Asia/Calcutta'}) or abs(p['latitude']-ref['latitude'])>1 or abs(p['longitude']-ref['longitude'])>1:raise ValueError('Weather location could not be verified')
   if any(p.get('current_units',{}).get(k)!=u for k,u in CURRENT.items()):raise ValueError('Unexpected weather units')
   current=p['current']
   if any(not isinstance(current.get(k),(float,int)) or isinstance(current[k],bool) or not math.isfinite(current[k]) for k in CURRENT):raise ValueError('Incomplete current weather')
@@ -31,5 +31,6 @@ async def weather(identifier):
   observed=datetime.fromisoformat(current['time']).replace(tzinfo=__import__('zoneinfo').ZoneInfo(c['timezone']))
   age=(datetime.now(timezone.utc)-observed).total_seconds()
   return {**base,'status':'stale' if warning or age>7200 or age< -900 else 'available','current':current,'observed_at':observed.isoformat(),'days':rows,'hourly':hours[:48],'coordinates':{'latitude':p['latitude'],'longitude':p['longitude']},'warning':'Provider cache may be stale' if warning else None,'fetched_at':stamp}
- except Exception:
-  return {**base,'status':'unavailable','current':None,'days':[],'hourly':[],'reason':'Weather is unavailable for this city. Try again later.'}
+ except Exception as error:
+  reason=str(error) if isinstance(error,ValueError) and str(error) in {'Postal reference coordinates unavailable','Provider requests are disabled','Weather location could not be verified','Unexpected weather units','Incomplete current weather','Unexpected daily units','No current forecast days'} else 'Weather provider could not return a valid response; retry or check CIVICFLUX_PUBLIC_FEEDS and network access.'
+  return {**base,'status':'unavailable','current':None,'days':[],'hourly':[],'reason':reason}
