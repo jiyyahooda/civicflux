@@ -68,3 +68,21 @@ async def rain_tile(z:int,x:int,y:int):
   if r.status_code!=200 or 'image/png' not in r.headers.get('content-type',''):raise ValueError()
   return Response(r.content,media_type='image/png',headers={'Cache-Control':'no-store'})
  except (httpx.HTTPError,ValueError):raise HTTPException(503,'Precipitation tile provider is unavailable')
+
+@router.get('/network/{identifier}')
+def public_network(identifier:str,pincode:str|None=Query(None,pattern=r'^[0-9]{6}$')):
+ import math
+ c=city(identifier);ref=c.get('map_reference');label=c['name']
+ if pincode:
+  from backend.services.civic_service import verify_pin
+  from backend.db.connection import connection
+  verify_pin(identifier,pincode)
+  with connection() as db:row=db.execute('SELECT latitude,longitude,area_name FROM admins WHERE city_id=? AND pincode=?',(identifier,pincode)).fetchone()
+  ref={'latitude':row['latitude'],'longitude':row['longitude']} if row and row['latitude'] is not None else None
+  label=row['area_name'] if row else label
+ if not ref:return {'status':'unavailable','reason':'No sourced reference coordinates for this postal area. Choose another registered area.'}
+ body=json.loads((PROJECT_ROOT/'data/geography/delhi_demo.json').read_text())
+ for i,a in enumerate(body['assets']):
+  a.update(latitude=ref['latitude']+.003*math.sin(i*2.4),longitude=ref['longitude']+.003*math.cos(i*2.4),label=label.split(',')[0]+' · '+a['kind']+' '+str(i+1),anchor=label,source_url='https://www.geonames.org/' if identifier=='delhi' else 'https://data.gov.in/',synthetic=True,location_status='Illustrative research asset at a postal/city reference; not surveyed municipal equipment.')
+ body.update(city_id=identifier,pincode=pincode,reference={'type':'FeatureCollection','features':[]},sources=[],source_note='Abstract research topology placed at the selected reference. All links, assets and outages are hypothetical; no real pipe survey or current fault is asserted.')
+ return body

@@ -53,11 +53,11 @@ def test_notification_ids_use_event_times_not_polling_times_and_ignore_other_cit
 
 def test_notification_endpoint_tracks_only_requested_report_updates_and_never_email(client,monkeypatch):
     result=report(client).json()
-    async def absent(cid):return {'city_id':cid}
+    async def absent(cid,**kwargs):return {'city_id':cid}
     monkeypatch.setattr(notifications,'weather',absent);monkeypatch.setattr(notifications,'observations',absent)
     monkeypatch.setattr(notifications,'context',lambda cid:{'city_id':cid,'notices':[]})
     assert client.get('/api/civic/notifications/delhi').json()['items']==[]
-    response=client.get('/api/civic/notifications/delhi?tracking_ids='+result['id']);body=response.json()
+    response=client.get('/api/civic/notifications/delhi?pincode=110001&tracking_ids='+result['id']);body=response.json()
     assert len(body['items'])==1 and body['poll_seconds']==60
     assert 'email_private' not in response.text and 'example.org' not in response.text
     assert client.get('/api/civic/notifications/chennai?tracking_ids='+result['id']).json()['items']==[]

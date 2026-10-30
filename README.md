@@ -743,3 +743,7 @@ resets this tour progress, not application records.
 
 See [the complete feature audit and review checklist](docs/ONBOARDING_COVERAGE.md).
 Run tour regressions with `corepack pnpm --dir frontend test:tour`.
+
+## Postal-area transparency update
+
+Monetary history shows recorded allocation and paid expenditure for a selected PIN and fiscal year. Missing records stay unrecorded; plan reservations are separate. Phone navigation now uses a hamburger. Water/infrastructure maps include an explicitly illustrative, read-only network. Public notifications require an area selection, suggested through browser location permission or selected manually. See [the update and verification notes](docs/AREA_TRANSPARENCY.md). Gmail credential setup is deferred; keep credentials in private environment variables.

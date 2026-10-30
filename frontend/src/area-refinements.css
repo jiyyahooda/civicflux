@@ -1,0 +1,56 @@
+.local-area-picker{display:flex;flex-wrap:wrap;align-items:end;gap:.7rem;padding:.8rem 1rem;margin:1rem 0;border:1px solid var(--line);border-radius:14px;background:var(--surface)}.local-area-picker label{margin:0;flex:1;min-width:200px}.local-area-picker select{max-width:100%}.local-area-picker small{flex-basis:100%;color:var(--muted);font-size:12px}.public-menu-toggle{display:none}.intro-menu-peek{position:fixed;inset:0 0 auto;z-index:1040;height:64px;border:none;border-radius:0;background:transparent;text-align:right;padding-right:30px;font-size:12px;color:var(--muted)}
+@media(max-width:760px){.public-menu-toggle{display:inline-flex!important;margin-left:auto}.civilian-topbar{opacity:1!important;visibility:visible!important;transform:none!important;max-width:100vw;overflow:visible}.civilian-topbar .horizontal-navigation{display:none!important}.mobile-nav-open .civilian-topbar .horizontal-navigation{display:flex!important;flex-direction:column;width:100%;align-items:stretch;max-height:60dvh;overflow:auto}.civilian-topbar .topbar-actions{flex-wrap:wrap;max-width:100%}.civilian-topbar .horizontal-navigation button{text-align:left;justify-content:space-between}.admin-topbar .admin-menu{display:inline-flex!important}.admin-topbar nav:not(.expanded){display:none!important}.admin-topbar nav.expanded{display:flex!important;flex-direction:column;align-items:stretch;flex:1 1 100%;width:100%;max-height:60dvh;overflow:auto;order:4}.admin-topbar nav.expanded button{text-align:left;flex:none}.local-area-picker{margin-top:.5rem}.local-area-picker select{width:100%}}
+.civilian-topbar{z-index:1060}.public-menu-toggle{min-width:44px!important;width:44px;height:44px}
+button.danger:hover{background:#800020;color:#fff!important}
+/* Exact solid burgundy surfaces, with clean inherited label/icon colour. */
+:root:not([data-theme=dark]) :is(.primary,.portal-button,.tour-help,.nav-item.active,.segmented .selected,.admin-topbar nav [aria-current=page]){background:#800020!important;color:#fff!important;opacity:1;filter:none}
+:root:not([data-theme=dark]) :is(.app-shell,.admin-shell) button:not(.intro-menu-peek):not(.intro-hover-zone):hover:not(:disabled){background:#800020!important;color:#fff!important;box-shadow:none;filter:none;opacity:1}
+:root:not([data-theme=dark]) :is(.app-shell,.admin-shell) button:not(.intro-menu-peek):not(.intro-hover-zone):hover:not(:disabled) :is(span,strong,small,svg),:root:not([data-theme=dark]) .nav-item.active :is(span,small){color:#fff!important;background:transparent!important}
+.civilian-topbar{background:var(--surface)!important;transition:transform .2s ease,opacity .2s ease!important;opacity:0;transform:translateY(-12px);pointer-events:none;overflow:visible;box-shadow:0 8px 28px #0000000c}
+.civilian-topbar.is-scrolled{opacity:1;transform:translateY(0);pointer-events:auto}
+.intro-menu-peek{height:68px;padding:12px 32px;display:flex;align-items:center;justify-content:flex-end;background:transparent!important;border:0;transition:opacity .15s ease;box-shadow:none!important}
+.intro-menu-peek span{display:inline-flex;align-items:center;gap:20px;border:1px solid var(--line);border-radius:99px;padding:10px 17px;background:var(--surface);color:var(--text);box-shadow:0 3px 16px #00000009;font-weight:650;letter-spacing:-.2px}
+.intro-menu-peek b{border-left:1px solid var(--line);padding-left:16px;font-weight:500;font-size:12px;color:var(--muted)}
+.intro-menu-peek.is-revealed{opacity:0;pointer-events:none}
+@media(max-width:760px){
+ .civilian-topbar{display:grid!important;grid-template-columns:minmax(0,1fr) 44px!important;grid-template-rows:auto auto!important;gap:8px 10px!important;padding:12px 16px!important;overflow:visible!important;opacity:1;transform:none}
+ .civilian-topbar .top-brand-row{grid-column:1;grid-row:1;min-width:0}.civilian-topbar .navigation-brand{font-size:25px!important}
+ .civilian-topbar .public-menu-toggle{grid-column:2;grid-row:1;justify-self:end;margin:0!important;display:inline-flex!important;align-items:center;justify-content:center}
+ .civilian-topbar .topbar-actions{grid-column:1 / -1;grid-row:2;display:flex;justify-content:flex-end;width:100%;gap:7px}
+ .civilian-topbar .horizontal-navigation,.mobile-nav-open .civilian-topbar .horizontal-navigation{position:absolute!important;inset:calc(100% + 6px) 12px auto auto!important;width:min(300px,calc(100vw - 24px))!important;max-height:65dvh;overflow-y:auto!important;overflow-x:hidden!important;flex-direction:column!important;flex-wrap:nowrap!important;align-items:stretch!important;padding:8px!important;gap:4px!important;border:1px solid var(--line);border-radius:16px;background:var(--surface)!important;box-shadow:0 14px 36px #0002;grid-column:auto!important}
+ .civilian-topbar .horizontal-navigation .nav-item{width:100%;flex:none;min-height:44px;justify-content:space-between;text-align:left;border-radius:10px}
+ .admin-topbar{position:sticky!important;display:flex!important;flex-wrap:wrap;gap:8px!important;padding:12px 16px!important}
+ .admin-topbar .admin-wordmark{order:1;margin-right:auto}.admin-topbar .admin-menu{order:2;margin-left:auto!important;width:44px;height:44px;justify-content:center;align-items:center;flex:none}
+ .admin-topbar .admin-topbar-actions{order:3;flex-basis:100%;justify-content:flex-end}
+ .admin-topbar nav.expanded{position:absolute!important;inset:calc(100% + 6px) 12px auto auto!important;display:flex!important;width:min(300px,calc(100vw - 24px))!important;flex-direction:column!important;flex-wrap:nowrap!important;gap:4px!important;padding:8px!important;border:1px solid var(--line);border-radius:16px;background:var(--surface)!important;box-shadow:0 14px 36px #0002;max-height:65dvh;overflow:auto}
+ .admin-topbar nav.expanded button{width:100%;min-height:44px;flex:none;border-radius:10px;text-align:left}
+}
+@media(prefers-reduced-motion:reduce){.civilian-topbar,.intro-menu-peek{transition:none!important}}
+:root:not([data-theme=dark]) :is(.primary,.portal-button)::before,:root:not([data-theme=dark]) :is(.primary,.portal-button)::after{display:none!important}
+:root:not([data-theme=dark]) .nav-item.active :is(span,small){opacity:1!important}
+@media(max-width:760px){.mobile-nav-open .civilian-topbar .horizontal-navigation,.admin-topbar nav.expanded{height:auto!important;min-height:0!important;max-height:65dvh!important;white-space:normal!important}.mobile-nav-open .civilian-topbar .horizontal-navigation .nav-item{flex-shrink:0!important}}
+
+/* The intro keeps its original hover reveal; no desktop menu or masthead at rest. */
+.intro-hover-zone{position:fixed;inset:0 0 auto;height:48px;z-index:1040;border:0;background:transparent!important;box-shadow:none!important;padding:0;border-radius:0;cursor:default}
+.intro-hover-zone:hover{background:transparent!important}
+.intro-hover-zone:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
+@media(min-width:761px){.public-menu-toggle,.admin-topbar .admin-menu{display:none!important}}
+@media(max-width:760px){
+ .hamburger-lines{position:relative;display:block;width:20px;height:16px}
+ .hamburger-lines>span{position:absolute;left:0;width:20px;height:2px;border-radius:2px;background:currentColor!important;transition:transform .22s ease,opacity .15s ease,top .22s ease}
+ .hamburger-lines>span:nth-child(1){top:0}.hamburger-lines>span:nth-child(2){top:7px}.hamburger-lines>span:nth-child(3){top:14px}
+ [aria-expanded=true]>.hamburger-lines>span:nth-child(1){top:7px;transform:rotate(45deg)}
+ [aria-expanded=true]>.hamburger-lines>span:nth-child(2){opacity:0;transform:translateX(4px)}
+ [aria-expanded=true]>.hamburger-lines>span:nth-child(3){top:7px;transform:rotate(-45deg)}
+ .mobile-nav-open .civilian-topbar .horizontal-navigation,.admin-topbar nav.expanded{transform-origin:top right;animation:compact-menu-open .22s ease-out}
+}
+@keyframes compact-menu-open{from{opacity:0;transform:translateY(-7px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(prefers-reduced-motion:reduce){.hamburger-lines>span{transition:none!important}.mobile-nav-open .civilian-topbar .horizontal-navigation,.admin-topbar nav.expanded{animation:none!important}}
+
+/* A transparent hit area must not inherit the glass-button rendering. */
+.intro-hover-zone,.intro-hover-zone:hover,.intro-hover-zone:active{
+ background:transparent!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+ box-shadow:none!important;filter:none!important;transform:none!important;border:0!important;
+ transition:none!important;animation:none!important;
+}
+.intro-hover-zone::before,.intro-hover-zone::after{content:none!important;display:none!important}

@@ -7,8 +7,10 @@ URL='https://api.open-meteo.com/v1/forecast'
 CURRENT={'temperature_2m':'°C','apparent_temperature':'°C','relative_humidity_2m':'%','precipitation':'mm','wind_speed_10m':'km/h','weather_code':'wmo code'}
 DAILY=['temperature_2m_max','temperature_2m_min','precipitation_sum','precipitation_probability_max','weather_code']
 
-async def weather(identifier):
- c=city(identifier); ref=c['map_reference']
+async def weather(identifier,reference=None,pincode=None):
+ c=dict(city(identifier))
+ if reference is not None:c.update(map_reference=reference,pincode=pincode)
+ ref=c['map_reference']
  base={'pincode':c.get('pincode'),'city_id':identifier,'provider':'Open-Meteo Weather','source_url':'https://open-meteo.com/en/docs', 'attribution':'Weather data by Open-Meteo.com · CC BY 4.0','checked_at':datetime.now(timezone.utc).isoformat(),'resolution_note':'One provider grid near the city reference; no neighbourhood rainfall coverage is implied.'}
  try:
   if not ref:raise ValueError('Postal reference coordinates unavailable')

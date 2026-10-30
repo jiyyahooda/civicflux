@@ -5,8 +5,9 @@ from .city_service import city
 from .data_service import normalize
 
 
-async def observations(identifier):
-    configuration=city(identifier)
+async def observations(identifier,reference=None,pincode=None):
+    configuration=dict(city(identifier))
+    if reference is not None:configuration.update(map_reference=reference,pincode=pincode)
     async def load(source,adapter):
         try:
             payload=await adapter.fetch(configuration)
@@ -23,9 +24,9 @@ async def observations(identifier):
                 'provider_url':cpcb.REFERENCE if source=='CPCB' else imd.REFERENCE if source=='IMD' else 'https://open-meteo.com/en/docs/air-quality-api',
                 'requires_configuration':source=='CPCB'}
     from backend.scope import current
-    if current():
+    if current() or pincode:
         results=[await load('CAMS',air_quality)] if configuration['map_reference'] else []
-        return {'city_id':identifier,'pincode':current()['pincode'],'checked_at':datetime.now(timezone.utc).isoformat(),'feeds':results,'map_reference':configuration['map_reference'],'notice':'Provider grid at approximate GeoNames postal reference. Not a measured postal boundary.'}
+        return {'city_id':identifier,'pincode':pincode or current()['pincode'],'checked_at':datetime.now(timezone.utc).isoformat(),'feeds':results,'map_reference':configuration['map_reference'],'notice':'Provider grid at approximate GeoNames postal reference. Not a measured postal boundary.'}
     results=await asyncio.gather(load('IMD',imd),load('CPCB',cpcb),load('CAMS',air_quality))
     return {'city_id':identifier,'checked_at':datetime.now(timezone.utc).isoformat(),'feeds':results,
         'map_reference':configuration['map_reference'],

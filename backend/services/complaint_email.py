@@ -53,7 +53,7 @@ def confirmation(item,ip):
   with connection() as db:db.execute("UPDATE complaint_mail SET status='sending',attempt_count=attempt_count+1,updated=? WHERE report_id=?",(time.time(),item['id']))
   message=EmailMessage();message['From']=os.getenv('SMTP_USER','');message['To']=recipient
   message['Subject']='CivicFlux report registered - Tracking ID '+item['id']
-  fields=[('Tracking ID',item['id']),('Category',item['category']),('Location',item['location']+' · '+item['postal_code']),('Summary',item['description'][:500]),('Submitted',item['created'])]
+  fields=[('Title',item.get('title','CivicFlux report')),('City',item['city_id']),('Status',item['status']),('Tracking ID',item['id']),('Category',item['category']),('Location',item['location']+' · '+item['postal_code']),('Summary',item['description']),('Submitted',item['created'])]
   instruction='Open CivicFlux, choose Report a problem, and enter your full Tracking ID under Track your report.'
   disclaimer='This is a report registered in CivicFlux. It has not been submitted to a government complaint system.'
   message.set_content('Your CivicFlux report has been registered.\n\n'+'\n'.join(k+': '+str(v) for k,v in fields)+'\n\n'+instruction+'\n\n'+disclaimer)

@@ -232,3 +232,9 @@ and source availability still apply.
    capture guard requires a deliberate confirmation, including keyboard submits.
 
 Implemented and validated locally first. At the user’s subsequent request, these changes are being published to jiyyahooda/civicflux main on 30 October 2026. No manual deployment is part of this publishing step.
+
+## Subsequent area update
+
+The latest catalog has 101 steps including Local area and Monetary history; see
+[AREA_TRANSPARENCY.md](AREA_TRANSPARENCY.md) for new PIN-only alerts, public illustrative
+networks and hamburger navigation. The 99-step index above records the initial audit.

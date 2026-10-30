@@ -35,16 +35,24 @@ def build_notifications(cid,weather_data,observation_data,civic,tracked):
             add('report:'+report['id']+':'+report['status'],'Report '+report['status'].replace('_',' '),str(report.get('title') or 'CivicFlux report')+' · '+str(report.get('public_reply') or 'Check Track your report for the latest public response.'),'CivicFlux report tracking',report.get('updated_at') or report['created'])
     return sorted({r['id']:r for r in result}.values(),key=lambda r:r['event_time'],reverse=True)[:100]
 @router.get('/notifications/{identifier}')
-async def notifications(identifier:str,tracking_ids:str=Query('',max_length=2000)):
+async def notifications(identifier:str,tracking_ids:str=Query('',max_length=2000),pincode:str|None=Query(None,pattern=r'^[0-9]{6}$')):
     city(identifier)
+    from backend.services.civic_service import verify_pin
+    from backend.db.connection import connection
+    if not pincode:return {'city_id':identifier,'pincode':None,'items':[],'checked_at':datetime.now(timezone.utc).isoformat(),'limitations':'Select your postal area for relevant notifications.','unavailable_sources':[]}
+    verify_pin(identifier,pincode)
+    with connection() as db:point=db.execute('SELECT latitude,longitude FROM admins WHERE city_id=? AND pincode=?',(identifier,pincode)).fetchone()
+    reference={'latitude':point['latitude'],'longitude':point['longitude']} if point and point['latitude'] is not None else None
     async def safe(fn):
-        try:return await fn(identifier)
+        try:return await fn(identifier,reference=reference,pincode=pincode) if reference else {}
         except Exception:return {}
-    w,o=await asyncio.gather(safe(weather),safe(observations));c=context(identifier);tracked=[]
+    w,o=await asyncio.gather(safe(weather),safe(observations));c=context(identifier);c={**c,'notices':[n for n in c.get('notices',[]) if n.get('pincode')==pincode]};tracked=[]
     for id in list(dict.fromkeys(tracking_ids.split(',')))[:20]:
         if not re.fullmatch(r'[0-9a-fA-F-]{36}',id):continue
-        try:tracked.append(repository.get('complaint',id))
+        try:
+            report=repository.get('complaint',id)
+            if report.get('postal_code')==pincode:tracked.append(report)
         except Exception:continue
-    return {'city_id':identifier,'items':build_notifications(identifier,w,o,c,tracked),'checked_at':datetime.now(timezone.utc).isoformat(),'poll_seconds':60,
+    return {'city_id':identifier,'pincode':pincode,'items':[{**n,'id':hashlib.sha256((pincode+n['id']).encode()).hexdigest(),'pincode':pincode} for n in build_notifications(identifier,w,o,c,tracked)],'checked_at':datetime.now(timezone.utc).isoformat(),'poll_seconds':60,
       'limitations':'Checked while this page is open. Polling and source refresh intervals can delay alerts; no background or browser push delivery.',
       'unavailable_sources':(['weather'] if not (w.get('current') and w.get('status')=='available') else [])+(['air quality'] if not any(f.get('readings') for f in o.get('feeds',[]) if f.get('source')=='CAMS' and f.get('status') in ('fresh','available')) else [])}
