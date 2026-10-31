@@ -1,3 +1,5 @@
+import pytest
+pytestmark=pytest.mark.usefixtures("civilian_account")
 from datetime import datetime,timezone,timedelta
 from io import BytesIO
 import json
@@ -12,6 +14,8 @@ def image_bytes():
     stream=BytesIO();Image.new('RGB',(20,20),(30,60,90)).save(stream,format='JPEG');return stream.getvalue()
 
 def report(client,**changes):
+    from civilian_helpers import sign_in
+    sign_in(client)
     body={'city_id':'delhi','title':'Blocked drain','category':'drainage','location':'Recorded test locality','description':'Drain blockage awaiting officer inspection.','postal_code':'110001','email':'citizen@example.org','latitude':'28.65','longitude':'77.23',**changes}
     return client.post('/api/civic/reports',data=body,files=[('images',('unsafe-name.jpg',image_bytes(),'image/jpeg'))])
 

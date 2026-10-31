@@ -1,3 +1,5 @@
+import pytest
+pytestmark=pytest.mark.usefixtures("civilian_account")
 """Jurisdiction, migrations and real transactional locality planning regression tests."""
 from datetime import datetime,timedelta,timezone
 from io import BytesIO
@@ -15,6 +17,8 @@ def image():
 
 
 def report(client,pin='110001',title='Blocked roadside drain',people=None):
+    from civilian_helpers import sign_in
+    sign_in(client)
     data={'city_id':'delhi','title':title,'category':'drainage','location':'Recorded locality near market','description':'Drain is blocked and needs an officer inspection.','postal_code':pin,'email':'resident@example.com','reported_damage_priority':'Critical'}
     if people is not None:data['reported_affected_people_count']=str(people)
     return client.post('/api/civic/reports',data=data,files=[('images',('issue.png',image(),'image/png'))])

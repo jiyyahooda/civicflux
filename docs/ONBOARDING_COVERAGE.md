@@ -1,3 +1,5 @@
+> **31 October 2026 UI refinement:** The active walkthrough is now five short steps per role, at the owner's request. Public: Welcome, Navigation, Reports, City map, Account. Administrator: Welcome/jurisdiction, Navigation, Reports, Decisions, Account. The inspection below is retained as the historical feature inventory, not the current tutorial script. Restart and topic selection remain under Help / Take a tour. See UI_REFINEMENT.md for validation and changed files.
+
 # Interactive onboarding — inspection and feature checklist
 
 Inspection completed before implementation, 30 October 2026. Source: this local app's
@@ -238,3 +240,11 @@ Implemented and validated locally first. At the user’s subsequent request, the
 The latest catalog has 101 steps including Local area and Monetary history; see
 [AREA_TRANSPARENCY.md](AREA_TRANSPARENCY.md) for new PIN-only alerts, public illustrative
 networks and hamburger navigation. The 99-step index above records the initial audit.
+
+## Civilian accounts extension — 31 October 2026
+
+Profile details, owned complaints, saved places/routes and the travel planner add five
+steps in two topics. They appear only for an authenticated civilian, never an admin
+or guest. The report tour explains SMS login and camera-only evidence. The login
+welcome suspends the tour so two dialogs cannot compete for focus. Counts: 106 steps,
+29 topics. Provider/DLT and geographic coverage limits are in CIVILIAN_PORTAL.md.

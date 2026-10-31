@@ -1,3 +1,4 @@
+from backend.api import civilian,civilian_travel
 from backend.api import area_transparency
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
@@ -10,6 +11,7 @@ from backend.api import models,predictions,observations,cities,scenarios,feedbac
 @asynccontextmanager
 async def lifespan(app):
     initialize()
+    civilian.initialize()
     area_transparency.initialize()
     yield
 
@@ -20,5 +22,7 @@ for router in [auth,models.router,predictions.router,observations.router,cities.
 @app.get('/api/health')
 def health():return {'status':'ok','research_only':True,'automatic_dispatch':False}
 app.include_router(area_transparency.router)
+app.include_router(civilian.router)
+app.include_router(civilian_travel.router)
 dist=PROJECT_ROOT/'frontend/dist'
 app.mount('/', FrontendFiles(dist), name='frontend')

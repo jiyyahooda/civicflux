@@ -1,0 +1,43 @@
+/* Shared dashboard hierarchy; the introduction and signature graphics keep their scale. */
+:root{--type-body:15px;--type-small:13px;--type-page:clamp(26px,2.5vw,32px);--type-section:clamp(20px,2vw,24px);--type-panel:18px;--workflow-radius:14px}
+body,.admin-shell{font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:var(--type-body);line-height:1.6}
+:is(.main-shell main,.admin-main) :is(.page-heading h1,.admin-heading h1){font-size:var(--type-page);font-weight:700;line-height:1.2;letter-spacing:-.035em}
+:is(.main-shell main,.admin-main) h2{font-size:var(--type-section);line-height:1.3;font-weight:650;letter-spacing:-.025em}
+:is(.main-shell main,.admin-main) h3{font-size:var(--type-panel);line-height:1.4;font-weight:600;letter-spacing:-.015em}
+:is(.main-shell main,.admin-main) :is(p,input,textarea,select){font-size:var(--type-body);line-height:1.6}
+:is(.main-shell main,.admin-main) :is(label,small,.eyebrow){font-size:var(--type-small);line-height:1.5}
+:is(.main-shell main,.admin-main) .eyebrow{letter-spacing:.06em;font-weight:550}
+:is(.main-shell main,.admin-main) .panel{border:1px solid var(--line);border-radius:var(--workflow-radius);background:var(--surface);box-shadow:none;padding:clamp(18px,2.5vw,28px);min-width:0}
+.operational-heading{display:block;padding:0 0 20px;margin:0 0 20px;border-bottom:1px solid var(--line);background:none}
+.operational-heading h2{margin:0 0 8px}.operational-heading p{margin:0;color:var(--muted);max-width:78ch}
+.operational-content{min-width:0}.operational-content>.panel{box-shadow:none;border-radius:10px;background:var(--bg)}
+.operational-content fieldset>.form-grid{column-gap:24px;row-gap:4px}
+.operational-content details{margin-block:12px}.operational-content :is(input,select,textarea){border-radius:8px}
+.account-menu{position:relative;display:inline-flex;flex:none;isolation:isolate}
+.account-avatar{display:grid!important;place-items:center;width:38px!important;min-width:38px!important;height:38px;padding:0!important;border:1px solid var(--line)!important;border-radius:50%!important;background:var(--surface)!important;color:var(--text)!important;box-shadow:none!important;transition:background .15s,border-color .15s}
+.account-avatar:hover,.account-avatar[aria-expanded=true]{background:var(--accent-soft)!important;border-color:var(--accent)!important;color:var(--accent)!important;transform:none!important}
+.account-dropdown{position:absolute;right:0;top:calc(100% + 10px);z-index:1200;width:248px;max-width:calc(100vw - 24px);padding:6px;border:1px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:0 8px 28px #0002;animation:account-open .14s ease-out;transform-origin:top right}
+.account-dropdown [role=menuitem]{display:flex;align-items:center;justify-content:flex-start;width:100%;min-height:42px;padding:10px 12px;border:0;border-radius:8px;background:transparent;color:var(--text);font-size:14px;font-weight:500;text-align:left;white-space:normal}
+.account-dropdown [role=menuitem]:hover,.account-dropdown [role=menuitem]:focus-visible{background:var(--accent-soft);color:var(--text)}
+.account-identity{display:grid;gap:4px;padding:12px;margin-bottom:4px;border-bottom:1px solid var(--line);text-align:left;overflow-wrap:anywhere}.account-identity strong{font-size:15px;font-weight:650}.account-identity span{font-size:12px;line-height:1.5;color:var(--muted);max-height:100px;overflow:auto}
+.account-menu :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.admin-frame{overflow:visible}.admin-topbar{position:relative;z-index:30}.admin-topbar-actions{margin-left:auto}.admin-topbar .account-menu{order:9}
+.civilian-topbar .topbar-actions{flex-wrap:nowrap}.horizontal-navigation{gap:8px}.horizontal-navigation .nav-item{font-weight:550}
+.admin-main main{min-width:0}.admin-heading h1{margin:0}.admin-area-chip{max-width:55%;overflow-wrap:anywhere}
+.tour-panel{border-radius:14px;box-shadow:0 8px 28px #0002}.tour-active .tour-panel{width:330px;padding:18px;max-height:min(420px,55dvh)}.tour-active .tour-panel h2{font-size:20px}.tour-active .tour-panel p{line-height:1.55}.tour-spotlight{transition:none}
+@keyframes account-open{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:760px){.civilian-topbar .topbar-actions{gap:6px}.account-avatar{width:36px!important;min-width:36px!important;height:36px}.admin-topbar{gap:12px}.admin-heading{gap:12px;align-items:start}.admin-area-chip{max-width:52%}.tour-active .tour-panel{width:calc(100% - 16px);left:8px!important;right:8px;bottom:8px;top:auto!important;max-height:43dvh;padding:14px}.tour-active .tour-panel.tour-above{top:8px!important;bottom:auto}}
+@media(max-width:420px){.civilian-topbar .navigation-brand{font-size:21px}.civilian-topbar .city-selector{max-width:110px}.civilian-topbar .topbar-actions{gap:4px}.admin-area-chip{max-width:100%}.admin-heading{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){.account-dropdown,.account-avatar{animation:none;transition:none}}
+
+/* Apply the same sans-serif family to dashboard headings and controls. */
+:is(.main-shell main,.admin-main) :is(h2,h3,label,input,select,textarea),.page-heading h1,.admin-heading h1,.account-menu{font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+
+:root{--type-h1:var(--type-page);--type-h2:var(--type-section);--type-h3:var(--type-panel);--type-label:14px}
+.admin-shell .admin-main h2{font-size:var(--type-section);font-weight:650;line-height:1.3}.admin-shell .admin-main h3{font-size:var(--type-panel);font-weight:600}
+
+:is(.main-shell main,.admin-main) .panel label{font-weight:500}.account-avatar{min-height:0!important;aspect-ratio:1}
+
+footer .footer-admin-login{display:inline-flex;align-items:center;justify-content:center;flex:none;margin-left:12px;min-height:40px;padding:8px 16px;font-size:14px;font-weight:550;color:var(--accent);background:var(--surface);border:1px solid var(--line);border-radius:9px;text-decoration:none}footer .footer-admin-login:hover{color:var(--accent);text-decoration:underline}footer .footer-admin-login:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+
+.main-shell main>footer{justify-content:flex-start;padding-right:210px;min-height:88px}@media(max-width:640px){.main-shell main>footer{padding-right:0;padding-bottom:88px;gap:12px}footer .footer-admin-login{margin-left:0}}

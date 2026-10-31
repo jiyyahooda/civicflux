@@ -11,6 +11,8 @@ from pydantic import BaseModel, Field, model_validator, ConfigDict
 from PIL import Image, ImageOps, UnidentifiedImageError
 from email_validator import validate_email, EmailNotValidError
 from backend.auth import admin
+from backend.api.civilian import identity as civilian_identity
+from backend.auth import same_origin
 from backend.services.administration import require_city,require_scope,require_record,visible,identity
 from backend.db import repository as repo
 from backend import config
@@ -19,6 +21,12 @@ from backend.services.civic_service import context, postal, verify_pin, SOURCES
 from backend.integrations.weather import weather
 
 router=APIRouter(prefix='/api/civic', tags=['city information and reports'])
+
+def optional_reporter(request:Request):
+    same_origin(request)
+    try:return civilian_identity(request)
+    except HTTPException:return None
+
 CATEGORIES={'waterlogging','road','drainage','water','air_quality','traffic','infrastructure','other'}
 
 def public_report(item):
@@ -41,7 +49,7 @@ def reports(city_id:str):
     return [public_report(item) for item in repo.all_records('complaint') if item['city_id']==city_id]
 
 @router.post('/reports',status_code=201)
-async def submit_report(request:Request,city_id:str=Form(...), title:str=Form(...,min_length=3,max_length=120), category:str=Form(...), location:str=Form(...,min_length=3,max_length=200), description:str=Form(...,min_length=8,max_length=2000), postal_code:str=Form(...), email:str=Form(...), latitude:float|None=Form(None), longitude:float|None=Form(None), reported_damage_priority:str|None=Form(None), reported_affected_people_count:int|None=Form(None), images:list[UploadFile]=File(...)):
+async def submit_report(request:Request,city_id:str=Form(...), title:str=Form(...,min_length=3,max_length=120), category:str=Form(...), location:str=Form(...,min_length=3,max_length=200), description:str=Form(...,min_length=8,max_length=2000), postal_code:str=Form(...), email:str=Form(...), latitude:float|None=Form(None), longitude:float|None=Form(None), reported_damage_priority:str|None=Form(None), reported_affected_people_count:int|None=Form(None), images:list[UploadFile]=File(...), owner=Depends(optional_reporter)):
     configuration=city(city_id)
     if category not in CATEGORIES:raise HTTPException(422,'Choose a supported problem category')
     if not __import__('re').fullmatch('[1-9][0-9]{5}',postal_code):raise HTTPException(422,'Enter a six-digit Indian PIN')
@@ -81,7 +89,7 @@ async def submit_report(request:Request,city_id:str=Form(...), title:str=Form(..
         directory.mkdir(parents=True,exist_ok=True)
         for raw in sanitized:
             name=uuid4().hex+'.jpg';names.append(name);(directory/name).write_bytes(raw)
-        body={'reported_damage_priority':reported_damage_priority,'reported_affected_people_count':reported_affected_people_count,'damage_priority':None,'affected_people_count':None,'population_basis':'unknown','city_id':city_id,'title':title.strip(),'category':category,'location':location.strip(),'description':description.strip(),'postal_code':postal_code,'postal_area':', '.join(sorted({a['area'] for a in areas})),'email_private':private_email,'images':names,'coordinates':coordinates,'coordinates_verified':False,'status':'submitted','validation':'awaiting_review','urgency':'unassigned','department':'unassigned','public_reply':'','internal_notes':'','history':[],'public_history':[],'provenance':'Citizen report; location and claim await independent verification'}
+        body={'civilian_id':owner['id'] if owner else None,'reported_damage_priority':reported_damage_priority,'reported_affected_people_count':reported_affected_people_count,'damage_priority':None,'affected_people_count':None,'population_basis':'unknown','city_id':city_id,'title':title.strip(),'category':category,'location':location.strip(),'description':description.strip(),'postal_code':postal_code,'postal_area':', '.join(sorted({a['area'] for a in areas})),'email_private':private_email,'images':names,'coordinates':coordinates,'coordinates_verified':False,'status':'submitted','validation':'awaiting_review','urgency':'unassigned','department':'unassigned','public_reply':'','internal_notes':'','history':[],'public_history':[],'provenance':'Citizen report; location and claim await independent verification'}
         import hashlib,json
         fingerprint=hashlib.sha256(json.dumps({k:v for k,v in body.items() if k!='images'},sort_keys=True).encode()+b''.join(hashlib.sha256(raw).digest() for raw in sanitized)).hexdigest()
         from backend.services.municipal import save_report

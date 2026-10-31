@@ -1,3 +1,5 @@
+import pytest
+pytestmark=pytest.mark.usefixtures("civilian_account")
 from pathlib import Path
 from backend import config
 from backend.db import repository as repo

@@ -747,3 +747,20 @@ Run tour regressions with `corepack pnpm --dir frontend test:tour`.
 ## Postal-area transparency update
 
 Monetary history shows recorded allocation and paid expenditure for a selected PIN and fiscal year. Missing records stay unrecorded; plan reservations are separate. Phone navigation now uses a hamburger. Water/infrastructure maps include an explicitly illustrative, read-only network. Public notifications require an area selection, suggested through browser location permission or selected manually. See [the update and verification notes](docs/AREA_TRANSPARENCY.md). Gmail credential setup is deferred; keep credentials in private environment variables.
+
+### Civilian accounts, camera reports and travel planner
+
+Public visitors can continue as guests or use SMS OTP. Set the server-only
+`FAST2SMS_API_KEY` and approved route in the private environment. Smart OTP needs an
+approved template; Quick SMS is a paid alternative with an owner-set attempt cap.
+Never commit provider keys. Profile contains details, owned complaints, saved places,
+usual routes and a traffic-aware travel planner. Guest profile data stays in its browser;
+guest reporting remains enabled in the current prototype. No test OTP bypass exists.
+Google address search and routing need the relevant enabled APIs and billing.
+Uncovered waterlogging remains unknown. Camera capture requires HTTPS or localhost
+and user permission. Confirmation email requires working private SMTP credentials.
+See [civilian portal setup](docs/CIVILIAN_PORTAL.md) and [email configuration](docs/EMAIL_FOLLOW_UP.md).
+
+The avatar opens civilian account options; Admin Login is beside CIVICFLUX in the
+public Overview footer. Help / Take a tour opens the five-step walkthrough for the
+current role. See [UI changes and validation](docs/UI_REFINEMENT.md).

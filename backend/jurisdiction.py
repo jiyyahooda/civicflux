@@ -9,9 +9,16 @@ class JurisdictionMiddleware(BaseHTTPMiddleware):
  async def dispatch(self,request,call_next):
   path=request.url.path
   if not path.startswith('/api/') or path.startswith('/api/auth/') or path=='/api/health':return await call_next(request)
+  if path.startswith('/api/civilian/'):
+   response=await call_next(request)
+   response.headers['Cache-Control']='no-store'
+   return response
   session=resolve(request)
   if not session:
-   if request.cookies.get('civicflux_session'):return JSONResponse({'detail':'Admin session expired'},status_code=401)
+   if request.cookies.get('civicflux_session'):
+    response=JSONResponse({'detail':'Admin session expired'},status_code=401)
+    response.delete_cookie('civicflux_session')
+    return response
    protected=path.startswith('/api/maps/geography/') or (path.startswith('/api/assessments/') and request.method=='POST' and path.split('/')[-1] in {'flood','cascade_risk','resource_optimization','intervention_outcomes','water_network'}) or (path.startswith('/api/predictions/') and path.split('/')[3] in {'flood','cascade_risk','resource_optimization','intervention_outcomes','water_network'})
    if protected:return JSONResponse({'detail':'Admin login required'},status_code=401)
    return await call_next(request)

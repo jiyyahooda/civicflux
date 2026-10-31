@@ -1,3 +1,5 @@
+import pytest
+pytestmark=pytest.mark.usefixtures("civilian_account")
 """Postal-login, isolation, SMTP and forecast regressions using disposable state."""
 import hashlib,json,time
 from datetime import datetime,timedelta,timezone
